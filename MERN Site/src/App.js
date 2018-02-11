@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/font-awesome/css/font-awesome.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 import './App.css';
 
 
@@ -37,7 +37,7 @@ class App extends Component {
                 <li>About</li>
                 <li>Services</li>
                 <li>Login</li>
-                <li><i class="far fa-user"></i></li>
+                <li><i className="far fa-user"></i></li>
               </ul>
             </div>
           </nav>
