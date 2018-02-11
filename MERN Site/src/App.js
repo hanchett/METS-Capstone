@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './App.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 class App extends Component {
 
@@ -22,35 +24,16 @@ class App extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              BOOK CATALOG
-            </h3>
-          </div>
-          <div class="panel-body">
-            <h4><Link to="/create"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Book</Link></h4>
-            <table class="table table-stripe">
-              <thead>
-                <tr>
-                  <th>ISBN</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.books.map(book =>
-                  <tr>
-                    <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="container" class="text-right">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <ul>
+              <li>About</li>
+              <li>Services</li>
+              <li>Login</li>
+              <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
+            </ul>
+        </nav>
+
       </div>
     );
   }
