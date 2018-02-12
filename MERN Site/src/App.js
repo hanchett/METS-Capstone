@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
 import './App.css';
 
 
@@ -27,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <div class='navigation'>
           <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -37,7 +37,7 @@ class App extends Component {
                 <li>About</li>
                 <li>Services</li>
                 <li>Login</li>
-                <li><i className="far fa-user"></i></li>
+                <li><i className="fa fa-user"></i></li>
               </ul>
             </div>
           </nav>

@@ -8,6 +8,10 @@
   color: white;
 }
 
+.navbar-nav>li:hover {
+  opacity: .5;
+}
+
 .navbar-nav {
   display: inline-block;
 }
@@ -42,6 +46,7 @@
   text-align: center;
   background-color: black;
   opacity: .85;
+  color: black;
 }
 
 .btn-primary {
