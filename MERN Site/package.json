@@ -1,5 +1,5 @@
 {
-  "name": "METS",
+  "name": "mets",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,3 +27,5 @@
     "bootstrap": "^4.0.0"
   }
 }
+
+
