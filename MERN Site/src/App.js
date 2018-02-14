@@ -45,6 +45,11 @@ class App extends Component {
         <div className='body'>
 
           <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+            <ol className="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <div className='search'>
@@ -66,10 +71,10 @@ class App extends Component {
               </div>
 
               <div className="carousel-item">
-                Blah
+                <img src='./img/placeholder.png' />
               </div>
               <div className="carousel-item">
-                blah 2
+                <img src='./img/placeholder.png' />
               </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -81,9 +86,6 @@ class App extends Component {
               <span className="sr-only">Next</span>
             </a>
           </div>
-
-
-
         </div>
       </div>
     );
