@@ -17,7 +17,9 @@
     "react-responsive-carousel": "^3.1.33",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
-    "serve-favicon": "^2.4.5"
+    "react-slick": "^0.18.1",
+    "serve-favicon": "^2.4.5",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

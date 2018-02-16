@@ -2,10 +2,37 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { Carousel } from 'react-responsive-carousel';
+import Slider from 'react-slick'
 
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
+import './App.css';
+
+
+
+function NextArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', margin: "0 12.5% 0 0" }}
+      onClick={onClick}
+    ></div>
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', margin: "0 0 0 12.5%" }}
+      onClick={onClick}
+    ></div>
+  );
+}
 
 class App extends Component {
 
@@ -17,135 +44,79 @@ class App extends Component {
   }
 
   render() {
+    var settings = {
+      dots: true,
+      arrows: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
+      className: 'search'
+    }
+
     return (
-      <Carousel>
-        <div>
-          <img src={require("./img/placeholder.png")} />
-          <p className="legend">
-            Legend
-              </p>
+      <div >
+        <div className='navigation'>
+          <nav className="navbar navbar-inverse">
+            <div className="container-fluid">
+              <div className="navbar-header">
+                <a className="navbar-brand" href="#">METS</a>
+              </div>
+              <ul className="nav navbar-nav navbar-right">
+                <li>About</li>
+                <li>Services</li>
+                <li>Login</li>
+                <li><i className="fa fa-user"></i></li>
+              </ul>
+            </div>
+          </nav>
         </div>
-        <div>
-          <img src={require("./img/placeholder.png")} />
-          <p className="legend">
-            Legend
-              </p>
+        <div className='body'>
+          <Slider {...settings} className='slider'>
+            <div className='search'>
+              <h2>Find the best technologies for your students with us</h2>
+              <form>
+                <div className="form-group">
+                  <input type="text" className="form-control" id="subject" aria-describedby="subject" placeholder="Subject" />
+                </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" id="learningBarrier" placeholder="Learning Barrier" />
+                </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" id="Learning Style" placeholder="Learning Style" />
+                </div>
+                <div className='advSearch'>Advanced Search</div>
+                <button type="submit" className="btn btn-primary">Search</button>
+              </form>
+            </div>
+
+            <div className='search'>
+              <h2>Review technologies that you have used</h2>
+              <form>
+                <div className="form-group">
+                  <input type="text" className="form-control" id="product" aria-describedby="product" placeholder="Product Name" />
+                </div>
+                <button type="submit" className="btn btn-primary">Review</button>
+              </form>
+            </div>
+
+            <div className='search'>
+              <h2>Collaborate with other educators</h2>
+              <form>
+                <div className="form-group">
+                  <input type="text" className="form-control" id="topic" aria-describedby="topic" placeholder="Topic" />
+                </div>
+                <div className='advSearch'>Don't have a topic in mind? Go straight to the forum.</div>
+                <button type="submit" className="btn btn-primary">Search</button>
+              </form>
+            </div>
+          </Slider>
         </div>
-        <div>
-          <img src={require("./img/placeholder.png")} />
-          <p className="legend">
-            Legend
-              </p>
-        </div>
-        <div>
-          <img src={require("./img/placeholder.png")} />
-          <p className="legend">
-            Legend
-              </p>
-        </div>
-        <div>
-          <img src={require("./img/placeholder.png")} />
-          <p className="legend">
-            Legend
-              </p>
-        </div>
-      </Carousel>
-      // <div>
-      //   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-      //   <div className='navigation'>
-      //     <nav className="navbar navbar-inverse">
-      //       <div className="container-fluid">
-      //         <div className="navbar-header">
-      //           <a className="navbar-brand" href="#">METS</a>
-      //         </div>
-      //         <ul className="nav navbar-nav navbar-right">
-      //           <li>About</li>
-      //           <li>Services</li>
-      //           <li>Login</li>
-      //           <li><i className="fa fa-user"></i></li>
-      //         </ul>
-      //       </div>
-      //     </nav>
-      //   </div>
-      //   <div className='body'>
-      //     <Carousel>
-      //       <div>
-      //         <img src={require("./img/placeholder.png")} />
-      //         <p className="legend">
-      //           Legend
-      //         </p>
-      //       </div>
-      //       <div>
-      //         <img src={require("./img/placeholder.png")} />
-      //         <p className="legend">
-      //           Legend
-      //         </p>
-      //       </div>
-      //       <div>
-      //         <img src={require("./img/placeholder.png")} />
-      //         <p className="legend">
-      //           Legend
-      //         </p>
-      //       </div>
-      //       <div>
-      //         <img src={require("./img/placeholder.png")} />
-      //         <p className="legend">
-      //           Legend
-      //         </p>
-      //       </div>
-      //       <div>
-      //         <img src={require("./img/placeholder.png")} />
-      //         <p className="legend">
-      //           Legend
-      //         </p>
-      //       </div>
-      //     </Carousel>
-      //     {/* <div id="carousel" className="carousel slide" data-ride="carousel">
-      //       <ol className="carousel-indicators">
-      //         <li data-target="#carousel" data-slide-to="0" className="active"></li>
-      //         <li data-target="#carousel" data-slide-to="1"></li>
-      //         <li data-target="#carousel" data-slide-to="2"></li>
-      //       </ol>
+      </div>
 
 
-      //       <div className="carousel-inner">
-      //         <div className="item active">
-      //           <div className='search'>
-      //             <h2>Find the best technologies for your students with us</h2>
-      //             <form>
-      //               <div className="form-group">
-      //                 <input type="text" className="form-control" id="subject" aria-describedby="subject" placeholder="Subject" />
-      //               </div>
-      //               <div className="form-group">
-      //                 <input type="text" className="form-control" id="learningBarrier" placeholder="Learning Barrier" />
-      //               </div>
-      //               <div className="form-group">
-      //                 <input type="text" className="form-control" id="Learning Style" placeholder="Learning Style" />
-      //               </div>
-      //               <div className='advSearch'>Advanced Search</div>
-      //               <button type="submit" className="btn btn-primary">Search</button>
-      //             </form>
-      //           </div>
-      //         </div>
 
-      //         <div className="item">
-      //           <img src='./img/placeholder.png' />
-      //         </div>
-      //         <div className="item">
-      //           <img src='./img/placeholder.png' />
-      //         </div>
-      //       </div>
-      //       <a className="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-      //         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-      //         <span className="sr-only">Previous</span>
-      //       </a>
-      //       <a className="carousel-control-next" href="#carousel" role="button" data-slide="next">
-      //         <span className="carousel-control-next-icon" aria-hidden="true"></span>
-      //         <span className="sr-only">Next</span>
-      //       </a>
-      //     </div> */}
-      //   </div>
-      // </div>
     );
   }
 }
