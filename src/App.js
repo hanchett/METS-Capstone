@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Slider from 'react-slick'
+import Select from 'react-select';
+import MultiSelect from './components/MultiSelect'
 
-
+import 'react-select/dist/react-select.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "../node_modules/slick-carousel/slick/slick.css";
 import "../node_modules/slick-carousel/slick/slick-theme.css";
 import './App.css';
+
+
+const test = [
+  {label:"TEST", value:"TESTVAL"}
+];
+
+
+
 
 
 
@@ -78,7 +88,7 @@ class App extends Component {
               <h2>Find the best technologies for your students with us</h2>
               <form>
                 <div className="form-group">
-                  <input type="text" className="form-control" id="subject" aria-describedby="subject" placeholder="Subject" />
+                  <MultiSelect/>
                 </div>
                 <div className="form-group">
                   <input type="text" className="form-control" id="learningBarrier" placeholder="Learning Barrier" />
@@ -87,7 +97,7 @@ class App extends Component {
                   <input type="text" className="form-control" id="Learning Style" placeholder="Learning Style" />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
-                <button type="submit" className="btn btn-primary">Search</button>
+                <Link to={"/search"}><button type="submit" className="btn btn-primary">Search</button></Link>
               </form>
             </div>
 
