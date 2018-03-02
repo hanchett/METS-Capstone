@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Slider from 'react-slick'
 import Select from 'react-select';
-import MultiSelect from './components/MultiSelect'
+import MultiSelect from './components/MultiSelect';
+import NavBar from './components/NavBar';
 
 import 'react-select/dist/react-select.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -67,22 +68,8 @@ class App extends Component {
 
     return (
       <div >
-        <div className='navigation'>
-          <nav className="navbar navbar-inverse">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <a className="navbar-brand" href="#">METS</a>
-              </div>
-              <ul className="nav navbar-nav navbar-right">
-                <li>About</li>
-                <li>Services</li>
-                <li>Login</li>
-                <li><i className="fa fa-user"></i></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <div className='body'>
+        <NavBar/>        
+        <div className='body home'>
           <Slider {...settings} className='slider'>
             <div className='search'>
               <h2>Find the best technologies for your students with us</h2>
