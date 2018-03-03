@@ -4,32 +4,37 @@ import Select from 'react-select';
 
 
 const SUBJECT = [
-    { label: 'English', value: 'chocolate' },
-    { label: 'Reading', value: 'vanilla' },
-    { label: 'Writing', value: 'strawberry' },
-    { label: 'Math', value: 'caramel' },
-    { label: 'Science', value: 'peppermint' },
+    { label: 'English', value: 'english' },
+    { label: 'Reading', value: 'reading' },
+    { label: 'Writing', value: 'writing' },
+    { label: 'Math', value: 'math' },
+    { label: 'Science', value: 'science' },
 ];
 
 const BARRIER = [
-    { label: 'ESL', value: 'vanilla' },
-    { label: 'Blindness', value: 'strawberry' },
-    { label: 'Deafness', value: 'caramel' },
-    { label: 'Supplementary Learning', value: 'peppermint' },
+    { label: 'ESL', value: 'esl' },
+    { label: 'Blindness', value: 'blindness' },
+    { label: 'Deafness', value: 'deafness' },
+    { label: 'Supplementary Learning', value: 'supplementary' },
 ];
 
 const STYLE = [
-    { label: 'Visual', value: 'strawberry' },
-    { label: 'Auditory', value: 'caramel' },
-    { label: 'Kinesthetic', value: 'peppermint' },
+    { label: 'Visual', value: 'visual' },
+    { label: 'Auditory', value: 'auditory' },
+    { label: 'Kinesthetic', value: 'kinesthetic' },
 ];
 
 
 class MultiSelect extends React.Component {
-    state = {
-        selectedOption: '',
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedOption: '',
+            name: props.name, 
+            placeholder: props.placeholder
+        }
     }
+    
 
     handleChange = (value) => {
         console.log("working?")
@@ -59,24 +64,38 @@ class MultiSelect extends React.Component {
         this.setState({ rtl });
     }
 
-    
-
-    render() {
-        const { selectedOption, value } = this.state;
-        const options = SUBJECT;
-        let style = {
-            textAlign: 'center',
+    pickOptions(name) {
+        if(name == 'style') {
+            return STYLE;
+        } else if (name == 'barrier') {
+            return BARRIER;
+        } else {
+            return SUBJECT;
         }
 
+
+
+    }
+
+    render() {
+        console.log(this.state);
+        const { selectedOption, value, name, placeholder } = this.state;
+        const options = SUBJECT;
+        let style = {
+            width: '250px',
+            textAlign: 'center',
+
+        }
         return (
             <div className='section'>
                 <Select
+                    id={"searchDropdown"}
                     closeOnSelect={false}
                     disabled={false}
                     multi
                     onChange={this.handleChange}
-                    options={options}
-                    placeholder="Subject"
+                    options={this.pickOptions(name)}
+                    placeholder={placeholder}
                     removeSelected={true}
                     rtl={true}
                     simpleValue

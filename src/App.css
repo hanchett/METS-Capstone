@@ -100,3 +100,12 @@ form {
   font-size: .75em; 
   opacity: .7;
 }
+
+.Select-menu-outer{
+  text-align: center;
+
+}
+
+.slick-prev {
+  z-index: 1;
+}

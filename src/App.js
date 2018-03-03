@@ -14,17 +14,8 @@ import "../node_modules/slick-carousel/slick/slick-theme.css";
 import './App.css';
 
 
-const test = [
-  {label:"TEST", value:"TESTVAL"}
-];
-
-
-
-
-
-
 function NextArrow(props) {
-  const { className, style, onClick } = props
+  const { className, style, onClick } = props  
   return (
     <div
       className={className}
@@ -36,10 +27,11 @@ function NextArrow(props) {
 
 function PrevArrow(props) {
   const { className, style, onClick } = props
+  console.log(style);
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', margin: "0 0 0 12.5%" }}
+      style={{ ...style, display: 'block', margin: "0 0 0 12.5%", color: "white" }}
       onClick={onClick}
     ></div>
   );
@@ -68,20 +60,20 @@ class App extends Component {
 
     return (
       <div >
-        <NavBar/>        
+        <NavBar />
         <div className='body home'>
           <Slider {...settings} className='slider'>
             <div className='search'>
               <h2>Find the best technologies for your students with us</h2>
               <form>
                 <div className="form-group">
-                  <MultiSelect/>
+                  <MultiSelect name={"subject"} placeholder={"Subjects"} />
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control" id="learningBarrier" placeholder="Learning Barrier" />
+                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} />
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control" id="Learning Style" placeholder="Learning Style" />
+                  <MultiSelect name={"style"} placeholder={"Student Circumstances"} />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
                 <Link to={"/search"}><button type="submit" className="btn btn-primary">Search</button></Link>

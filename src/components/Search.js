@@ -31,7 +31,7 @@ class Search extends Component {
                     <a href="#learningStyle">Learning Style+</a>
                     <a href="#moreFilters">More Filters+</a>
                 </div>
-                <div className='body'>
+                <div className='results'>
                     <div className='row'>
                         <ItemCard/>
                         <ItemCard/>
