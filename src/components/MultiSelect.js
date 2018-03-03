@@ -31,15 +31,18 @@ class MultiSelect extends React.Component {
         this.state = {
             selectedOption: '',
             name: props.name, 
-            placeholder: props.placeholder
+            placeholder: props.placeholder,
+            selected: []
         }
     }
     
 
     handleChange = (value) => {
-        console.log("working?")
-        console.log(value)
-        this.setState({ value });
+        this.setState({
+            value: value,
+            selected: value
+        });
+        this.props.addFilter(value);
     }
 
     getInitialState() {
@@ -55,19 +58,15 @@ class MultiSelect extends React.Component {
 
     toggleCheckbox(e) {
         this.setState({
-            [e.target.name]: e.target.checked,
+            [e.target.name]: e.target.checked
         });
     }
 
-    toggleRtl(e) {
-        let rtl = e.target.checked;
-        this.setState({ rtl });
-    }
 
     pickOptions(name) {
-        if(name == 'style') {
+        if(name === 'style') {
             return STYLE;
-        } else if (name == 'barrier') {
+        } else if (name === 'barrier') {
             return BARRIER;
         } else {
             return SUBJECT;
@@ -78,12 +77,11 @@ class MultiSelect extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         const { selectedOption, value, name, placeholder } = this.state;
-        const options = SUBJECT;
         let style = {
             width: '250px',
             textAlign: 'center',
+            color: 'black'
 
         }
         return (

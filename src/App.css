@@ -103,9 +103,13 @@ form {
 
 .Select-menu-outer{
   text-align: center;
-
+  color: black;
 }
 
 .slick-prev {
   z-index: 1;
+}
+
+.Select-placeholder {
+  color: black;
 }

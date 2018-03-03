@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import ItemCard from './ItemCard';
 
 import './css/Search.css';
 
 class Search extends Component {
-    state = {
-        subjects: []
-    }        
-
     constructor(props) {
         super(props);
+        console.log(props)
+        this.state = {
+            filters: props.filters,
+            subjects: ['English', 'Reading', 'Writing', 'Math', 'Science']
+        }
     }
 
+
     openSubject() {
-         this.state.subjects = ['English', 'Reading', 'Writing', 'Math', 'Science'];
+        console.log("OPENING SUBJECT");
     }
 
 
@@ -33,12 +33,12 @@ class Search extends Component {
                 </div>
                 <div className='results'>
                     <div className='row'>
-                        <ItemCard/>
-                        <ItemCard/>
-                        <ItemCard/>
-                        <ItemCard/>
-                        <ItemCard/>
-                        <ItemCard/>
+                        <ItemCard />
+                        <ItemCard />
+                        <ItemCard />
+                        <ItemCard />
+                        <ItemCard />
+                        <ItemCard />
                     </div>
                 </div>
             </div>

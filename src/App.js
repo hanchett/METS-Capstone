@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Slider from 'react-slick'
-import Select from 'react-select';
 import MultiSelect from './components/MultiSelect';
 import NavBar from './components/NavBar';
 
@@ -15,7 +12,7 @@ import './App.css';
 
 
 function NextArrow(props) {
-  const { className, style, onClick } = props  
+  const { className, style, onClick } = props
   return (
     <div
       className={className}
@@ -27,23 +24,29 @@ function NextArrow(props) {
 
 function PrevArrow(props) {
   const { className, style, onClick } = props
-  console.log(style);
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', margin: "0 0 0 12.5%", color: "white" }}
+      style={{ ...style, display: 'block', margin: "0 0 0 12.5%" }}
       onClick={onClick}
     ></div>
   );
 }
+
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      book: []
-    };
+      selected: []
+    }
+  }
+
+  addFilter(filters) {
+    this.setState({
+      selected: filters
+    });
   }
 
   render() {
@@ -57,6 +60,7 @@ class App extends Component {
       prevArrow: <PrevArrow />,
       className: 'search'
     }
+    let filters = this.state.selected;
 
     return (
       <div >
@@ -67,16 +71,21 @@ class App extends Component {
               <h2>Find the best technologies for your students with us</h2>
               <form>
                 <div className="form-group">
-                  <MultiSelect name={"subject"} placeholder={"Subjects"} />
+                  <MultiSelect name={"subject"} placeholder={"Subjects"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} />
+                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"style"} placeholder={"Student Circumstances"} />
+                  <MultiSelect name={"style"} placeholder={"Student Circumstances"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
-                <Link to={"/search"}><button type="submit" className="btn btn-primary">Search</button></Link>
+                <Link to={{pathname: "/search", 
+                           state: {
+                             filters: filters
+                           }}}>
+                  <button type="submit" className="btn btn-primary">Search</button>
+                </Link>
               </form>
             </div>
 

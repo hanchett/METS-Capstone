@@ -5,12 +5,6 @@ import '../../node_modules/font-awesome/css/font-awesome.css';
 
 
 class ItemCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-
-
     render() {
         let rating = <FontAwesome name='fas fa-star'/>
         return (
