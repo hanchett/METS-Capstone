@@ -24,15 +24,15 @@ class Search extends Component {
     }
 
     toggleSide() {
-        console.log("working?")
         let dispState = '';
-        if (this.state.displaySideNav === 'none') {
+        console.log(this.state.displaySideNav === 'none')
+        if (this.state.displaySideNav == 'none') {
             dispState = 'block';
         } else {
             dispState = 'none';
         }
         this.setState({
-            dispState: dispState
+            displaySideNav: dispState
         });
     }
 
@@ -44,24 +44,23 @@ class Search extends Component {
 
         let exit = <FontAwesome
             name='fas fa-times'
-            
+
         />
-        let sideDisp = this.state.dispState;
+        let sideDisp = this.state.displaySideNav;
         let hamDisp = sideDisp === 'block' ? 'none' : 'inline-block';
         let margin = sideDisp === 'block' ? '160px' : '20px';
         return (
             <div>
                 <NavBar />
-                <button className='close' onClick={this.openSubject.bind(this)}>{exit}</button>
 
                 <div className="sidenav" style={{ display: sideDisp }}>
+                    <button className='close' onClick={this.toggleSide.bind(this)}>{exit}</button>
                     <div className="filters">
                         <div className='subject'>Subject+</div>
                         <div className='barrier'>Learning Barrier+</div>
                         <div className='style'>Learning Style+</div>
                         <div className='more'>More Filters+</div>
                     </div>
-
                 </div>
                 <button className="hamburger" onClick={this.toggleSide.bind(this)} style={{ display: hamDisp }}>{hamburger}</button>
                 <div className='results' style={{ marginLeft: margin }}>
