@@ -5,6 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import Search from './components/Search'
+import Review from './components/Review'
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -12,7 +13,8 @@ ReactDOM.render(
   <Router>
     <div>
       <Route exact path='/' component={App} />
-      <Route exact path="/search" component={Search} />
+      <Route exact path="/search/:filters?" component={Search} />
+      <Route exact path='/review/:id?' component={Review}/>
     </div>
   </Router>,
   document.getElementById('root')

@@ -1,16 +1,20 @@
+// Imported libraries
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick'
+
+// Imported Components 
 import MultiSelect from './components/MultiSelect';
 import NavBar from './components/NavBar';
 
+// Style Imports 
 import 'react-select/dist/react-select.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "../node_modules/slick-carousel/slick/slick.css";
 import "../node_modules/slick-carousel/slick/slick-theme.css";
 import './App.css';
 
-
+// These functions determine the style and actions of the Slick Carousel arrow buttons.
 function NextArrow(props) {
   const { className, style, onClick } = props
   return (
@@ -33,16 +37,17 @@ function PrevArrow(props) {
   );
 }
 
-
+// Main Home-Page Class 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      selected: []
+      selected: [] // Holds all filters chosen by the users
     }
   }
 
+  // Adds filters to the state as user selects them 
   addFilter(filters) {
     this.setState({
       selected: filters
@@ -60,7 +65,6 @@ class App extends Component {
       prevArrow: <PrevArrow />,
       className: 'search'
     }
-    let filters = this.state.selected;
 
     return (
       <div >
@@ -71,19 +75,16 @@ class App extends Component {
               <h2>Find the best technologies for your students with us</h2>
               <form>
                 <div className="form-group">
-                  <MultiSelect name={"subject"} placeholder={"Subjects"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"subject"} placeholder={"Subject(s)"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilitie(s)"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"style"} placeholder={"Student Circumstances"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"style"} placeholder={"Student Circumstance(s)"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
-                <Link to={{pathname: "/search", 
-                           state: {
-                             filters: filters
-                           }}}>
+                <Link to={'/search/' + this.state.selected}>
                   <button type="submit" className="btn btn-primary">Search</button>
                 </Link>
               </form>
