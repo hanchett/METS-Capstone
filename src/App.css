@@ -34,7 +34,7 @@
 }
 
 .search {
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   background-color: black;
   opacity: .85;
@@ -112,4 +112,30 @@ form {
 
 .Select-placeholder {
   color: black;
+}
+
+.slick-dots li {
+  margin: 0 15px;
+}
+
+.slick-dots li button:before {
+  color: transparent;
+  border-radius: 50%;
+  border: 2px solid white;
+  opacity: .9;
+}
+
+.slick-dots {
+  margin-bottom: 35px;
+}
+
+
+.slick-dots>li.slick-active>button:before {
+  background-color: white;
+  color: white;
+  opacity: .9;
+}
+
+.btn {
+  margin-bottom: 20px;
 }

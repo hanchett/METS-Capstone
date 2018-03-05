@@ -75,13 +75,13 @@ class App extends Component {
               <h2>Find the best technologies for your students with us</h2>
               <form>
                 <div className="form-group">
-                  <MultiSelect name={"subject"} placeholder={"Subject(s)"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"subject"} placeholder={"Subjects"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilitie(s)"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"style"} placeholder={"Student Circumstance(s)"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"style"} placeholder={"Student Circumstances"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
                 <Link to={'/search/' + this.state.selected}>
