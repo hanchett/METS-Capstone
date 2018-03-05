@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import NavBar from './NavBar';
+import SideNav from './SideNav';
 import ItemCard from './ItemCard';
 
 // Styles 
@@ -14,7 +15,7 @@ class Search extends Component {
         this.state = {
             filters: props.filters,
             subjects: ['English', 'Reading', 'Writing', 'Math', 'Science'],
-            displaySideNav: 'none'
+            displaySideNav: 'false'
         }
     }
 
@@ -22,48 +23,21 @@ class Search extends Component {
     openSubject() {
         console.log("OPENING SUBJECT");
     }
+    
+    addMargin(yn) {
 
-    toggleSide() {
-        let dispState = '';
-        console.log(this.state.displaySideNav === 'none')
-        if (this.state.displaySideNav == 'none') {
-            dispState = 'block';
-        } else {
-            dispState = 'none';
-        }
         this.setState({
-            displaySideNav: dispState
+            displaySideNav: yn
         });
     }
 
     render() {
-        let hamburger = <FontAwesome
-            name='fas fa-bars'
-            size='2x'
-        />
-
-        let exit = <FontAwesome
-            name='fas fa-times'
-
-        />
-        let sideDisp = this.state.displaySideNav;
-        let hamDisp = sideDisp === 'block' ? 'none' : 'inline-block';
-        let margin = sideDisp === 'block' ? '160px' : '20px';
+        let paddingTop = this.state.displaySideNav === true ? '130px'  : '0px';
         return (
             <div>
                 <NavBar />
-
-                <div className="sidenav" style={{ display: sideDisp }}>
-                    <button className='close' onClick={this.toggleSide.bind(this)}>{exit}</button>
-                    <div className="filters">
-                        <div className='subject'>Subject+</div>
-                        <div className='barrier'>Learning Barrier+</div>
-                        <div className='style'>Learning Style+</div>
-                        <div className='more'>More Filters+</div>
-                    </div>
-                </div>
-                <button className="hamburger" onClick={this.toggleSide.bind(this)} style={{ display: hamDisp }}>{hamburger}</button>
-                <div className='results' style={{ marginLeft: margin }}>
+                <SideNav callback={this.addMargin.bind(this)}/>
+                <div className='results' style={{ marginLeft: '160px', paddingTop: paddingTop}}>
                     <div className='row'>
                         <ItemCard />
                         <ItemCard />
