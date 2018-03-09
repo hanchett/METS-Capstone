@@ -42,7 +42,7 @@ All CSS documents must be within the same directory as the JavaScript files they
 ### Hierarchy ###
 Our current file hierarchy is something like this 
 
-METS-Capstone
+* METS-Capstone
 ⋅⋅⋅ App.js
 ⋅⋅⋅ Index.js
 ⋅⋅⋅ Img
@@ -51,7 +51,7 @@ METS-Capstone
 ⋅⋅⋅⋅⋅⋅ CSS
 
 I want it eventually to look like this 
-METS-Capstone
+* METS-Capstone
 ⋅⋅⋅ App.js
 ⋅⋅⋅ Index.js
 ⋅⋅⋅ Img
