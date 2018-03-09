@@ -17,7 +17,7 @@ import './css/ComponentName.css';
 Each page in our site shares the common NavBar component, and each component requires the importing of the react Component object. 
 
 Secondly, each component requires the same general setup of code below the imports: 
-`class ComponentName extends Component {
+```class ComponentName extends Component {
     render() {
       [JavaScript Functions go here]
         return (
@@ -27,4 +27,4 @@ Secondly, each component requires the same general setup of code below the impor
            </div>
         )
     }
-export default ComponentName`
+export default ComponentName```
