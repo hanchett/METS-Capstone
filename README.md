@@ -17,14 +17,14 @@ import './css/ComponentName.css';
 Each page in our site shares the common NavBar component, and each component requires the importing of the react Component object. 
 
 Secondly, each component requires the same general setup of code below the imports: 
-class ComponentName extends Component {
-   * render() {
-    *  [JavaScript Functions go here]
-     *   return (
-      *    <div> - React components need to return everything in a single wrapper tag, usually given a custom class for formatting. 
-       *       <NavBar/> - Since each component requires this, it should almost always go at the top
-        *      [HTML GOES HERE]
-         * </div>
-        *)
+`class ComponentName extends Component {
+    render() {
+      [JavaScript Functions go here]
+        return (
+          <div> - React components need to return everything in a single wrapper tag, usually given a custom class for formatting. 
+              <NavBar/> - Since each component requires this, it should almost always go at the top
+              [HTML GOES HERE]
+           </div>
+        )
     }
-export default ComponentName
+export default ComponentName`
