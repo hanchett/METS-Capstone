@@ -10,7 +10,7 @@ REACT is the main driver in how we interact with this application, as it is finn
 ### Each Component ###
 
 When creating a new component, you need three things. Firstly, you need to import a few things: 
-import  { Component } from 'react';
+import  { React, Component } from 'react';
 import NavBar from './NavBar';
 import './css/ComponentName.css';
 
@@ -18,13 +18,13 @@ Each page in our site shares the common NavBar component, and each component req
 
 Secondly, each component requires the same general setup of code below the imports: 
 class ComponentName extends Component {
-    render() {
-      [JavaScript Functions go here]
-        return (
-          <div> - React components need to return everything in a single wrapper tag, usually given a custom class for formatting. 
-              <NavBar/> - Since each component requires this, it should almost always go at the top
-              [HTML GOES HERE]
-          </div>
-        )
+   * render() {
+    *  [JavaScript Functions go here]
+     *   return (
+      *    <div> - React components need to return everything in a single wrapper tag, usually given a custom class for formatting. 
+       *       <NavBar/> - Since each component requires this, it should almost always go at the top
+        *      [HTML GOES HERE]
+         * </div>
+        *)
     }
 export default ComponentName
