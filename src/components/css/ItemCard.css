@@ -2,3 +2,22 @@
 	text-decoration: none;
 	color: black;
 }
+
+.card .itemInfo:hover{
+	text-decoration: none;
+}
+
+
+img:hover {
+	background-color: GREY;
+	opacity: .8;
+}
+
+.grey {
+	background: rgba(0, 0, 0, 0.75);
+	opacity: 0;
+}
+
+.grey:hover {
+	opacity: .5;
+}

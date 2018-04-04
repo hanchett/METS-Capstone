@@ -32,6 +32,8 @@ class Search extends Component {
     }
 
     render() {
+        let rands = Math.random();
+        console.log(rands)
         let paddingTop = this.state.displaySideNav === true ? '130px'  : '0px';
         return (
             <div>
@@ -39,7 +41,7 @@ class Search extends Component {
                 <SideNav callback={this.addMargin.bind(this)}/>
                 <div className='results' style={{ marginLeft: '160px', paddingTop: paddingTop}}>
                     <div className='row'>
-                        <ItemCard />
+                        <ItemCard id={rands}/>
                         <ItemCard />
                         <ItemCard />
                         <ItemCard />
