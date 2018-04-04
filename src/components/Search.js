@@ -25,7 +25,6 @@ class Search extends Component {
     }
     
     addMargin(yn) {
-
         this.setState({
             displaySideNav: yn
         });
@@ -39,7 +38,7 @@ class Search extends Component {
             <div>
                 <NavBar />
                 <SideNav callback={this.addMargin.bind(this)}/>
-                <div className='results' style={{ marginLeft: '160px', paddingTop: paddingTop}}>
+                <div className='results' style={{ paddingTop: paddingTop}}>
                     <div className='row'>
                         <ItemCard id={rands}/>
                         <ItemCard />

@@ -17,9 +17,8 @@ var forumSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }
-    ]
-
-
+    ],
+    date: Date
 });
 
 module.exports = mongoose.model("Forum", forumSchema);
