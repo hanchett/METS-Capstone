@@ -19,6 +19,13 @@ class Survey extends Component {
         }
     }
 
+    finalQuestion(e) {
+        let question = this.state.question;
+        console.log(e.target.id);
+        this.setState({
+            question: e.target.id
+        });
+    }
     answeredQuestion(e) {
         let question = this.state.question;
         console.log(e.target.id);
@@ -109,7 +116,7 @@ class Survey extends Component {
                 <div className="question questionFive row" ref='q5'>
                     <h1>What technology platforms do you have access to?</h1>
                     <button id='1' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
-                        Ipads    
+                        Ipads
                     </button>
                     <button id='2' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
                         Android Tablets
@@ -121,7 +128,7 @@ class Survey extends Component {
                         Desktop Computers (Mac or Windows)
                     </button>
                 </div>
-                <div className="question questionFive row" ref='q6'>
+                <div className="question questionSix row" ref='q6'>
                     <h1>Do you work with students with disabilities? Please select all that apply</h1>
                     <button id='1' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
                         Auditory perception & processing
@@ -135,9 +142,42 @@ class Survey extends Component {
                     <button id='4' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
                         Abstract reasoning
                     </button>
+                    <button id='5' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Retention
+                    </button>
+                    <button id='6' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Spoken & written language
+                    </button>
+                    <button id='7' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Mathematical Calculation
+                    </button>
                 </div>
-
-
+                <div className="question questionSeven row" ref='q7'>
+                    <h1>
+                        Do you work with students where English is no their first language?
+                    </h1>
+                    <button className='qBtn' id='1' onClick={this.answeredQuestion.bind(this)}>
+                        Yes
+                    </button>
+                    <button className='qBtn' id='2' onClick={this.answeredQuestion.bind(this)}>
+                        No
+                    </button>
+                </div>
+                <div className="question questionSeven row" ref='q8'>
+                    <h1>
+                        Do you work with students who miss class more than 25 percent of the time?
+                    </h1>
+                    <Link to='Search'>
+                        <button className='qBtn' id='1' onClick={this.finalQuestion.bind(this)}>
+                            Yes
+                        </button>
+                    </Link>
+                    <Link to='Search'>
+                        <button className='qBtn' id='2' onClick={this.finalQuestion.bind(this)}>
+                            No
+                        </button>
+                    </Link>
+                </div>
             </div>
         );
     }
