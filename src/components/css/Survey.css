@@ -2,14 +2,14 @@
     background: linear-gradient(#5B8DA3, #76cccc);
     display: flex;
     flex-flow: column;
-    height: 600px;
+    height: 1000px;
     text-align: center;
 }
 
 .hello {
-    margin-top: 20%;
+    padding-top: 20%;
     color: white;
-    transition: .75s;
+    transition: 1s ease-in-out;
 }
 
 .hello h2 {
@@ -18,14 +18,19 @@
     
 }
 
-.questionOne, .questionOne button {
+.question {
     display: none;
     color: white;
-    margin-top: 20%;
+    bottom: 20%;
+    left: 100%;
+    position: relative;
+    transition: all 1s ease-in-out;
 }
 
-.questionOne button, .surveyBtn {
-    margin: 80px 60px;
+
+
+.question>button, .surveyBtn {
+    margin: 20px 60px;
     padding: 10px;
     background-color: #30A2D0;
     border-radius: 10px;
@@ -34,22 +39,9 @@
 }
 
 
-.questionOne button:hover, .surveyBtn:hover {
+.question button:hover, .surveyBtn:hover {
     opacity: .5;
 }
 
 
-.clicked{
-    animation: transitionElement 1s linear;
-}
 
-
-@keyframes transitionElement {
-    100% {
-        left: 0px;
-        margin-right: 100%;
-        z-index: -100;
-        display: none;
-    }
-
-}
