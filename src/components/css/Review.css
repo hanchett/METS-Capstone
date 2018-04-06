@@ -10,19 +10,19 @@
     text-align: left;
 }
 
-h1 {
+.info h1 {
     font-size: 1.4em;
     font-weight: 700;
 }
 
-h2 {
+.info h2 {
     margin-top: 15px;
     font-size: 1.2em;
     font-weight: 100;
     color: grey;
 }
 
-img {
+.productTitle img {
     float: left;
     height: 150px;
     margin-right: 60px;
@@ -44,7 +44,7 @@ img {
 
 
 @media screen and (max-width: 900px) {
-    img {
+    .productTitle img {
         margin-right: 5%;
     }
 }
