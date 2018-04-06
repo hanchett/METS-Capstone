@@ -15,7 +15,6 @@
 .hello h2 {
     margin-top: 40px;
     font-size: 1.2em;
-    
 }
 
 .question {
@@ -27,8 +26,6 @@
     transition: all 1s ease-in-out;
 }
 
-
-
 .question>button, .surveyBtn {
     margin: 20px 60px;
     padding: 10px;
@@ -36,12 +33,33 @@
     border-radius: 10px;
     transition: .7s;
     color: white;
+    min-width: 150px;
 }
-
 
 .question button:hover, .surveyBtn:hover {
     opacity: .5;
 }
 
+.questionTwo {
+    bottom: 34%;
+}
 
+.questionThree {
+    bottom: 50%;
+}
 
+.questionFour {
+    bottom: 65%;
+}
+
+.questionFour>button {
+    max-width: 250px;
+}
+
+.questionFive {
+    bottom: 85%;
+}
+
+.questionFive>button {
+    max-width: 350px;
+}

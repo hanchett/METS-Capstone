@@ -25,25 +25,24 @@ class Survey extends Component {
         this.setState({
             question: e.target.id
         });
-        console.log(e);
         this.nextQ(e);
     }
 
+    // Moves current question off the screen and brings up the new question 
     nextQ(e) {
-        console.log(e.target.parentNode);
         e.target.parentNode.style.left = '0';
-
         e.target.parentNode.style.transform = 'translate(-100%)';
         let newQuestion = 'q' + (this.state.question + 1);
+
+        // Using set state callback to ensure it is up to date when we call the new question
         this.setState({ question: (this.state.question + 1) }, function () {
             let newElement = this.refs[newQuestion];
             newElement.style.display = 'block';
+            // Have to delay this function for animation to work properly, runs slightly faster than display 
             setInterval(function () {
                 newElement.style.transform = 'translate(-100%)';
-            }, 50);
+            }, 10);
         });
-
-
     }
 
     render() {
@@ -67,16 +66,78 @@ class Survey extends Component {
                 </div>
                 <div className='question questionTwo' ref='q2'>
                     <h1>What education level do you teach?</h1>
-                    <button className='qBtn'>
+                    <button id='1' className='qBtn' onClick={this.answeredQuestion.bind(this)}>
                         K-5
                     </button>
-                    <button className='qBtn'>
-                        Middle School 
+                    <button id='2' className='qBtn' onClick={this.answeredQuestion.bind(this)}>
+                        Middle School
                     </button>
-                    <button className='qBtn'>
-                        High School 
+                    <button id='3' className='qBtn' onClick={this.answeredQuestion.bind(this)}>
+                        High School
                     </button>
                 </div>
+                <div className="question questionThree" ref='q3'>
+                    <h1>What is your technical proficiency?</h1>
+                    <button id='1' className="qBtn" onClick={this.answeredQuestion.bind(this)}>
+                        Beginner
+                    </button>
+                    <button id='2' className="qBtn" onClick={this.answeredQuestion.bind(this)}>
+                        Intermediate
+                    </button>
+                    <button id='3' className="qBtn" onClick={this.answeredQuestion.bind(this)}>
+                        Advanced
+                    </button>
+                </div>
+                <div className="question questionFour row" ref='q4'>
+                    <h1> How frequently do you have access to technology?</h1>
+                    <button id='1' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Every Day
+                    </button>
+                    <button id='2' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        2-3 Times a week
+                    </button>
+                    <button id='3' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Once a week
+                    </button>
+                    <button id='4' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Twice a month
+                    </button>
+                    <button id='5' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Less than twice a month
+                    </button>
+                </div>
+                <div className="question questionFive row" ref='q5'>
+                    <h1>What technology platforms do you have access to?</h1>
+                    <button id='1' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Ipads    
+                    </button>
+                    <button id='2' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Android Tablets
+                    </button>
+                    <button id='3' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Laptops
+                    </button>
+                    <button id='4' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Desktop Computers (Mac or Windows)
+                    </button>
+                </div>
+                <div className="question questionFive row" ref='q6'>
+                    <h1>Do you work with students with disabilities? Please select all that apply</h1>
+                    <button id='1' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Auditory perception & processing
+                    </button>
+                    <button id='2' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Visual perception & processing
+                    </button>
+                    <button id='3' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Information processing speed
+                    </button>
+                    <button id='4' className="qBtn col-md-4" onClick={this.answeredQuestion.bind(this)}>
+                        Abstract reasoning
+                    </button>
+                </div>
+
+
             </div>
         );
     }
