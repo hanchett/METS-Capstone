@@ -7,9 +7,10 @@
 }
 
 .hello {
-    padding-top: 20%;
+    margin-top: 15%;
     color: white;
     transition: 1s ease-in-out;
+    
 }
 
 .hello h2 {
@@ -45,11 +46,11 @@
 }
 
 .questionThree {
-    bottom: 50%;
+    bottom: 48%;
 }
 
 .questionFour {
-    bottom: 65%;
+    bottom: 62%;
 }
 
 .questionFour>button {
@@ -57,9 +58,25 @@
 }
 
 .questionFive {
-    bottom: 85%;
+    bottom: 93%;
 }
 
 .questionFive>button {
     max-width: 350px;
+}
+
+.questionSix {
+    bottom: 120%;
+}
+
+.questionSeven {
+    bottom: 160%;
+}
+
+.questionEight {
+     bottom: 180%;
+}
+
+.question>h1 {
+    padding: 0 100px;
 }
