@@ -62,7 +62,7 @@ form {
   max-width: 50%; 
   display: table;
   margin: 0 auto;
-  height: 80%;
+  height: 70%;
   position: relative;
 }
 
@@ -86,7 +86,7 @@ form {
 }
 
 .slick-slide{
-  height: auto;       
+  height: auto;  
 }
 
 

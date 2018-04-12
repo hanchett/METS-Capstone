@@ -45,8 +45,8 @@ class SideNav extends Component {
                     <button className='close' onClick={this.toggleSide.bind(this)}>{exit}</button>
                     <div className="filters">
                         <div className='subject'>Subject+</div>
-                        <div className='barrier'>Learning Barrier+</div>
-                        <div className='style'>Learning Style+</div>
+                        <div className='disability'>Learning Disabilities+</div>
+                        <div className='challenge'>Student Challenges+</div>
                         <div className='more'>More Filters+</div>
                     </div>
                 </div>

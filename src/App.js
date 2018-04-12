@@ -81,7 +81,7 @@ class App extends Component {
                   <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"style"} placeholder={"Student Circumstances"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"circumstance"} placeholder={"Student Circumstance"} addFilter={this.addFilter.bind(this)} />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
                 <Link to={'/search/' + this.state.selected}>
@@ -101,7 +101,7 @@ class App extends Component {
             </div>
 
             <div className='search'>
-              <h2>Collaborate with other educators</h2>
+              <h2>Need advice? Collaborate with other educators</h2>
               <form>
                 <div className="form-group">
                   <input type="text" className="form-control" id="topic" aria-describedby="topic" placeholder="Topic" />

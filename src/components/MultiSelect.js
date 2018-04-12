@@ -12,16 +12,19 @@ const SUBJECT = [
 ];
 
 const BARRIER = [
-    { label: 'ESL', value: 'esl' },
-    { label: 'Blindness', value: 'blindness' },
-    { label: 'Deafness', value: 'deafness' },
-    { label: 'Supplementary Learning', value: 'supplementary' },
+    { label: 'Auditory perception & processing', value: 'auditory' },
+    { label: 'Visual perception & processing', value: 'visual' },
+    { label: 'Information processing speed', value: 'info' },
+    { label: 'Abstract reasoning', value: 'reason' },
+    { label: 'Retention', value: 'memory'},
+    { label: 'Spoken and written language', value: 'lang'},
+    { label: 'Mathematical calculation', value: 'calc'},
 ];
 
-const STYLE = [
-    { label: 'Visual', value: 'visual' },
-    { label: 'Auditory', value: 'auditory' },
-    { label: 'Kinesthetic', value: 'kinesthetic' },
+const CIRCUMSTANCE = [
+    { label: 'ESL', value: 'esl' },
+    { label: 'Attendance', value: 'attendance' },
+    { label: 'Supplemental Education', value: 'supplemental' },
 ];
 
 
@@ -64,8 +67,8 @@ class MultiSelect extends React.Component {
 
 
     pickOptions(name) {
-        if(name === 'style') {
-            return STYLE;
+        if(name === 'circumstance') {
+            return CIRCUMSTANCE;
         } else if (name === 'barrier') {
             return BARRIER;
         } else {
@@ -79,9 +82,9 @@ class MultiSelect extends React.Component {
     render() {
         const { selectedOption, value, name, placeholder } = this.state;
         let style = {
-            width: '250px',
+            width: '300px',
             textAlign: 'center',
-            color: 'black'
+            color: 'black',
 
         }
         return (
