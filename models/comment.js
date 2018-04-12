@@ -1,3 +1,4 @@
+'use strict';
 var mongoose = require("mongoose");
 
 var commentSchema = mongoose.Schema({
@@ -9,8 +10,7 @@ var commentSchema = mongoose.Schema({
         },
         username: String
     }, 
-    date: Date,
-    type: String
+    date: Date
 });
     
     
