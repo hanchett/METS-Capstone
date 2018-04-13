@@ -13,18 +13,13 @@ class Survey extends Component {
         }
     }
 
+    // Updates State 
     answeredQuestion(e) {
-        console.log(this)
-        let question = this.state.question;
-        this.setState({
-            question: e.target.id
-        });
         let newAnswers = this.state.answers;
         newAnswers.push(parseInt(e.target.id));
         this.setState({
             answers: newAnswers
         });
-        console.log(this.state.answers);
         this.nextQ(e);
     }
 
@@ -38,9 +33,9 @@ class Survey extends Component {
             parent.style.display = 'none';
         }, 800);
 
-        // Setting up for state change
+        // Setting up to grab DOM element 
         let newQuestion = 'q' + (this.state.question + 1);
-        
+        console.log(newQuestion);
         // Using set state callback to ensure it is up to date when we call the new question
         this.setState({ question: (this.state.question + 1) }, function () {
             let newElement = this.refs[newQuestion];
@@ -169,12 +164,12 @@ class Survey extends Component {
                     <h1>
                         Do you work with students who miss class more than 25 percent of the time?
                     </h1>
-                    <Link to={'/Search/' + this.state.answers.push(1)} >
+                    <Link to={'/Search/' + this.state.answers + "," + 1} >
                         <button className='lBtn'>
                             Yes
                         </button>
                     </Link>
-                    <Link to={'/Search/' + this.state.answers.push(2)} >
+                    <Link to={'/Search/' + this.state.answers + "," + 2} >
                         <button className='lBtn'>
                             No
                         </button>

@@ -13,6 +13,8 @@ var Survey      = require('./models/Survey');
 var app         = express();
 var port        = process.env.PORT || 3001;
 
+
+
 // Connecting to our database
 mongoose.connect('mongodb://admin:password@ds014388.mlab.com:14388/discovered_capstone');
 
@@ -21,14 +23,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Preventing Issues with CORS 
-// app.use(function(req, res, next) {
-//     res.setHeader("Access-Control-Allow-Origin", "*");
-//     res.setHeader("Access-Control-Allow-Credentials", "true");
-//     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-//     res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-//     res.setHeader("Cache-Control", "no-cache");
-//     next();
-// });
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 
 
 app.get('/', function (req, res) {
@@ -46,21 +48,19 @@ app.get('/comments', function (req, res) {
     });
 });
 
-app.post("/comments", function (req, res) {
+app.post("/comments/:author/:text/:date", function (req, res) {
     var comment    = new Comment();
-    comment.author = req.body.author;
-    comment.text   = req.body.text;
-    comment.date   = req.body.date;
+    comment.author = req.params.author;
+    comment.text   = req.params.text;
+    comment.date   = req.params.date;
     comment.save(function (err) {
         if (err) {
             res.send(err);
         }
-        res.json({ message: "Comment Successfully Added" });
     });
 });
 
-app.get("/search", function (req, res) {
-    var cards    = [];
+app.get("/search/:category/:age/:language", function (req, res) {
     var category = req.body.category;
     var langauge = req.body.language;
     var age      = req.body.age;
