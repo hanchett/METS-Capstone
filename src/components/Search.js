@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import NavBar from './NavBar';
 import SideNav from './SideNav';
 import ItemCard from './ItemCard';
+import ItemCardList from './ItemCardList';
 
 // Styles 
 import './css/Search.css';
@@ -19,6 +20,9 @@ class Search extends Component {
         }
     }
 
+    handleFilterChange() {
+        
+    }
 
     openSubject() {
         console.log("OPENING SUBJECT");
@@ -29,6 +33,7 @@ class Search extends Component {
             displaySideNav: yn
         });
     }
+    
 
     render() {
         let rands = Math.random();
@@ -40,12 +45,7 @@ class Search extends Component {
                 <SideNav callback={this.addMargin.bind(this)}/>
                 <div className='results' style={{ paddingTop: paddingTop}}>
                     <div className='row'>
-                        <ItemCard id={rands}/>
-                        <ItemCard />
-                        <ItemCard />
-                        <ItemCard />
-                        <ItemCard />
-                        <ItemCard />
+                        <ItemCardList filters={this.state.filters}/>>
                     </div>
                 </div>
             </div>

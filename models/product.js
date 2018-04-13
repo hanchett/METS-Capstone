@@ -11,7 +11,12 @@ var productSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }
-    ]
+    ],
+    category: String,
+    language: [[]],
+    age: Number,
+    tags: [[]],
+    date: Date
 });
 
 module.exports = mongoose.model("Product", productSchema);
