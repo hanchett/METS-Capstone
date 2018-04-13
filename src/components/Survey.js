@@ -30,13 +30,15 @@ class Survey extends Component {
 
     // Moves current question off the screen and brings up the new question 
     nextQ(e) {
+        // Moves previous question off screen
         let parent = e.target.parentNode;
-        // parent.style.left = '0';
         parent.style.transform = 'translate(-150%)';
         parent.style.position = 'relative';
         setInterval(function () {
             parent.style.display = 'none';
         }, 800);
+
+        // Setting up for state change
         let newQuestion = 'q' + (this.state.question + 1);
         
         // Using set state callback to ensure it is up to date when we call the new question
@@ -168,12 +170,12 @@ class Survey extends Component {
                         Do you work with students who miss class more than 25 percent of the time?
                     </h1>
                     <Link to={'/Search/' + this.state.answers.push(1)} >
-                        <button className='qBtn'>
+                        <button className='lBtn'>
                             Yes
                         </button>
                     </Link>
                     <Link to={'/Search/' + this.state.answers.push(2)} >
-                        <button className='qBtn'>
+                        <button className='lBtn'>
                             No
                         </button>
                     </Link>
