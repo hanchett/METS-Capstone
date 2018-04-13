@@ -12,7 +12,10 @@ import './css/Search.css';
 class Search extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
+        
+        console.log("Search Props");
+        console.log(props);
+        console.log(props.match.params.filters)
         this.state = {
             filters: props.filters,
             subjects: ['English', 'Reading', 'Writing', 'Math', 'Science'],
@@ -21,7 +24,7 @@ class Search extends Component {
     }
 
     handleFilterChange() {
-        
+
     }
 
     openSubject() {

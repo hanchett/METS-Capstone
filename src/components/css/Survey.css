@@ -9,7 +9,7 @@
 .hello {
     margin-top: 15%;
     color: white;
-    transition: 1s ease-in-out;
+    transition: 1s ease-in;
     
 }
 
@@ -20,25 +20,24 @@
 
 .question {
     visibility: hidden;
+    display: none;
     text-align: center;
     color: white;
     left: 100%;
-    position: absolute;
-    width: 100%;
+    width: 80%;
     transition: all 1s ease-in-out;
     float: right;
-    margin: 15% auto 10px auto;
-
+    margin: 15% 10% 10px 10%;
+    padding: 20px;
 }
 
-.question>button, .surveyBtn {
+.qBtn, .surveyBtn, Link>button {
     padding: 10px;
     background-color: #30A2D0;
     border-radius: 10px;
     transition: .7s;
     color: white;
-    position: relative;
-    min-width: 125px;
+    min-width: 34%;
     margin: 20px 60px;
 }
 
@@ -50,4 +49,9 @@
 .question>h1 {
     padding: 0 100px;
     margin-bottom: 40px;
+}
+
+a {
+    margin: 0 60px;
+    min-width: 34%;
 }

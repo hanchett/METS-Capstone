@@ -11,24 +11,25 @@ class ItemCardList extends Component {
             filters: props.filters,
             cards: []
         };
-        this.loadCardsFromServer = this.loadCardsFromServer.bind(this);
+        console.log(props);
+        //this.loadCardsFromServer = this.loadCardsFromServer.bind(this);
     }
 
     // Loads in the card list form the server using the filters supplied to this method 
-    loadCardsFromServer() {
-        axios.get(`/search?category=${this.state.filters}`).then(res => {
-            this.setState({
-                cards: res.data
-            });
-        }).catch(function(err) {
-            console.log("Error ", err);
-        });
-    }
+    // loadCardsFromServer() {
+    //     axios.get(`/search?category=${this.state.filters}`).then(res => {
+    //         this.setState({
+    //             cards: res.data
+    //         });
+    //     }).catch(function(err) {
+    //         console.log("Error ", err);
+    //     });
+    // }
 
-    componentDidMount() {
-        this.loadCardsFromServer();
-        setInterval(this.loadCardsFromServer, 2000);
-    }
+    // componentDidMount() {
+    //     this.loadCardsFromServer();
+    //     setInterval(this.loadCardsFromServer, 2000);
+    // }
 
 
     render() {

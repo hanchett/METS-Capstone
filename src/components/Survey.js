@@ -14,40 +14,41 @@ class Survey extends Component {
     }
 
     answeredQuestion(e) {
+        console.log(this)
         let question = this.state.question;
-        console.log(e.target.id);
         this.setState({
             question: e.target.id
         });
-
-        if (e.target.parentNode.id == 'last') {
-            console.log(this);
-        } else {
-            this.nextQ(e);
-        }
+        let newAnswers = this.state.answers;
+        newAnswers.push(parseInt(e.target.id));
+        this.setState({
+            answers: newAnswers
+        });
+        console.log(this.state.answers);
+        this.nextQ(e);
     }
 
     // Moves current question off the screen and brings up the new question 
     nextQ(e) {
         let parent = e.target.parentNode;
         // parent.style.left = '0';
-        parent.style.transform = 'translate(-100%)';
+        parent.style.transform = 'translate(-150%)';
         parent.style.position = 'relative';
         setInterval(function () {
             parent.style.display = 'none';
         }, 800);
         let newQuestion = 'q' + (this.state.question + 1);
-        let newAnswers = this.state.answers;
-        newAnswers.push(e.target.id);
-        this.setState({
-            answers: newAnswers
-        });
+        
         // Using set state callback to ensure it is up to date when we call the new question
         this.setState({ question: (this.state.question + 1) }, function () {
             let newElement = this.refs[newQuestion];
+            newElement.style.position = 'absolute';
+            newElement.style.display = 'block';
             newElement.style.visibility = 'visible';
             // Have to delay this function for animation to work properly, runs slightly faster than display 
-            newElement.style.left = 0;
+            setInterval(function() {
+                newElement.style.left = 0;
+            }, 20);
         });
     }
 
@@ -57,7 +58,7 @@ class Survey extends Component {
                 <div className="hello">
                     <h1>Welcome to Crrclm.io</h1>
                     <h2>Please take a minute to work through this brief survey.</h2>
-                    <button className='surveyBtn' onClick={this.nextQ.bind(this)}>Continue</button>
+                    <button className='surveyBtn' id="0" onClick={this.answeredQuestion.bind(this)}>Continue</button>
                 </div>
                 <div className="question questionOne" ref='q1'>
                     <h1>
@@ -166,12 +167,17 @@ class Survey extends Component {
                     <h1>
                         Do you work with students who miss class more than 25 percent of the time?
                     </h1>
-                    <button className='qBtn' id='1' onClick={this.answeredQuestion.bind(this)}>
-                        Yes
-                    </button>
-                    <button className='qBtn' id='2' onClick={this.answeredQuestion.bind(this)}>
-                        No
-                    </button>
+                    <Link to={'/Search/' + this.state.answers.push(1)} >
+                        <button className='qBtn'>
+                            Yes
+                        </button>
+                    </Link>
+                    <Link to={'/Search/' + this.state.answers.push(2)} >
+                        <button className='qBtn'>
+                            No
+                        </button>
+                    </Link>
+
 
                 </div>
             </div>
