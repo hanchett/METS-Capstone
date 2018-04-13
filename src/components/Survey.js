@@ -20,7 +20,7 @@ class Survey extends Component {
             question: e.target.id
         });
 
-        if(e.target.parentNode.id == 'last') {
+        if (e.target.parentNode.id == 'last') {
             console.log(this);
         } else {
             this.nextQ(e);
@@ -29,10 +29,15 @@ class Survey extends Component {
 
     // Moves current question off the screen and brings up the new question 
     nextQ(e) {
-        e.target.parentNode.style.left = '0';
-        e.target.parentNode.style.transform = 'translate(-100%)';
+        let parent = e.target.parentNode;
+        // parent.style.left = '0';
+        parent.style.transform = 'translate(-100%)';
+        parent.style.position = 'relative';
+        setInterval(function () {
+            parent.style.display = 'none';
+        }, 800);
         let newQuestion = 'q' + (this.state.question + 1);
-        let newAnswers = this.state.answers; 
+        let newAnswers = this.state.answers;
         newAnswers.push(e.target.id);
         this.setState({
             answers: newAnswers
@@ -40,11 +45,9 @@ class Survey extends Component {
         // Using set state callback to ensure it is up to date when we call the new question
         this.setState({ question: (this.state.question + 1) }, function () {
             let newElement = this.refs[newQuestion];
-            newElement.style.display = 'block';
+            newElement.style.visibility = 'visible';
             // Have to delay this function for animation to work properly, runs slightly faster than display 
-            setInterval(function () {
-                newElement.style.transform = 'translate(-100%)';
-            }, 10);
+            newElement.style.left = 0;
         });
     }
 

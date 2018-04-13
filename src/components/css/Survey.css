@@ -14,69 +14,40 @@
 }
 
 .hello h2 {
-    margin-top: 40px;
+    margin: 40px 0 20px 0;
     font-size: 1.2em;
 }
 
 .question {
-    display: none;
+    visibility: hidden;
+    text-align: center;
     color: white;
-    bottom: 20%;
     left: 100%;
-    position: relative;
+    position: absolute;
+    width: 100%;
     transition: all 1s ease-in-out;
+    float: right;
+    margin: 15% auto 10px auto;
+
 }
 
 .question>button, .surveyBtn {
-    margin: 20px 60px;
     padding: 10px;
     background-color: #30A2D0;
     border-radius: 10px;
     transition: .7s;
     color: white;
-    min-width: 150px;
+    position: relative;
+    min-width: 125px;
+    margin: 20px 60px;
 }
 
 .question button:hover, .surveyBtn:hover {
     opacity: .5;
 }
 
-.questionTwo {
-    bottom: 34%;
-}
-
-.questionThree {
-    bottom: 48%;
-}
-
-.questionFour {
-    bottom: 62%;
-}
-
-.questionFour>button {
-    max-width: 250px;
-}
-
-.questionFive {
-    bottom: 93%;
-}
-
-.questionFive>button {
-    max-width: 350px;
-}
-
-.questionSix {
-    bottom: 120%;
-}
-
-.questionSeven {
-    bottom: 160%;
-}
-
-.questionEight {
-     bottom: 180%;
-}
 
 .question>h1 {
     padding: 0 100px;
+    margin-bottom: 40px;
 }
