@@ -177,6 +177,9 @@ class Survey extends Component {
 
 
                 </div>
+                <button className="skip">
+                <Link to='/'>Skip</Link>
+                </button>
             </div>
         );
     }

@@ -31,7 +31,7 @@
     padding: 20px;
 }
 
-.qBtn, .surveyBtn, .lBtn {
+.qBtn, .surveyBtn, .lBtn{
     padding: 10px;
     background-color: #30A2D0;
     border-radius: 10px;
@@ -51,3 +51,17 @@
     margin-bottom: 40px;
 }
 
+.skip {
+    position: absolute;
+    left: 80%;
+    top: 80%;
+    width: 80px;
+    background-color: #30A2D0;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.skip > a {
+    text-decoration: none;
+    color: white;
+}
