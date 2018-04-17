@@ -14,9 +14,10 @@ ReactDOM.render(
   <Router>
     <div>
       <Route exact path='/' component={App} />
-      <Route exact path="/search/:filters?" component={Search} />
+      <Route exact path="/search/:subjects?/:disabilities?/:circumstances?" component={Search} />
       <Route exact path='/review/:id?' component={Review}/>
       <Route exact path='/survey' component={Survey}/>
+      <Route exact path='/surveyresults/:filters?' component={Search} />>
     </div>
   </Router>,
   document.getElementById('root')

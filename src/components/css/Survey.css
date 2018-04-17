@@ -4,6 +4,7 @@
     flex-flow: column;
     height: 1000px;
     text-align: center;
+    overflow: hidden !important;
 }
 
 .hello {
@@ -29,6 +30,7 @@
     float: right;
     margin: 15% 10% 10px 10%;
     padding: 20px;
+
 }
 
 .qBtn, .surveyBtn, .lBtn{
@@ -53,8 +55,9 @@
 
 .skip {
     position: absolute;
-    left: 80%;
-    top: 80%;
+    left: 90%;
+    top: 85%;
+    z-index: 100;
     width: 80px;
     background-color: #30A2D0;
     border-radius: 10px;

@@ -43,16 +43,33 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: [] // Holds all filters chosen by the users
+      subjects: [],
+      disabilities: [],
+      circumstances: []
     }
   }
 
   // Adds filters to the state as user selects them 
-  addFilter(filters) {
+  addSubject(subject) {
     this.setState({
-      selected: filters
+      subjects: subject
     });
   }
+
+  addDisability(disability) {
+    this.setState({
+      disabilities: disability
+    });
+  }
+
+  addCircumstance(circumstance) {
+    this.setState({
+      circumstances: circumstance
+    });
+  }
+
+
+
 
   render() {
     var settings = {
@@ -75,16 +92,16 @@ class App extends Component {
               <h2>Find the best technologies for your students with us</h2>
               <form>
                 <div className="form-group">
-                  <MultiSelect name={"subject"} placeholder={"Subjects"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"subject"} placeholder={"Subjects"} addFilter={this.addSubject.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"barrier"} placeholder={"Learning Disabilities"} addFilter={this.addDisability.bind(this)} />
                 </div>
                 <div className="form-group">
-                  <MultiSelect name={"circumstance"} placeholder={"Student Circumstance"} addFilter={this.addFilter.bind(this)} />
+                  <MultiSelect name={"circumstance"} placeholder={"Student Circumstance"} addFilter={this.addCircumstance.bind(this)} />
                 </div>
                 <div className='advSearch'>Advanced Search</div>
-                <Link to={'/search/' + this.state.selected}>
+                <Link to={'/search/' + `${this.state.subjects.length > 0 ? this.state.subjects  + "/": "all/"}` + `${this.state.disabilities.length > 0 ? this.state.disabilities  + "/": "all/"}` + `${this.state.circumstances.length > 0 ? this.state.circumstances  + "/": "all/"}`}>
                   <button type="submit" className="btn btn-primary">Search</button>
                 </Link>
               </form>

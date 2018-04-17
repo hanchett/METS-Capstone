@@ -35,7 +35,7 @@ class Survey extends Component {
 
         // Setting up to grab DOM element 
         let newQuestion = 'q' + (this.state.question + 1);
-        console.log(newQuestion);
+
         // Using set state callback to ensure it is up to date when we call the new question
         this.setState({ question: (this.state.question + 1) }, function () {
             let newElement = this.refs[newQuestion];
@@ -164,12 +164,12 @@ class Survey extends Component {
                     <h1>
                         Do you work with students who miss class more than 25 percent of the time?
                     </h1>
-                    <Link to={'/Search/' + this.state.answers + "," + 1} >
+                    <Link to={'/surveyresults/' + this.state.answers + "," + 1} >
                         <button className='lBtn'>
                             Yes
                         </button>
                     </Link>
-                    <Link to={'/Search/' + this.state.answers + "," + 2} >
+                    <Link to={'/surveyresults/' + this.state.answers + "," + 2} >
                         <button className='lBtn'>
                             No
                         </button>

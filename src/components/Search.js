@@ -13,53 +13,69 @@ import './css/Search.css';
 class Search extends Component {
     constructor(props) {
         super(props);
+        let subjects,
+            disabilities,
+            circumstances;
+        if (props.match.params.subjects) {
+            subjects = props.match.params.subjects.split(",");
+        }
+        if (props.match.params.disabilities) {
+            disabilities = props.match.params.disabilities.split(',');
+        }
+        if (props.match.params.circumstances) {
+            circumstances = props.match.params.circumstances.split(',');
+        }
         this.state = {
-            filters: props.match.params.filters.split(","),
-            subjects: ['English', 'Reading', 'Writing', 'Math', 'Science'],
+            subjects: subjects,
+            disabilities: disabilities,
+            circumstances: circumstances,
             displaySideNav: 'false'
         }
-        this.mapFilters = this.mapFilters.bind(this);
-
+        if (props.match.params.survey) {
+            // this.mapSurvey = this.mapSurvey.bind(this);
+        } else {
+            // this.mapSearch = this.mapSearch.bind(this);
+        }
     }
 
-    mapFilters() {
-        let filters = this.state.filters;
-        const category = 0;
-        const age = filters[2];
-        const lang = filters[7];
-        // axios.get(`/search/${category}/${age}/${lang}`).then(res => {
-        //     this.setState({
-        //         cards: res.data
-        //     });
-        // }).catch(function (err) {
-        //     console.log("Error ", err);
-        // });
-        axios.post(`http://localhost:3101/comments/bob/asdasdsa/${'04-13-2018'}`).then(res => {
-            console.log('WORKED');
-            console.log(res);
-        }).catch(function (err) {
-            console.log("Error ", err);
-        });
-    }
+    // mapSearch() {
+    //     const subjects = this.state.subjects;
+    //     const disabilities = this.state.disabilities;
+    //     const circumstances = this.state.circumstances;
+    //     axios.get(`/search/${subjects}`)
 
 
-    componentDidMount() {
-        this.mapFilters();
-        setInterval(this.mapFilters, 5000);
-    }
+    // }
 
-    // loadCardsFromServer() {
-    //     axios.get(`/search?category=${this.state.filters}`).then(res => {
-    //         this.setState({
-    //             cards: res.data
-    //         });
-    //     }).catch(function(err) {
+    // mapSurvey() {
+    //     let filters = this.state.filters;
+    //     const category = 0;
+    //     const age = filters[2];
+    //     const lang = filters[7];
+    //     // axios.get(`/search/${category}/${age}/${lang}`).then(res => {
+    //     //     this.setState({
+    //     //         cards: res.data
+    //     //     });
+    //     // }).catch(function (err) {
+    //     //     console.log("Error ", err);
+    //     // });
+    //     axios.post(`http://localhost:3101/comments/bob/asdasdsa/${'04-13-2018'}`).then(res => {
+    //         console.log('WORKED');
+    //         console.log(res);
+    //     }).catch(function (err) {
     //         console.log("Error ", err);
     //     });
     // }
 
-    handleFilterChange() {
-    }
+
+    // componentDidMount() {
+    //     this.mapSurvey();
+    //     setInterval(this.mapSurvey, 5000);
+    // }
+
+
+    // handleFilterChange() {
+    // }
 
     openSubject() {
         console.log("OPENING SUBJECT");
@@ -73,8 +89,6 @@ class Search extends Component {
 
 
     render() {
-        let rands = Math.random();
-        console.log(rands)
         let paddingTop = this.state.displaySideNav === true ? '130px' : '0px';
         return (
             <div>
@@ -82,7 +96,7 @@ class Search extends Component {
                 <SideNav callback={this.addMargin.bind(this)} />
                 <div className='results' style={{ paddingTop: paddingTop }}>
                     <div className='row'>
-                        <ItemCardList filters={this.state.filters} />>
+                        <ItemCardList filters={this.state.subjects} />>
                     </div>
                 </div>
             </div>

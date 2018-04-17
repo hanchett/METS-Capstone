@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 .navigation {
   background-color: #7280D7;
 }
