@@ -1,14 +1,17 @@
-var mongoose = require("mongoose"),
-    passportLocalMongoose = require("passport-local-mongoose");
+var mongoose = require("mongoose");
+//var bcrypt = require("bcrypt");
+//var SALT_WORK_FACTOR = 10;
+    //passportLocalMongoose = require("passport-local-mongoose");
 
 
 var UserSchema = new mongoose.Schema({
-    username: String,
+    email: String,
     password: String,
-    name: String,
-    bio: String
-});
+    display_name: String,
+    name_first: String,
+    name_last: String,
+    grade_level: String,
 
-UserSchema.plugin(passportLocalMongoose);
+});
 
 module.exports = mongoose.model("User", UserSchema);

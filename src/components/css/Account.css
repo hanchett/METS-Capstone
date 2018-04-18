@@ -1,0 +1,13 @@
+.main {
+    padding-top: 160px;
+}
+
+.testAccount {
+    padding: 10px;
+    background-color: #30A2D0;
+    border-radius: 10px;
+    transition: .7s;
+    color: white;
+    min-width: 34%;
+    margin: 20px 60px;
+}

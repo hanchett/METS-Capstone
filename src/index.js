@@ -8,6 +8,7 @@ import Search from './components/Search';
 import Review from './components/Review';
 import Survey from './components/Survey';
 import registerServiceWorker from './registerServiceWorker';
+import Account from './components/Account';
 
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route exact path="/search/:filters?" component={Search} />
       <Route exact path='/review/:id?' component={Review}/>
       <Route exact path='/survey' component={Survey}/>
+      <Route exact path='/account' component={Account}/>
     </div>
   </Router>,
   document.getElementById('root')
