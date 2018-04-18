@@ -14,7 +14,6 @@ var productSchema = mongoose.Schema({
     ],
     category: String,
     language: [[]],
-    age: Number,
     tags: [[]],
     date: Date
 });

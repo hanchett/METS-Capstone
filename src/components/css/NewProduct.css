@@ -1,19 +1,13 @@
 .productForm {
-    padding-top: 20px;
-    padding-bottom: 40px;
+    padding: 20px 0;
     text-align: center;
     border: 2px solid #8793DD;
     border-radius: 8px;
+    margin-bottom: 40px;
 
 }
 
-/* .formInput {
-    border: none;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-} */
-
-.formInput, .summaryInput {
+.formInput, .summaryInput, .selectAge {
 
     width: 90%;
     padding: 7px;
@@ -47,16 +41,32 @@ h2 {
     line-height: 30px;
 }
 
+.selectAge {
+    color: grey;
+}
+
+h3 {
+    font-size: 1em;
+    margin: 4px;
+    padding: 0;
+}
 
 .submitBtn {
-    width: 25%;
-    margin: 0 auto; 
-    position: absolute;
+    width: 100px;
 }
 
 @media screen and (max-width: 800px) {
     .titleLabel {
         width: 38%; 
         min-width: 150px;
+    }
+
+    .summaryLabel {
+        width: 38%; 
+        min-width: 150px;
+    } 
+    
+    .title {
+        padding: 100px 10% 20px; 
     }
 }
