@@ -84,9 +84,23 @@ app.post("/survey", function(req, res) {
         }
         res.json({message: "Survey Results Successfully Logged"});
     });
-})
+});
 
-
+app.post("/product/new/:title/:developer/:url/:language/:summary/:ageRange/:date", function(req, res) {
+    var product = new Product();
+    product.title = req.body.title;
+    product.developer = req.body.developer;
+    product.url = req.body.url;
+    product.language = req.body.language;
+    product.summary = req.body.summary
+    product.ageRange = req.body.ageRange;
+    product.date = req.body.date;
+    product.save(function(err) {
+        if(err) {
+            res.send(err);
+        }
+    })
+});
 app.listen(port, function () {
     console.log(`Server Started Successfully on ${port}`);
 });
