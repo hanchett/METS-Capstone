@@ -10,6 +10,15 @@ var commentSchema = mongoose.Schema({
         },
         display_name: String
     }, 
+    author: String
+    // {
+    //     id: {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: "User"
+    //     },
+    //     username: String
+    // }
+    , 
     date: Date
 });
     
