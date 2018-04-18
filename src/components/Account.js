@@ -33,9 +33,10 @@ class Account extends Component {
 
         axios.post(`http://localhost:3101/account/${email}/${password}/${display_name}/${name_first}/${name_last}/${grade_level}`)
             .then((result) => {
-                console.log("WORKED???")
+                console.log("WORKED???");
             })
         .catch(function (error) {
+            console.log("Shit");
             console.log(error)
         });
     }

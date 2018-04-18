@@ -90,7 +90,7 @@ app.post("/survey", function(req, res) {
 
 app.post("/account/:email/:password/:display_name/:name_first/:name_last/:grade_level", function(req, res) {
     var user = new User();
-    user.email = req.body.email;
+    user.email = req.params.email;
     user.password = req.body.password;
     user.display_name = req.body.display_name;
     user.name_first = req.body.name_first;
@@ -100,7 +100,9 @@ app.post("/account/:email/:password/:display_name/:name_first/:name_last/:grade_
         if(err) {
             res.send(err);
         }
+        res.send("Blah")
     });
+
 
 });
 
