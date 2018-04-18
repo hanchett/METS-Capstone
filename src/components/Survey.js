@@ -11,11 +11,18 @@ class Survey extends Component {
             question: 0,
             answers: []
         }
+        console.log(this)
         document.body.style.overflow = 'hidden';
     }
 
     // Updates State 
     answeredQuestion(e) {
+        console.log(this)
+        console.log(e.target.id)
+        let question = this.state.question;
+        this.setState({
+            question: e.target.id
+        });
         let newAnswers = this.state.answers;
         newAnswers.push(parseInt(e.target.id));
         this.setState({
@@ -54,7 +61,7 @@ class Survey extends Component {
         return (
             <div className='survey'>
                 <div className="hello">
-                    <h1>Welcome to Crrclm.io</h1>
+                    <h1>Welcome to DiscoverED</h1>
                     <h2>Please take a minute to work through this brief survey.</h2>
                     <button className='surveyBtn' id="0" onClick={this.answeredQuestion.bind(this)}>Continue</button>
                 </div>
