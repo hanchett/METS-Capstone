@@ -17,7 +17,7 @@ var port        = process.env.PORT || 3001;
 
 
 // Connecting to our database
-mongoose.connect('mongodb://admin:password@ds014388.mlab.com:14388/discovered_capstone');
+mongoose.connect('mongodb://admin-mason:password@ds014388.mlab.com:14388/discovered_capstone');
 
 // Requiring use of bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -90,7 +90,7 @@ app.post("/survey", function(req, res) {
 
 app.post("/account/:email/:password/:display_name/:name_first/:name_last/:grade_level", function(req, res) {
     var user = new User();
-    user.email = req.body.email;
+    user.email = req.param.email;
     user.password = req.body.password;
     user.display_name = req.body.display_name;
     user.name_first = req.body.name_first;
