@@ -20,7 +20,7 @@ class NewProduct extends Component {
     }
 
     handleChange(e) {
-        console.log(e.target.selectedOptions);
+        console.log(e.target);
         const inputName = e.target.type === 'select-multiple' ? 'ageRange' : e.target.placeholder.toLowerCase();
         let value = []; 
         if(e.target.selectedOptions) {

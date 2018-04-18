@@ -8,7 +8,7 @@ var bodyParser  = require('body-parser');
 var Comment     = require('./models/comment');
 var Product     = require('./models/product');
 var Survey      = require('./models/Survey');
-var User        = require('./mdoels/User')
+var User        = require('./models/User')
 
 // Setting up instances and port 
 var app         = express();
