@@ -28,10 +28,16 @@ class Account extends Component {
         this.state.name_last = "Suzuki";
         this.state.grade_level = "All";
         console.log(this.state);
-    }
 
-    submitTest(e) {
-        
+        const { email, password, display_name, name_first, name_last, grade_level } = this.state;
+
+        axios.post(`http://localhost:3101/account/${email}/${password}/${display_name}/${name_first}/${name_last}/${grade_level}`)
+            .then((result) => {
+                console.log("WORKED???")
+            })
+        .catch(function (error) {
+            console.log(error)
+        });
     }
 
     render() {

@@ -8,7 +8,7 @@ var bodyParser  = require('body-parser');
 var Comment     = require('./models/comment');
 var Product     = require('./models/product');
 var Survey      = require('./models/Survey');
-var User        = require('./mdoels/User')
+var User        = require('./models/user')
 
 // Setting up instances and port 
 var app         = express();
@@ -87,7 +87,7 @@ app.post("/survey", function(req, res) {
     });
 })
 
-app.post("/User", function(req, res) {
+app.post("/account/:email/:password/:display_name/:name_first/:name_last/:grade_level", function(req, res) {
     var user = new User();
     user.email = req.body.email;
     user.password = req.body.password;
@@ -95,6 +95,12 @@ app.post("/User", function(req, res) {
     user.name_first = req.body.name_first;
     user.name_last = req.body.name_last;
     user.grade_level = req.body.grade_level;
+    user.save(function(err) {
+        if(err) {
+            res.send(err);
+        }
+    });
+
 });
 
 app.listen(port, function () {
