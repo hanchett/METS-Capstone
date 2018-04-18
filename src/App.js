@@ -47,6 +47,8 @@ class App extends Component {
       disabilities: [],
       circumstances: []
     }
+    document.body.style.overflow = 'auto';
+
   }
 
   // Adds filters to the state as user selects them 

@@ -7,6 +7,7 @@ import App from './App';
 import Search from './components/Search';
 import Review from './components/Review';
 import Survey from './components/Survey';
+import NewProduct from './components/NewProduct';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -17,7 +18,8 @@ ReactDOM.render(
       <Route exact path="/search/:subjects?/:disabilities?/:circumstances?" component={Search} />
       <Route exact path='/review/:id?' component={Review}/>
       <Route exact path='/survey' component={Survey}/>
-      <Route exact path='/surveyresults/:filters?' component={Search} />>
+      <Route exact path='/surveyresults/:filters?' component={Search} />
+      <Route exact path='/product/new' component={NewProduct}/>
     </div>
   </Router>,
   document.getElementById('root')

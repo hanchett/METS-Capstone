@@ -11,6 +11,7 @@ class Survey extends Component {
             question: 0,
             answers: []
         }
+        document.body.style.overflow = 'hidden';
     }
 
     // Updates State 
