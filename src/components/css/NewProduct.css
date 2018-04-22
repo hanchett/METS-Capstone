@@ -38,7 +38,7 @@ h2 {
 }
 .summaryInput {
     height: 100px;
-    line-height: 30px;
+    overflow: scroll;
 }
 
 .selectAge {

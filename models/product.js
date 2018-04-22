@@ -4,6 +4,7 @@ var productSchema = mongoose.Schema({
     title: String,
     developer: String,
     url: String,
+    image: String, 
     rating: { type: Number, min: 0, max: 5, default: 3.5 },
     summary: String,
     reviews: [
