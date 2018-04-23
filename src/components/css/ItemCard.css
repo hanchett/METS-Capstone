@@ -3,10 +3,9 @@
 	color: black;
 }
 
-.card .itemInfo:hover{
+.card .itemInfo:hover {
 	text-decoration: none;
 }
-
 
 img:hover {
 	background-color: GREY;
@@ -20,4 +19,32 @@ img:hover {
 
 .grey:hover {
 	opacity: .5;
+}
+
+.card {
+	border: 1px solid black;
+	border-radius: 0;
+	margin: 20px;
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+}
+
+.itemInfo {
+	border-top: 1px solid black;
+	padding: 5px;
+}
+
+.itemTitle {
+	padding: 10px;
+	font-size: .8em;
+}
+
+.itemRating {
+	float: right;
+	padding-right: 10px;
+}
+
+img {
+	max-width: 200px;
 }

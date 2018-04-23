@@ -11,8 +11,18 @@ class ItemCardList extends Component {
             filters: props.filters,
             cards: []
         };
-        console.log(props);
-        //this.loadCardsFromServer = this.loadCardsFromServer.bind(this);
+        this.loadProducts = this.loadProducts.bind(this);
+    }
+
+    loadProducts() {
+        axios.get(`http://localhost:3101/search`).then(res => {
+            console.log(res);
+            this.setState({
+                cards: res.data
+            });
+        }).catch(function (err) {
+            console.log("Error " + err);
+        });
     }
 
     // Loads in the card list form the server using the filters supplied to this method 
@@ -22,20 +32,22 @@ class ItemCardList extends Component {
     //             cards: res.data
     //         });
     //     }).catch(function(err) {
-    //         console.log("Error ", err);
+    // console.log("Error ", err);
     //     });
     // }
 
-    // componentDidMount() {
-    //     this.loadCardsFromServer();
-    //     setInterval(this.loadCardsFromServer, 2000);
-    // }
+    componentDidMount() {
+        this.loadProducts();
+    }
 
 
     render() {
+        console.log(this.state.cards)
         return (
             <div>
-                
+                {this.state.cards.map(card => {
+                    return <ItemCard key={card._id} id={card._id} title={card.title} image={card.image}/>;
+                })}
             </div>
         );
     }

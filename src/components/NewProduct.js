@@ -47,7 +47,7 @@ class NewProduct extends Component {
         const language = this.state.language.join("&");
         const ageRange = this.state.ageRange.join("&");
         axios.post(`http://localhost:3101/product/new/${title}/'placeholder'/'placeholder'/${developer}/${language}/${ageRange}/${summary}/${date}`,{url: url, image: image}).then(res => {
-            console.log("WORKED");
+            alert("Your product has been successfully added");
             console.log(res);
         }).catch(function(err) {
             console.log(err);
