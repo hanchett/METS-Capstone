@@ -10,9 +10,10 @@ class NewProduct extends Component {
         super(props);
         this.state = {
             title: "",
+            url: "", 
+            image: "",
             developer: "",
-            website: "",
-            languages: [],
+            language: [],
             ageRange: [],
             summary: ""
         };
@@ -20,15 +21,12 @@ class NewProduct extends Component {
     }
 
     handleChange(e) {
-        console.log(e.target);
-        const inputName = e.target.type === 'select-multiple' ? 'ageRange' : e.target.placeholder.toLowerCase();
+        const inputName = e.target.id;
         let value = []; 
         if(e.target.selectedOptions) {
             for(let i = 0; i < e.target.selectedOptions.length; i++) {
                 value.push(e.target.selectedOptions[i].value);
             }
-            console.log(value);
-
         } else {
             value = e.target.value;
         }
@@ -37,10 +35,18 @@ class NewProduct extends Component {
         });
     }
 
+    //:title/:url/:image/:developer/:language/:ageRange/:summary/:date
     submitProduct(e) {
         e.preventDefault()
-        const date = '04-18-2018';
-        axios.post(`http://localhost:3101/product/new/${this.state.title}/${this.state.developer}/asdas/adasdas/${this.state.summary}/asdadasd/${date}`).then(res => {
+        const day = new Date().getDate();
+        const month = new Date().getMonth() + 1;
+        const year = new Date().getFullYear();
+        const date = '' + month + '-' + day + "-" + year;
+        console.log(date);
+        const { title, url, image, developer, summary } = this.state;
+        const language = this.state.language.join("&");
+        const ageRange = this.state.ageRange.join("&");
+        axios.post(`http://localhost:3101/product/new/${title}/'placeholder'/'placeholder'/${developer}/${language}/${ageRange}/${summary}/${date}`,{url: url, image: image}).then(res => {
             console.log("WORKED");
             console.log(res);
         }).catch(function(err) {
@@ -58,20 +64,26 @@ class NewProduct extends Component {
                 </div>
 
                 <form onSubmit={this.submitProduct.bind(this)} className='productForm'>
-                    <label className='formLabel titleLabel'>
-                        <input type="text" className="formInput" placeholder='Title' onChange={this.handleChange} />
+                    <label className='formLabel'>
+                        <h3>Title</h3>
+                        <input type="text" id="title" className="formInput" placeholder='Ex. Read.ly' onChange={this.handleChange} />
                     </label>
                     <label className='formLabel'>
-                        <input type="text" className="formInput" placeholder='Developer' onChange={this.handleChange} />
+                        <h3>Website</h3>
+                        <input type="url" id="url" className="formInput" placeholder='URL' onChange={this.handleChange} />
                     </label>
-
+                    <label className='formLabel' htmlFor="image">
+                        <h3>App Image</h3>
+                        <input type="text" id='image' className="formInput" id="image" placeholder='URL' onChange={this.handleChange}/>
+                    </label>
                     <label className='formLabel'>
-                        <input type="url" className="formInput" placeholder='Website' onChange={this.handleChange} />
+                        <h3>Developer</h3>
+                        <input type="text" id='developer' className="formInput" placeholder='Ex. ACT KeyTrain' onChange={this.handleChange} />
                     </label>
 
                     <label className='formLabel'>
                         <h3>Language</h3>
-                        <select multiple={true} className='selectAge' onChange={this.handleChange}>
+                        <select multiple={true} id='language' className='selectAge' onChange={this.handleChange}>
                             <option value='af'>Afrikaans</option>
                             <option value='sq'>Albanian</option>
                             <option value='am'>Amharic</option>
@@ -179,7 +191,7 @@ class NewProduct extends Component {
                     </label>
                     <label className='formLabel'>
                         <h3>Age Group </h3>
-                        <select multiple={true} className='selectAge' onChange={this.handleChange}>
+                        <select multiple={true} id='ageRange' className='selectAge' onChange={this.handleChange}>
                             <option value="k-5">K-5th Grade</option>
                             <option value="middle">Middle School</option>
                             <option value="high">High School</option>
@@ -187,7 +199,8 @@ class NewProduct extends Component {
                     </label>
                     <br />
                     <label className='formLabel summaryLabel' >
-                        <input type="textarea" className="summaryInput" placeholder='Summary' onChange={this.handleChange} />
+                        <h3>Summary</h3>
+                        <textarea rows="4" cols="50" type="text" id='summary' className="summaryInput" placeholder='Please provide a brief synopsis of the application.' onChange={this.handleChange} />
                     </label>
                     <br />
                     <label className='formLabel'>
