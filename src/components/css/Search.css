@@ -22,28 +22,7 @@
   padding: 10px 40px;
 }
 
-.card {
-  border: 1px solid black;
-  border-radius: 0;
-  margin: 20px 20px 20px 10px;
-}
 
-
-
-.itemInfo {
-  border-top: 1px solid black;
-  padding: 5px;
-}
-
-.itemTitle {
-  padding: 10px;
-  font-size: .8em;
-}
-
-.itemRating {
-  float: right;
-  padding-right: 10px;
-}
 
 .hamburger, .close{
   width: 50px;

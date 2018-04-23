@@ -96,7 +96,7 @@ class Search extends Component {
                 <SideNav callback={this.addMargin.bind(this)} />
                 <div className='results' style={{ paddingTop: paddingTop }}>
                     <div className='row'>
-                        <ItemCardList filters={this.state.subjects3} />>
+                        <ItemCardList filters={this.state.subjects3} />
                     </div>
                 </div>
             </div>

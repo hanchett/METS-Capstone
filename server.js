@@ -61,17 +61,13 @@ app.post("/comments/:author/:text/:date", function (req, res) {
     });
 });
 
-app.get("/search/:category/:age/:language", function (req, res) {
-    var category = req.body.category;
-    var langauge = req.body.language;
-    var age      = req.body.age;
-    Product.find({ category: category }, { language: language }, { age: age }, function (err, products) {
+app.get("/search", function (req, res) {
+    Product.find({}, function (err, products) {
         if(err) {
             console.log("Error ", err);
             res.send(err);
         }
         res.send(products);
-
     });
 });
 
@@ -239,6 +235,10 @@ app.post("/product/new/:title/:url/:image/:developer/:language/:ageRange/:summar
         }
     })
 });
+
+
+
+
 app.listen(port, function () {
     console.log(`Server Started Successfully on ${port}`);
 });
