@@ -31,10 +31,10 @@ class Review extends Component {
                     <div className="reviews">
                         <h2 className="reviewTitle">Reviews</h2>
                         <ul class="nav nav-pills">
-                            <li class="active"><a href="#">Home</a></li>
+                            {/* <li class="active"><a href="#">Home</a></li>
                             <li><a href="#">Menu 1</a></li>
                             <li><a href="#">Menu 2</a></li>
-                            <li><a href="#">Menu 3</a></li>
+                            <li><a href="#">Menu 3</a></li> */}
                         </ul>
                     </div>
                 </div>
