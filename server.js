@@ -5,7 +5,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var Comment = require('./models/comment');
+var Review = require('./models/review');
 var Product = require('./models/product');
 var Survey = require('./models/Survey');
 var User = require('./models/user')
@@ -39,22 +39,22 @@ app.get('/', function (req, res) {
 });
 
 
-app.get('/comments', function (req, res) {
-    Comment.find(function (err, comments) {
+app.get('/review', function (req, res) {
+    Review.find(function (err, reviews) {
         if (err) {
             console.log("Error ", err);
             res.send(err);
         }
-        res.send(comments);
+        res.send(reviews);
     });
 });
 
-app.post("/comments/:author/:text/:date", function (req, res) {
-    var comment = new Comment();
-    comment.author = req.params.author;
-    comment.text = req.params.text;
-    comment.date = req.params.date;
-    comment.save(function (err) {
+app.post("/review/:author/:text/:date", function (req, res) {
+    var review = new Review();
+    review.author = req.params.author;
+    review.text = req.params.text;
+    review.date = req.params.date;
+    review.save(function (err) {
         if (err) {
             res.send(err);
         }
@@ -219,8 +219,6 @@ module.exports = (app) => {
 
 app.post("/product/new/:title/:url/:image/:developer/:language/:ageRange/:summary/:date", function (req, res) {
     var product = new Product();
-    console.log(req.body.url);
-    console.log(req.params);
     product.title = req.params.title;
     product.developer = req.params.developer;
     product.url = req.body.url;
@@ -246,7 +244,18 @@ app.get("/review/:id", function (req, res) {
     });
 });
 
-
+app.post("/review/:id/:headline/:review/:rating/:user", function(req, res) {
+    var review = new Review(); 
+    review.headline = req.params.headline;
+    review.review = req.params.review; 
+    review.rating = req.params.rating; 
+    review.author = req.body.user;
+    review.save(function(err) {
+        if(err) {
+            res.send(err);
+        }
+    })
+})
 
 
 app.listen(port, function () {

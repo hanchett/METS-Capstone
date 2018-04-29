@@ -3,8 +3,8 @@ import NavBar from './NavBar';
 import SideNav from './SideNav';
 import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
-
-
+import ReviewCard from './ReviewCard';
+import { Link } from 'react-router-dom';
 
 
 import './css/Review.css';
@@ -38,12 +38,18 @@ class Review extends Component {
 
     render() {
         let rating = [];
-        for(let i = 0; i < this.state.info.rating - 1; i++) {
+        for (let i = 0; i < this.state.info.rating - 1; i++) {
             rating.push(<FontAwesome key={i} name='fas fa-star' />);
         }
-        if(Math.round(this.state.info.rating) > this.state.info.rating ) {
-            rating.push(<FontAwesome key={6} name="fas fa-star-half"/>);
+        if (Math.round(this.state.info.rating) > this.state.info.rating) {
+            rating.push(<FontAwesome key={6} name="fas fa-star-half" />);
         }
+
+        const reviews = typeof (this.state.info.reviews) !== "undefined" && this.state.info.reviews.length > 0 ?
+            this.state.info.reviews.map(review => {
+                return <ReviewCard key={review._id} id={review._id} author={review.author} summary={review.text} rating={review.rating} date={review.date} title={review.title} />;
+            }) : <div className='noReviews'>No Reviews</div>
+
         return (
             <div>
                 <NavBar />
@@ -66,8 +72,12 @@ class Review extends Component {
                         <div className="content">{this.state.info.summary}</div>
                     </div>
                     <div className="reviews">
-                        <h2 className="reviewTitle">Reviews</h2>
-                        {this.state.info.reviews}
+                        <h2 className="reviewTitle">Product Reviews</h2>
+                        <Link to={`/review/${this.state.info._id}/new`}><button className='newReview'>Review This Product</button></Link>
+
+                        <div className='review'>
+                        {reviews}
+                        </div>
                     </div>
                 </div>
             </div>

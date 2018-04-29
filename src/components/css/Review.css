@@ -32,17 +32,28 @@
     right: 10px;
 }
 
-.summary {
+.summary, .reviews {
     margin: 60px 17.5%;
 }
 
-.summaryTitle {
+.summaryTitle, .reviewTitle {
     color: black;
     font-size: 1.4em;
     font-weight: 700;
 }
 
 
+.newReview {
+    background-color: #7383D5;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.newReview:hover {
+    cursor: pointer;
+}
 @media screen and (max-width: 900px) {
     .productTitle img {
         margin-right: 5%;

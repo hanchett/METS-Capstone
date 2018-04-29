@@ -1,0 +1,18 @@
+.content {
+    text-align: center;
+    padding-top: 80px;
+}
+
+.formLabel {
+    width: 100%; 
+    padding: 0 40px;
+}
+
+
+.submitBtn {
+    width: 150px;
+    background-color: #7383D5;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+}
