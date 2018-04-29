@@ -46,7 +46,7 @@ class ItemCardList extends Component {
         return (
             <div>
                 {this.state.cards.map(card => {
-                    return <ItemCard key={card._id} id={card._id} title={card.title} image={card.image}/>;
+                    return <ItemCard key={card._id} id={card._id} title={card.title} image={card.image} summary={card.summary} rating={card.rating} />;
                 })}
             </div>
         );

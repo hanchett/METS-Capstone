@@ -14,7 +14,7 @@ class SideNav extends Component {
 
     toggleSide() {
         let dispState = '';
-        if (this.state.displaySideNav == 'none') {
+        if (this.state.displaySideNav === 'none') {
             dispState = 'block';
             this.state.callback(true);
         } else {

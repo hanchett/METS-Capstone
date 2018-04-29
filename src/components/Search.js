@@ -1,11 +1,8 @@
 // Imported libraries and components 
 import React, { Component } from 'react';
-import FontAwesome from 'react-fontawesome';
 import NavBar from './NavBar';
 import SideNav from './SideNav';
-import ItemCard from './ItemCard';
 import ItemCardList from './ItemCardList';
-import axios from 'axios';
 
 // Styles 
 import './css/Search.css';
@@ -77,9 +74,6 @@ class Search extends Component {
     // handleFilterChange() {
     // }
 
-    openSubject() {
-        console.log("OPENING SUBJECT");
-    }
 
     addMargin(yn) {
         this.setState({

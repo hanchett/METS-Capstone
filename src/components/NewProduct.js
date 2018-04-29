@@ -42,7 +42,6 @@ class NewProduct extends Component {
         const month = new Date().getMonth() + 1;
         const year = new Date().getFullYear();
         const date = '' + month + '-' + day + "-" + year;
-        console.log(date);
         const { title, url, image, developer, summary } = this.state;
         const language = this.state.language.join("&");
         const ageRange = this.state.ageRange.join("&");
