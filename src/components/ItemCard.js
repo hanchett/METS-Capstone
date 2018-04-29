@@ -28,7 +28,7 @@ class ItemCard extends Component {
         }
 
         return (
-            <Link to={`/review/ + ${this.state.id}`}>
+            <Link to={`/review/${this.state.id}`}>
                 <div className="card">
                     <img src={`${this.state.image}`} alt="card placeholder" />
                     <div className='itemInfo'>

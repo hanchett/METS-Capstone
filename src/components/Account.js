@@ -24,7 +24,7 @@ class Account extends Component {
             signUpTeachTitle: '',
 
         }
-
+        
         this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
         this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
@@ -47,7 +47,7 @@ class Account extends Component {
     testAccount(e) {
         console.log("Here test");
         this.setState({
-            email: "test@test.com",
+            email: "test@test.com", 
             password: "test123",
             display_name: "admin",
             name_first: "Ichiro",
@@ -56,7 +56,7 @@ class Account extends Component {
         });
         console.log(this.state);
     }
-
+    
     onTextboxChangeSignInEmail(event) {
         this.setState({
             signInEmail: event.target.value,
@@ -71,67 +71,67 @@ class Account extends Component {
 
     onTextboxChangeSignInPassword(event) {
         this.setState({
-            signInPassword: event.target.value,
+            signInPassword : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignUpPassword(event) {
         this.setState({
-            signUpPassword: event.target.value,
+            signUpPassword : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignInDisplayName(event) {
         this.setState({
-            signInDisplayName: event.target.value,
+            signInDisplayName : event.target.value,
         });
     }
 
     onTextboxChangeSignUpDisplayName(event) {
         this.setState({
-            signUpDisplayName: event.target.value,
+            signUpDisplayName : event.target.value,
         })
     }
-
+    
     onTextboxChangeSignInNameFirst(event) {
         this.setState({
-            signInNameFirst: event.target.value,
+            signInNameFirst : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignUpNameFirst(event) {
         this.setState({
-            signUpNameFirst: event.target.value,
+            signUpNameFirst : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignInNameLast(event) {
         this.setState({
-            signInNameLast: event.target.value,
+            signInNameLast : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignUpNameLast(event) {
         this.setState({
-            signUpNameLast: event.target.value,
+            signUpNameLast : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignInTeachTitle(event) {
         this.setState({
-            signInTeachTitle: event.target.value,
+            signInTeachTitle : event.target.value,
         });
     }
-
+    
     onTextboxChangeSignUpTeachTitle(event) {
         this.setState({
-            signUpTeachTitle: event.target.value,
+            signUpTeachTitle : event.target.value,
         });
     }
 
     onSignUp() {
         //Grab state
-        const {
+        const{
             signUpEmail,
             signUpPassword,
             signUpDisplayName,
@@ -192,7 +192,7 @@ class Account extends Component {
     //         console.log(error)
     //     });
     // }
-
+    
     // render() {
     //     console.log("Here render")
     //     let paddingTop = this.state.displaySideNav === true ? '130px'  : '0px';
@@ -209,91 +209,107 @@ class Account extends Component {
     // }
 
     render() {
+        console.log("Here render")
+        const {
+          isLoading,
+          token,
+          signInError,
+          signInEmail,
+          signInPassword,
+          signUpEmail,
+          signUpPassword,
+          signUpDisplayName,
+          signUpNameFirst,
+          signUpNameLast,
+          signUpTeachTitle,
+          signUpError,
+        } = this.state;
+    
         if (!token) {
-            return (
-                <div>
-                    <div>
-                        {
-                            (signInError) ? (
-                                <p>{signInError}</p>
-                            ) : (null)
-                        }
-                        <p>Sign In</p>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={signInEmail}
-                            onChange={this.onTextboxChangeSignInEmail}
-                        />
-                        <br />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={signInPassword}
-                            onChange={this.onTextboxChangeSignInPassword}
-                        />
-                        <br />
-                        <button onClick={this.onSignIn}>Sign In</button>
-                    </div>
-                    <br />
-                    <br />
-                    <div>
-                        {
-                            (signUpError) ? (
-                                <p>{signUpError}</p>
-                            ) : (null)
-                        }
-                        <p>Sign Up</p>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={signUpEmail}
-                            onChange={this.onTextboxChangeSignUpEmail}
-                        /><br />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={signUpPassword}
-                            onChange={this.onTextboxChangeSignUpPassword}
-                        /><br />
-                        <input
-                            type="display_name"
-                            placeholder="Account Display Name"
-                            value={signUpDisplayName}
-                            onChange={this.onTextboxChangeSignUpDisplayName}
-                        /><br />
-                        <input
-                            type="name_first"
-                            placeholder="First Name"
-                            value={signUpNameFirst}
-                            onChange={this.onTextboxChangeSignUpNameFirst}
-                        /><br />
-                        <input
-                            type="name_last"
-                            placeholder="Last Name"
-                            value={signUpNameLast}
-                            onChange={this.onTextboxChangeSignUpNameLast}
-                        /><br />
-                        <input
-                            type="teach_title"
-                            placeholder="Teaching Title"
-                            value={signUpTeachTitle}
-                            onChange={this.onTextboxChangeSignUpTeachTitle}
-                        /><br />
-                        <button className='testAccount' onClick={this.onSignUp}>Sign Up</button>
-                    </div>
-
-                </div>
-            );
-        }
-
-        return (
+          return (
             <div>
-                <p>Account</p>
-                <button onClick={this.logout}>Logout</button>
+              <div>
+                {
+                  (signInError) ? (
+                    <p>{signInError}</p>
+                  ) : (null)
+                }
+                <p>Sign In</p>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={signInEmail}
+                  onChange={this.onTextboxChangeSignInEmail}
+                />
+                <br />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={signInPassword}
+                  onChange={this.onTextboxChangeSignInPassword}
+                />
+                <br />
+                <button onClick={this.onSignIn}>Sign In</button>
+              </div>
+              <br />
+              <br />
+              <div>
+                {
+                  (signUpError) ? (
+                    <p>{signUpError}</p>
+                  ) : (null)
+                }
+                <p>Sign Up</p>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={signUpEmail}
+                  onChange={this.onTextboxChangeSignUpEmail}
+                /><br />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={signUpPassword}
+                  onChange={this.onTextboxChangeSignUpPassword}
+                /><br />
+                <input
+                  type="display_name"
+                  placeholder="Account Display Name"
+                  value={signUpDisplayName}
+                  onChange={this.onTextboxChangeSignUpDisplayName}
+                /><br />
+                <input
+                  type="name_first"
+                  placeholder="First Name"
+                  value={signUpNameFirst}
+                  onChange={this.onTextboxChangeSignUpNameFirst}
+                /><br />
+                <input
+                  type="name_last"
+                  placeholder="Last Name"
+                  value={signUpNameLast}
+                  onChange={this.onTextboxChangeSignUpNameLast}
+                /><br />
+                <input
+                  type="teach_title"
+                  placeholder="Teaching Title"
+                  value={signUpTeachTitle}
+                  onChange={this.onTextboxChangeSignUpTeachTitle}
+                /><br />
+                <button className='testAccount' onClick={this.onSignUp}>Sign Up</button>
+              </div>
+    
             </div>
+          );
+        }
+    
+        return (
+          <div>
+            <p>Account</p>
+            <button onClick={this.logout}>Logout</button>
+          </div>
         );
-    }
+      }
 }
 
 export default Account;
