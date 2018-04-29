@@ -35,7 +35,6 @@ class Account extends Component {
         //console.log(this.state)
     }
 
-<<<<<<< HEAD
     handleChange(e) {
         const inputName = e.target.id;
         let value = []; 
@@ -46,88 +45,6 @@ class Account extends Component {
         } else {
             value = e.target.value;
         }
-=======
-    testAccount(e) {
-        console.log("Here test");
-        this.setState({
-            email: "test@test.com", 
-            password: "test123",
-            display_name: "admin",
-            name_first: "Ichiro",
-            name_last: "Suzuki",
-            grade_level: "All"
-        });
-        console.log(this.state);
-    }
-    
-    onTextboxChangeSignInEmail(event) {
-        this.setState({
-            signInEmail: event.target.value,
-        });
-    }
-
-    onTextboxChangeSignUpEmail(event) {
-        this.setState({
-            signUpEmail: event.target.value,
-        });
-    }
-
-    onTextboxChangeSignInPassword(event) {
-        this.setState({
-            signInPassword : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignUpPassword(event) {
-        this.setState({
-            signUpPassword : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignInDisplayName(event) {
-        this.setState({
-            signInDisplayName : event.target.value,
-        });
-    }
-
-    onTextboxChangeSignUpDisplayName(event) {
-        this.setState({
-            signUpDisplayName : event.target.value,
-        })
-    }
-    
-    onTextboxChangeSignInNameFirst(event) {
-        this.setState({
-            signInNameFirst : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignUpNameFirst(event) {
-        this.setState({
-            signUpNameFirst : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignInNameLast(event) {
-        this.setState({
-            signInNameLast : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignUpNameLast(event) {
-        this.setState({
-            signUpNameLast : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignInTeachTitle(event) {
-        this.setState({
-            signInTeachTitle : event.target.value,
-        });
-    }
-    
-    onTextboxChangeSignUpTeachTitle(event) {
->>>>>>> aee22d2550c778b20673f066f9a557522cdc4656
         this.setState({
             [inputName]: value
         });
