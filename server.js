@@ -244,20 +244,44 @@ app.get("/review/:id", function (req, res) {
     });
 });
 
-app.post("/review/:id/:headline/:review/:rating/:user", function(req, res) {
-    var review = new Review(); 
+app.post("/review/:id/:headline/:review/:rating/:user", function (req, res) {
+    var review = new Review();
     review.headline = req.params.headline;
-    review.review = req.params.review; 
-    review.rating = req.params.rating; 
+    review.review = req.params.review;
+    review.rating = req.params.rating;
     review.author = req.body.user;
-    review.save(function(err) {
-        if(err) {
+    review.save(function (err) {
+        if (err) {
             res.send(err);
         }
     })
-})
+});
+
+app.delete("/product/delete/:id", function (req, res) {
+    Product.findByIdAndRemove(req.params.id, function (err) {
+        res.redirect("/search");
+
+    });
+
+
+});
+
+
 
 
 app.listen(port, function () {
     console.log(`Server Started Successfully on ${port}`);
 });
+
+
+// router.delete("/:id", function(req, res) {
+//     Campground.findByIdAndRemove(req.params.id, function(err) {
+//         if(err) {
+//             res.redirect("/campgrounds");
+//         } else {
+//             res.redirect("/campgrounds");
+//         }
+//     })
+
+
+// });
