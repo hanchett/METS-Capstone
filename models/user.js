@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
+var passportLocalMongoose = require("passport-local-mongoose");
 
 
 var UserSchema = new mongoose.Schema({
@@ -11,6 +12,8 @@ var UserSchema = new mongoose.Schema({
     teach_title: String,
     image: String
 });
+
+UserSchema.plugin(passportLocalMongoose);
 
 UserSchema.methods.generateHash = function(password) {
      return bcrypt.hash(password, bcrypt.genSaltSync(8), null);
