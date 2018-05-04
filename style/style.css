@@ -1,0 +1,23 @@
+body {
+    background: linear-gradient(#5B8DA3, #76cccc);
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
+
+}
+
+.title, .content {
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.content div, .about {
+    width: 50%;
+    margin: 40px auto;
+    font-size: 1.2em;
+}
+
+.about {
+    font-size: 1.5em;
+}
