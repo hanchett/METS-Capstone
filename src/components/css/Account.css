@@ -1,13 +1,30 @@
-.main {
-    padding-top: 160px;
+.acct {
+    padding: 15px 25px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
 }
 
-.testAccount {
-    padding: 10px;
-    background-color: #30A2D0;
-    border-radius: 10px;
-    transition: .7s;
-    color: white;
-    min-width: 34%;
-    margin: 20px 60px;
+.acct:hover {background-color: #3e8e41}
+
+.acct:active {
+    background-color: #3e8e41;
+    transform: translateY(4px);
+}
+
+.signin {
+    padding-top: 130px;
+    margin: auto;
+    width: 50%;
+}
+
+.signup {
+    padding-top: 20px;
+    margin: auto;
+    width: 50%;
 }

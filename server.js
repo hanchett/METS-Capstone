@@ -85,137 +85,35 @@ app.post("/survey", function (req, res) {
 })
 
 
-//Old version, trying new version below
-app.post("/account/:email/:password/:display_name/:name_first/:name_last/:grade_level", function (req, res) {
+app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title", function(req, res) {
     var user = new User();
     user.email = req.params.email;
     user.password = req.params.password;
     user.display_name = req.params.display_name;
     user.name_first = req.params.name_first;
     user.name_last = req.params.name_last;
-    user.grade_level = req.params.grade_level;
-    user.save(function (err) {
-        if (err) {
+    user.teach_title = req.params.teaching_title;
+    user.save(function(err) {
+        if(err) {
+
             res.send(err);
         }
     });
 });
 
-//new version
-module.exports = (app) => {
-    app.post('/account', (req, res, next) => {
-        const { body } = req;
-        const {
-            password
-        } = body;
-        let {
-            email
-        } = body;
-        let {
-            display_name
-        } = body;
-        let {
-            name_first
-        } = body;
-        let {
-            name_last
-        } = body;
-        let {
-            teach_title
-        } = body;
+app.get('/account/signin/:email/:password', (req, res) => {
+    let currEmail = req.params.email;
+    let currPassword = req.params.password;
 
-        if (!email) {
-            return res.send({
-                success: false,
-                message: "Error: Email cannot be blank."
-            });
+    User.find({email : currEmail, password : currPassword}, function(err, users) {
+        if(err) {
+            console.log("Error ", err);
+            res.send(err);
         }
-
-        if (!password) {
-            return res.send({
-                success: false,
-                message: "Error: Password cannot be blank."
-            });
-        }
-
-        if (!display_name) {
-            return res.send({
-                success: false,
-                message: "Error: Please provide a display name."
-            });
-        }
-
-        if (!name_first) {
-            return res.send({
-                success: false,
-                message: "Error: Please provide a first name."
-            });
-        }
-
-        if (!name_last) {
-            return res.send({
-                success: false,
-                message: "Error: Please provide a last name."
-            });
-        }
-
-        if (!teach_title) {
-            return res.send({
-                success: false,
-                message: "Error: Please provide your teaching title."
-            });
-        }
+        res.send(users);
+        console.log(users);
     });
-
-    email = email.toLowerCase();
-    email = email.trim();
-    display_name = display_name.trim();
-    name_first = name_first.trim();
-    name_last = name_last.trim();
-    teach_title = teach_title.trim();
-
-    //steps:
-    //1. Verify email doesnt exist
-    //2. Save account
-
-    User.find({
-        email: email
-    }, (err, previousUsers) => {
-        if (err) {
-            return res.send({
-                success: false,
-                message: "Error: Server error."
-            });
-        } else if (previousUsers.lenght > 0) {
-            return res.send({
-                success: false,
-                message: "Error: Account already exists, please see 'Forgot Password' option."
-            });
-        }
-
-        //Save the new user
-        const newUser = new User();
-
-        newUser.email = email;
-        newUser.password = password;
-        newUser.display_name = display_name;
-        newUser.name_first = name_first;
-        newUser.name_last = name_last;
-        newUser.teach_title = teach_title;
-        newUser.save((err, user) => {
-            if (err) {
-                return res.send({
-                    success: false,
-                    message: "Error: Server error"
-                })
-            }
-            return res.send({
-                success: true,
-                message: "Signed up!"
-            });
-        });
-    });
-};
+});
 
 app.post("/product/new/:title/:url/:image/:developer/:language/:ageRange/:summary/:date", function (req, res) {
     var product = new Product();
