@@ -89,6 +89,7 @@ app.post("/survey", function (req, res) {
 
 })
 
+
 //Signup
 app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title", function(req, res) {
     var user = new User();
@@ -99,6 +100,7 @@ app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/
     user.name_first = req.params.name_first;
     user.name_last = req.params.name_last;
     user.teach_title = req.params.teaching_title;
+
     user.save(function(err) {
         if(err) {
             res.send(err);
@@ -171,20 +173,42 @@ app.get("/review/:id", function (req, res) {
     });
 });
 
-
-//Create new review
-app.post("/review/:id/:headline/:review/:rating/:user", function(req, res) {
-    var review = new Review(); 
-    review.headline = req.params.headline;
-    review.review = req.params.review; 
-    review.rating = req.params.rating; 
-    review.author = req.body.user;
-    review.save(function(err) {
-        if(err) {
-            res.send(err);
+//ToDo: Add middleware check between the url & the function in this first line
+app.post("/review/:id", function (req, res) {
+    Product.findById(req.params.id, function (err, product) {
+        if (err) {
+            console.log(err);
+            res.redirect("/search");
         }
-    })
-})
+        else {
+            var review = new Review(); 
+            review.text = req.body.review;
+            review.headline = req.body.headline;
+            review.review = req.body.review;
+            review.rating = req.body.rating;
+            review.author = req.user.username
+            review.save();
+
+            product.reviews.push(review).then(() => {
+                product.save();
+                req.flash("Success", "Successfully added review.");
+                res.redirect("/review/" + req.params.id);
+            });
+            
+        }
+    });
+});
+
+app.delete("/product/delete/:id", function (req, res) {
+    Product.findByIdAndRemove(req.params.id, function (err) {
+        res.redirect("/search");
+
+    });
+
+
+});
+
+
 
 //Passport configuration
 // app.use(require("express-session")({
@@ -211,3 +235,16 @@ app.post("/review/:id/:headline/:review/:rating/:user", function(req, res) {
 app.listen(port, function () {
     console.log(`Server Started Successfully on ${port}`);
 });
+
+
+// router.delete("/:id", function(req, res) {
+//     Campground.findByIdAndRemove(req.params.id, function(err) {
+//         if(err) {
+//             res.redirect("/campgrounds");
+//         } else {
+//             res.redirect("/campgrounds");
+//         }
+//     })
+
+
+// });

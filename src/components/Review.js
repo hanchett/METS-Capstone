@@ -21,7 +21,6 @@ class Review extends Component {
 
     loadInfo() {
         axios.get(`http://localhost:3101/review/${this.state.id}`).then(res => {
-            console.log(res);
             this.setState({
                 info: res.data
             });
