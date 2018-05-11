@@ -113,7 +113,7 @@ class Account extends Component {
                         signInNameLast: res.data[0].last_name,
                         signInTeachTitle: res.data[0].teaching_title,
                     });
-                    console.log(this.state);
+                    //console.log(this.state);
                 } else {
                     this.setState({
                         signInError: res.message,
@@ -124,7 +124,7 @@ class Account extends Component {
     }
 
     render() {
-        console.log("Here render")
+        //console.log("Here render")
         const {
           isLoading,
           token,
