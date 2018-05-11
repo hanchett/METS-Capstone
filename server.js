@@ -85,7 +85,7 @@ app.post("/survey", function (req, res) {
 })
 
 
-app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title", function(req, res) {
+app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title", function (req, res) {
     var user = new User();
     user.email = req.params.email;
     user.password = req.params.password;
@@ -93,8 +93,8 @@ app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/
     user.name_first = req.params.name_first;
     user.name_last = req.params.name_last;
     user.teach_title = req.params.teaching_title;
-    user.save(function(err) {
-        if(err) {
+    user.save(function (err) {
+        if (err) {
 
             res.send(err);
         }
@@ -105,8 +105,8 @@ app.get('/account/signin/:email/:password', (req, res) => {
     let currEmail = req.params.email;
     let currPassword = req.params.password;
 
-    User.find({email : currEmail, password : currPassword}, function(err, users) {
-        if(err) {
+    User.find({ email: currEmail, password: currPassword }, function (err, users) {
+        if (err) {
             console.log("Error ", err);
             res.send(err);
         }
@@ -141,18 +141,30 @@ app.get("/review/:id", function (req, res) {
         res.send(product);
     });
 });
-
-app.post("/review/:id/:headline/:review/:rating/:user", function (req, res) {
-    var review = new Review();
-    review.headline = req.params.headline;
-    review.review = req.params.review;
-    review.rating = req.params.rating;
-    review.author = req.body.user;
-    review.save(function (err) {
+//ToDo: Add middleware check between the url & the function in this first line
+app.post("/review/:id", function (req, res) {
+    Product.findById(req.params.id, function (err, product) {
         if (err) {
-            res.send(err);
+            console.log(err);
+            res.redirect("/search");
         }
-    })
+        else {
+            var review = new Review(); 
+            review.text = req.body.review;
+            review.headline = req.body.headline;
+            review.review = req.body.review;
+            review.rating = req.body.rating;
+            review.author = req.user.username
+            review.save();
+
+            product.reviews.push(review).then(() => {
+                product.save();
+                req.flash("Success", "Successfully added review.");
+                res.redirect("/review/" + req.params.id);
+            });
+            
+        }
+    });
 });
 
 app.delete("/product/delete/:id", function (req, res) {

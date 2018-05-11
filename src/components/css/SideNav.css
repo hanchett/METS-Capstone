@@ -1,5 +1,55 @@
 .sidenavContainer {
     transition: opacity 2s linear;
     opacity: 1;
+}
 
+.subject, .disability, .challenge {
+    padding: 20px 0 0 20px;
+}
+
+.subjectList {
+    padding-left: 5px;
+}
+
+.subjectList>button {
+    margin-right: 20px;
+    color: white;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.selected {
+    color: #7280D7;
+}
+
+.research {
+    text-decoration: none;
+    background-color: #7280D7;
+    border-radius: 10px;
+    width: 100px;
+    margin: 20px;
+}
+
+.research div {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+}
+
+.research div:hover{
+    cursor: pointer;
+}
+
+.disability > button, .challenge > button {
+    font-size: .8em;
+    text-align: left;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.disability > button:hover, .subjectList > button:hover {
+    cursor: pointer;
 }

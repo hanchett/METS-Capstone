@@ -34,7 +34,6 @@ class NewReview extends Component {
 
     handleChange(e) {
         if (typeof (e) === "number") {
-            console.log("Here")
             this.setState({
                 rating: e
             });
@@ -43,7 +42,6 @@ class NewReview extends Component {
                 [e.target.id]: e.target.value
             })
         }
-        console.log(this.state);
     }
 
 
