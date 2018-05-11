@@ -24,7 +24,7 @@ class NewReview extends Component {
     submitReview(e) {
         e.preventDefault();
         const { headline, review, rating, id } = this.state;
-        const user = ''; //TODO: Lookup user based on Mason's work 
+        const user = '5af606f13aa90513d1c97164'; //TODO: Lookup user based on Mason's work 
         axios.post(`http://localhost:3101/review/${id}`, { headline: headline, review: review, rating: rating, user: user }).then(res => {
             console.log("Review Successfully Added");
         }).catch(function (err) {
