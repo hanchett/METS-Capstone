@@ -24,9 +24,12 @@ class NewReview extends Component {
     submitReview(e) {
         e.preventDefault();
         const { headline, review, rating, id } = this.state;
-        const user = '5af606f13aa90513d1c97164'; //TODO: Lookup user based on Mason's work 
-        axios.post(`http://localhost:3101/review/${id}`, { headline: headline, review: review, rating: rating, user: user }).then(res => {
+        const uid = '5af606f13aa90513d1c97164'; //TODO: Lookup user based on Mason's work 
+        const username = 'shig';
+        axios.post(`http://localhost:3101/review/${id}`, { headline: headline, review: review, rating: rating, uid: uid, username: username }).then(res => {
             console.log("Review Successfully Added");
+            this.props.history.push(`/review/${this.state.id}`);
+            alert("Review Successfully Added");
         }).catch(function (err) {
             console.log(err);
         });
