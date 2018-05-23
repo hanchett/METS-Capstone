@@ -1,7 +1,8 @@
 // server.js
-'use strict'
+"use strict";
 
 // Dependencies
+<<<<<<< HEAD
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('./middleware');
@@ -11,20 +12,32 @@ var Product = require('./models/product');
 var Survey = require('./models/Survey');
 var User = require('./models/user');
 var bcrypt = require('bcrypt');
+=======
+var express = require("express");
+var mongoose = require("mongoose");
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
+var bodyParser = require("body-parser");
+var Review = require("./models/review");
+var Product = require("./models/product");
+var Survey = require("./models/Survey");
+var User = require("./models/user");
+>>>>>>> 71390419dd24b954df624c01cfa6b39a76c26ffe
 
-// Setting up instances and port 
+// Setting up instances and port
 var app = express();
 var port = process.env.PORT || 3001;
 
-
-
 // Connecting to our database
-mongoose.connect('mongodb://admin:password@ds014388.mlab.com:14388/discovered_capstone');
+mongoose.connect(
+  "mongodb://admin:password@ds014388.mlab.com:14388/discovered_capstone"
+);
 
 // Requiring use of bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+<<<<<<< HEAD
 // Preventing Issues with CORS 
 app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -33,66 +46,78 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     //console.log('req.session', req.session);
     next();
+=======
+// Preventing Issues with CORS
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+>>>>>>> 71390419dd24b954df624c01cfa6b39a76c26ffe
 });
 
-
-
-app.get('/', function (req, res) {
-    res.json({ message: 'API Initialized' });
+app.get("/", function(req, res) {
+  res.json({ message: "API Initialized" });
 });
 
-
-app.get('/review', function (req, res) {
-    Review.find(function (err, reviews) {
-        if (err) {
-            console.log("Error ", err);
-            res.send(err);
-        }
-        res.send(reviews);
-    });
+app.get("/review", function(req, res) {
+  Review.find(function(err, reviews) {
+    if (err) {
+      console.log("Error ", err);
+      res.send(err);
+    }
+    res.send(reviews);
+  });
 });
 
 //Create new review
-app.post("/review/:author/:text/:date", function (req, res) {
-    var review = new Review();
-    review.author = req.params.author;
-    review.text = req.params.text;
-    review.date = req.params.date;
-    review.save(function (err) {
-        if (err) {
-            res.send(err);
-        }
-    });
+app.post("/review/:author/:text/:date", function(req, res) {
+  var review = new Review();
+  review.author = req.params.author;
+  review.text = req.params.text;
+  review.date = req.params.date;
+  review.save(function(err) {
+    if (err) {
+      res.send(err);
+    }
+  });
 });
 
 //Product Search
-app.get("/search", function (req, res) {
-    Product.find({}, function (err, products) {
-        if (err) {
-            console.log("Error ", err);
-            res.send(err);
-        }
-        res.send(products);
-    });
+app.get("/search", function(req, res) {
+  Product.find({}, function(err, products) {
+    if (err) {
+      console.log("Error ", err);
+      res.send(err);
+    }
+    res.send(products);
+  });
 });
 
 //Add new survey fillout
-app.post("/survey", function (req, res) {
-    var survey = new Survey();
-    survey.responses = req.body.responses;
-    survey.user = req.body.id;
-    survey.save(function (err) {
-        if (err) {
-            res.send(err);
-        }
-        res.json({ message: "Survey Results Successfully Logged" });
-    });
-
-})
-
+app.post("/survey", function(req, res) {
+  var survey = new Survey();
+  survey.responses = req.body.responses;
+  survey.user = req.body.id;
+  survey.save(function(err) {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ message: "Survey Results Successfully Logged" });
+  });
+});
 
 //Signup
-app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title", function(req, res) {
+app.post(
+  "/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title",
+  function(req, res) {
     var user = new User();
 
     user.email = req.params.email;
@@ -101,12 +126,14 @@ app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/
     user.name_first = req.params.name_first;
     user.name_last = req.params.name_last;
     user.teach_title = req.params.teaching_title;
+    user.image = req.body.image;
 
     user.save(function(err) {
-        if(err) {
-            res.send(err);
-        }
+      if (err) {
+        res.send(err);
+      }
     });
+
 });
 
 //Passport configuration
@@ -174,77 +201,103 @@ app.use(function(req, res, next) {
     next();
 });
 
-
 //Add new product
-app.post("/product/new/:title/:url/:image/:developer/:language/:ageRange/:summary/:date", function (req, res) {
+app.post(
+  "/product/new/:title/:url/:image/:developer/:language/:ageRange/:summary/:date",
+  function(req, res) {
     var product = new Product();
     product.title = req.params.title;
     product.developer = req.params.developer;
     product.url = req.body.url;
     product.image = req.body.image;
     product.language = req.params.language;
-    product.summary = req.params.summary
+    product.summary = req.params.summary;
     product.ageRange = req.params.ageRange;
     product.date = req.params.date;
-    product.save(function (err) {
-        if (err) {
-            res.send(err);
-        }
-    })
-});
-
+    product.save(function(err) {
+      if (err) {
+        res.send(err);
+      }
+    });
+  }
+);
 
 //Get reviews by product
-app.get("/review/:id", function (req, res) {
-    Product.findById(req.params.id, function (err, product) {
-        if (err) {
-            console.log("Error ", err);
-            res.send(err);
-        }
-        res.send(product);
-    });
+app.get("/review/:id", function(req, res) {
+  Product.findById(req.params.id, function(err, product) {
+    if (err) {
+      console.log("Error ", err);
+      res.send(err);
+    }
+    res.send(product);
+  });
 });
 
 //ToDo: Add middleware check between the url & the function in this first line
-app.post("/review/:id", function (req, res) {
-    Product.findById(req.params.id, function (err, product) {
-        if (err) {
-            console.log(err);
-            res.redirect("/search");
-        }
-        else {
-            var review = new Review(); 
-            review.text = req.body.review;
-            review.headline = req.body.headline;
-            review.review = req.body.review;
-            review.rating = req.body.rating;
-            review.author = req.user.username
-            review.save();
+app.post("/review/:id", function(req, res) {
+  Product.findById(req.params.id, function(err, product) {
+    if (err) {
+      console.log(err);
+      res.redirect("/search");
+    } else {
+      var review = new Review();
+      review.text = req.body.review;
+      review.title = req.body.headline;
+      review.review = req.body.review;
+      review.rating = req.body.rating;
+      User.findById(req.body.uid, function(err, user) {
+        review.author = user;
+        review.save();
 
-            product.reviews.push(review).then(() => {
-                product.save();
-                req.flash("Success", "Successfully added review.");
-                res.redirect("/review/" + req.params.id);
-            });
-            
-        }
-    });
+        product.reviews.push(review);
+        product.save();
+        res.redirect("/review/" + req.params.id);
+        res.end();
+      });
+    }
+  });
 });
 
-app.delete("/product/delete/:id", function (req, res) {
-    Product.findByIdAndRemove(req.params.id, function (err) {
-        res.redirect("/search");
-
-    });
-
-
+app.get("/reviews/:id", function(req, res) {
+  Review.findById(req.params.id, function(err, review) {
+    if(err) {
+      console.log("Error ", err);
+      res.send(err);
+    } 
+    res.send(review);
+  });
 });
 
-
-app.listen(port, function () {
-    console.log(`Server Started Successfully on ${port}`);
+app.delete("/product/delete/:id", function(req, res) {
+  Product.findByIdAndRemove(req.params.id, function(err) {
+    res.redirect("/search");
+  });
 });
 
+//Passport configuration
+// app.use(require("express-session")({
+//     secret: "METS ARMA",
+//     resave: false,
+//     saveUninitialized: false
+// }));
+
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
+// //Authenticate user on each page
+// app.use(function(req, res, next) {
+//     res.locals.currentUser = req.user;
+//     res.locals.error = req.flash("error");
+//     res.locals.success = req.flash("success");
+//     next();
+// });
+
+app.listen(port, function() {
+  console.log(`Server Started Successfully on ${port}`);
+});
 
 // router.delete("/:id", function(req, res) {
 //     Campground.findByIdAndRemove(req.params.id, function(err) {
@@ -254,6 +307,5 @@ app.listen(port, function () {
 //             res.redirect("/campgrounds");
 //         }
 //     })
-
 
 // });

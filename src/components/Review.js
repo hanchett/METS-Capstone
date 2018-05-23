@@ -14,7 +14,8 @@ class Review extends Component {
         super(props);
         this.state = {
             info: [],
-            id: props.match.params.id
+            id: props.match.params.id, 
+            reviews: []
         }
         this.loadInfo = this.loadInfo.bind(this);
     }
@@ -24,10 +25,21 @@ class Review extends Component {
             this.setState({
                 info: res.data
             });
+            let reviews = res.data.reviews;
+            reviews.forEach(review_id => {
+                axios.get(`http://localhost:3101/reviews/${review_id}`).then(res => {
+                    let review_list = this.state.reviews;
+                    review_list.push(res.data);
+                    this.setState({
+                        reviews: review_list
+                    });
+                });
+            });
         }).catch(function (err) {
             console.log("Error " + err);
         });
     }
+
 
 
     componentDidMount() {
@@ -43,9 +55,8 @@ class Review extends Component {
         if (Math.round(this.state.info.rating) > this.state.info.rating) {
             rating.push(<FontAwesome key={6} name="fas fa-star-half" />);
         }
-
-        const reviews = typeof (this.state.info.reviews) !== "undefined" && this.state.info.reviews.length > 0 ?
-            this.state.info.reviews.map(review => {
+        const reviews = this.state.reviews.length > 0 ?
+            this.state.reviews.map(review => {
                 return <ReviewCard key={review._id} id={review._id} author={review.author} summary={review.text} rating={review.rating} date={review.date} title={review.title} />;
             }) : <div className='noReviews'>No Reviews</div>
 
