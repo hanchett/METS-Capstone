@@ -2,7 +2,6 @@
 "use strict";
 
 // Dependencies
-<<<<<<< HEAD
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('./middleware');
@@ -12,17 +11,6 @@ var Product = require('./models/product');
 var Survey = require('./models/Survey');
 var User = require('./models/user');
 var bcrypt = require('bcrypt');
-=======
-var express = require("express");
-var mongoose = require("mongoose");
-var passport = require("passport");
-var LocalStrategy = require("passport-local");
-var bodyParser = require("body-parser");
-var Review = require("./models/review");
-var Product = require("./models/product");
-var Survey = require("./models/Survey");
-var User = require("./models/user");
->>>>>>> 71390419dd24b954df624c01cfa6b39a76c26ffe
 
 // Setting up instances and port
 var app = express();
@@ -37,16 +25,6 @@ mongoose.connect(
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
-// Preventing Issues with CORS 
-app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    //console.log('req.session', req.session);
-    next();
-=======
 // Preventing Issues with CORS
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -60,7 +38,6 @@ app.use(function(req, res, next) {
   );
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
->>>>>>> 71390419dd24b954df624c01cfa6b39a76c26ffe
 });
 
 app.get("/", function(req, res) {
