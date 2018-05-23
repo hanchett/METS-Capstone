@@ -2,15 +2,15 @@
 "use strict";
 
 // Dependencies
-var express = require("express");
-var mongoose = require("mongoose");
-var passport = require("passport");
-var LocalStrategy = require("passport-local");
-var bodyParser = require("body-parser");
-var Review = require("./models/review");
-var Product = require("./models/product");
-var Survey = require("./models/Survey");
-var User = require("./models/user");
+var express = require('express');
+var mongoose = require('mongoose');
+var passport = require('./middleware');
+var bodyParser = require('body-parser');
+var Review = require('./models/review');
+var Product = require('./models/product');
+var Survey = require('./models/Survey');
+var User = require('./models/user');
+var bcrypt = require('bcrypt');
 
 // Setting up instances and port
 var app = express();
@@ -110,40 +110,72 @@ app.post(
         res.send(err);
       }
     });
-  }
-);
+
+});
+
+//Passport configuration
+app.use(require("express-session")({
+    secret: "DiscoverEd",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+//passport.use(new LocalStrategy(User.authenticate()));
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
+
 
 //Login
-app.get("/account/signin/:email/:password", (req, res) => {
-  let currEmail = req.params.email;
-  let currPassword = req.params.password;
+app.get('/account/signin/:email/:password', (req, res) => {
+    let currEmail = req.params.email;
+    let currPassword = req.params.password;
 
-  User.find({ email: currEmail }, function(err, users) {
-    if (err) {
-      console.log("Error ", err);
-      res.send(err);
-    }
+    User.find({email : currEmail}, function(err, users) {
+        if(err) {
+            console.log("Error ", err);
+            res.send(err);
+        }
 
-    if (users.length != 1) {
-      return res.send({
-        success: false,
-        message: "Error: Invalid"
-      });
-    }
+        if (users.length != 1) {
+            return res.send({
+                success: false,
+                message: 'Error: Invalid'
+            });
+        }
 
-    const user = users[0];
-    console.log(currPassword);
-    console.log(user);
-    if (user.validPassword(currPassword)) {
-      res.send(users);
-      console.log(users);
+        const user = users[0];
+        console.log(currPassword);
+        console.log(user);
+        if (user.validPassword(currPassword)) {
+            passport.authenticate('local');
+            res.send(users);
+            console.log(users);
+        } else {
+            return res.send({
+                success: false,
+                message: 'Error: Invalid'
+            });
+        }
+    });
+});
+
+app.post('/account/logout/', (req, res) => {
+    if (req.user) {
+        req.logout()
+        res.send({ msg: 'logging out' })
     } else {
-      return res.send({
-        success: false,
-        message: "Error: Invalid"
-      });
+        res.send({ msg: 'no user to log out' })
     }
-  });
+});
+
+//auth user on every page
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
 });
 
 //Add new product
