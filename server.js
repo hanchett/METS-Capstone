@@ -4,13 +4,13 @@
 // Dependencies
 var express = require('express');
 var mongoose = require('mongoose');
-var passport = require("passport");
-var LocalStrategy = require("passport-local");
+var passport = require('./middleware');
 var bodyParser = require('body-parser');
 var Review = require('./models/review');
 var Product = require('./models/product');
 var Survey = require('./models/Survey');
 var User = require('./models/user');
+var bcrypt = require('bcrypt');
 
 // Setting up instances and port 
 var app = express();
@@ -31,6 +31,7 @@ app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
     res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
     res.setHeader('Access-Control-Allow-Credentials', true);
+    //console.log('req.session', req.session);
     next();
 });
 
@@ -108,6 +109,19 @@ app.post("/account/signup/:email/:password/:display_name/:name_first/:name_last/
     });
 });
 
+//Passport configuration
+app.use(require("express-session")({
+    secret: "DiscoverEd",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+//passport.use(new LocalStrategy(User.authenticate()));
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
+
 
 //Login
 app.get('/account/signin/:email/:password', (req, res) => {
@@ -131,6 +145,7 @@ app.get('/account/signin/:email/:password', (req, res) => {
         console.log(currPassword);
         console.log(user);
         if (user.validPassword(currPassword)) {
+            passport.authenticate('local');
             res.send(users);
             console.log(users);
         } else {
@@ -140,6 +155,23 @@ app.get('/account/signin/:email/:password', (req, res) => {
             });
         }
     });
+});
+
+app.post('/account/logout/', (req, res) => {
+    if (req.user) {
+        req.logout()
+        res.send({ msg: 'logging out' })
+    } else {
+        res.send({ msg: 'no user to log out' })
+    }
+});
+
+//auth user on every page
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
 });
 
 
@@ -207,29 +239,6 @@ app.delete("/product/delete/:id", function (req, res) {
 
 
 });
-
-
-
-//Passport configuration
-// app.use(require("express-session")({
-//     secret: "METS ARMA",
-//     resave: false,
-//     saveUninitialized: false
-// }));
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-// //Authenticate user on each page
-// app.use(function(req, res, next) {
-//     res.locals.currentUser = req.user;
-//     res.locals.error = req.flash("error");
-//     res.locals.success = req.flash("success");
-//     next();
-// });
 
 
 app.listen(port, function () {

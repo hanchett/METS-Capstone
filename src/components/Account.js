@@ -31,6 +31,7 @@ class Account extends Component {
 
         this.onSignIn = this.onSignIn.bind(this);
         this.onSignUp = this.onSignUp.bind(this);
+        this.logout = this.logout.bind(this);
         //this.logout = this.logout.bind(this);
         //console.log(this.state)
     }
@@ -67,20 +68,21 @@ class Account extends Component {
 
         //post request to backend
         axios.post(`http://localhost:3101/account/signup/${signUpEmail}/${signUpPassword}/${signUpDisplayName}/${signUpNameFirst}/${signUpNameLast}/${signUpTeachTitle}`)
-            .then(res => res.json())
-            .then(json => {
-                console.log('json', json);
-                if (json.success) {
+            //.then(response => res.json())
+            .then(response => {
+                console.log('here', response);
+                if (response.data) {
                     this.setState({
-                        signInError: json.message,
+                        signInError: response.data.message,
                         isLoading: false,
                         signInEmail: '',
                         signInPassword: '',
-                        token: json.token
+                        token: response.data._id,
+                        redirectTo : "/survey"
                     });
                 } else {
                     this.setState({
-                        signUpError: json.message,
+                        signUpError: response.data.message,
                         isLoading: false,
                     });
                 }
@@ -109,11 +111,11 @@ class Account extends Component {
                         signInEmail: '',
                         signInPassword: '',
                         signInDisplayName: res.data[0].display_name,
-                        signInNameFirst: res.data[0].first_name,
-                        signInNameLast: res.data[0].last_name,
-                        signInTeachTitle: res.data[0].teaching_title,
+                        signInNameFirst: res.data[0].name_first,
+                        signInNameLast: res.data[0].name_last,
+                        signInTeachTitle: res.data[0].teach_title,
                     });
-                    //console.log(this.state);
+                    console.log(this.state.token);
                 } else {
                     this.setState({
                         signInError: res.message,
@@ -122,6 +124,25 @@ class Account extends Component {
                 }
             });
     }
+
+    logout(event) {
+        event.preventDefault()
+        console.log('logging out')
+        axios.post('http://localhost:3101/account/logout/').then(res => {
+          console.log(res.data)
+          if (res.status === 200) {
+            this.setState({
+              token: null,
+              signInDisplayName: '',
+              signInNameFirst: '',
+              signInNameLast: '',
+              signInTeachTitle: '',
+            })
+          }
+        }).catch(error => {
+            console.log('Logout error')
+        })
+      }
 
     render() {
         //console.log("Here render")
@@ -226,8 +247,13 @@ class Account extends Component {
         }
     
         return (
-          <div>
+          <div className = "accountSummary">
+            <NavBar />
             <p>Account</p>
+            <p>Username: {this.state.signInDisplayName}</p>
+            <p>First Name: {this.state.signInNameFirst}</p>
+            <p>Last Name: {this.state.signInNameLast}</p>
+            <p>Teaching Position: {this.state.signInTeachTitle}</p>
             <button onClick={this.logout}>Logout</button>
           </div>
         );
