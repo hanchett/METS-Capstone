@@ -15,7 +15,10 @@ class NewReview extends Component {
       headline: "",
       review: "",
       rating: 3.5,
-      id: props.match.params.id
+      id: props.match.params.id,
+      age: [],
+      disabilities: [],
+      platforms: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -98,48 +101,62 @@ class NewReview extends Component {
               initialRating={this.state.rating}
             />
           </label>
-          <label className="radios">
+          <label className="radios" >
             <h3>What education level do you teach?</h3>
             <div className="radioBtn">
-              <input type="radio" name="age1" value="k-5" />K-5<br />
+              <input type="radio" name="age1" id="age" value="k-5" onChange={this.handleChange}/>K-5<br />
             </div>
             <div className="radioBtn">
-              <input type="radio" name="age2" value="middle" />Middle School<br />
+              <input type="radio" name="age2" id="age" value="middle" />Middle School<br />
             </div>
             <div className="radioBtn">
-              <input type="radio" name="age3" value="high" />High School<br />
+              <input type="radio" name="age3" id="age" value="high" />High School<br />
             </div>
           </label>
-          <label htmlFor="">
+          <label className='disab'>
             <h3>
               Do you work with students with disabilities? Please select all
               that apply
             </h3>
-            <div className="radioBtn">
-              <input type="radio" name="disability1" value="1" />Auditory
+            <div className="radioBtn dis">
+              <input type="radio" name="disability1" id="disabilities" value="1" />Auditory
               perception & processing<br />
             </div>
-            <div className="radioBtn">
-              <input type="radio" name="disability2" value="2" />Visual
+            <div className="radioBtn dis">
+              <input type="radio" name="disability2" id="disabilities" value="2" />Visual
               perception & processing <br />
             </div>
-            <div className="radioBtn">
-              <input type="radio" name="disability2" value="3" />Information processing speed <br />
+            <div className="radioBtn dis">
+              <input type="radio" name="disability2" id="disabilities" value="3" />Information processing speed <br />
             </div>
-            <div className="radioBtn">
-              <input type="radio" name="disability2" value="4" />Abstract reasoning <br />
+            <div className="radioBtn dis">
+              <input type="radio" name="disability2" id="disabilities" value="4" />Abstract reasoning <br />
             </div>
-            <div className="radioBtn">
-              <input type="radio" name="disability2" value="5" />Retention<br />
+            <div className="radioBtn dis">
+              <input type="radio" name="disability2" id="disabilities" value="5" />Retention<br />
             </div>
-            <div className="radioBtn">
-              <input type="radio" name="disability2" value="6" />Spoken & written language <br />
+            <div className="radioBtn dis">
+              <input type="radio" name="disability2" id="disabilities" value="6" />Spoken & written language <br />
             </div>
-            <div className="radioBtn">
-              <input type="radio" name="disability2" value="7" />Mathematical Calculation <br />
+            <div className="radioBtn dis">
+              <input type="radio" name="disability2" id="disabilities" value="7" />Mathematical Calculation <br />
             </div>
-          </label>
-
+            </label>
+            <label className='disab'>
+              <h3>What technology platforms do you have access to?</h3>
+              <div className="radioBtn dis">
+                <input type="radio"/>Ipads<br/>
+              </div>
+              <div className="radioBtn dis">
+                <input type="radio"/>Android Tablets<br/> 
+              </div>
+              <div className="radioBtn dis">
+                <input type="radio"/>Laptops<br/>
+              </div>
+              <div className="radioBtn dis">
+                <input type="radio"/>Desktop Computers (Mac or Windows)<br/>
+              </div>
+            </label>
           <label className="formLabel">
             <input type="submit" value="Submit" className="submitBtn" />
           </label>
