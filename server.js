@@ -22,11 +22,13 @@ mongoose.connect(
 );
 
 // Requiring use of bodyParser
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 // Preventing Issues with CORS
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -40,12 +42,14 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get("/", function(req, res) {
-  res.json({ message: "API Initialized" });
+app.get("/", function (req, res) {
+  res.json({
+    message: "API Initialized"
+  });
 });
 
-app.get("/review", function(req, res) {
-  Review.find(function(err, reviews) {
+app.get("/review", function (req, res) {
+  Review.find(function (err, reviews) {
     if (err) {
       console.log("Error ", err);
       res.send(err);
@@ -55,12 +59,12 @@ app.get("/review", function(req, res) {
 });
 
 //Create new review
-app.post("/review/:author/:text/:date", function(req, res) {
+app.post("/review/:author/:text/:date", function (req, res) {
   var review = new Review();
   review.author = req.params.author;
   review.text = req.params.text;
   review.date = req.params.date;
-  review.save(function(err) {
+  review.save(function (err) {
     if (err) {
       res.send(err);
     }
@@ -68,8 +72,8 @@ app.post("/review/:author/:text/:date", function(req, res) {
 });
 
 //Product Search
-app.get("/search", function(req, res) {
-  Product.find({}, function(err, products) {
+app.get("/search", function (req, res) {
+  Product.find({}, function (err, products) {
     if (err) {
       console.log("Error ", err);
       res.send(err);
@@ -79,22 +83,24 @@ app.get("/search", function(req, res) {
 });
 
 //Add new survey fillout
-app.post("/survey", function(req, res) {
+app.post("/survey", function (req, res) {
   var survey = new Survey();
   survey.responses = req.body.responses;
   survey.user = req.body.id;
-  survey.save(function(err) {
+  survey.save(function (err) {
     if (err) {
       res.send(err);
     }
-    res.json({ message: "Survey Results Successfully Logged" });
+    res.json({
+      message: "Survey Results Successfully Logged"
+    });
   });
 });
 
 //Signup
 app.post(
   "/account/signup/:email/:password/:display_name/:name_first/:name_last/:teaching_title",
-  function(req, res) {
+  function (req, res) {
     var user = new User();
 
     user.email = req.params.email;
@@ -105,7 +111,7 @@ app.post(
     user.teach_title = req.params.teaching_title;
     user.image = req.body.image;
 
-    user.save(function(err) {
+    user.save(function (err) {
       if (err) {
         res.send(err);
       } else {
@@ -115,13 +121,13 @@ app.post(
       }
     });
 
-});
+  });
 
 //Passport configuration
 app.use(require("express-session")({
-    secret: "DiscoverEd",
-    resave: false,
-    saveUninitialized: false
+  secret: "DiscoverEd",
+  resave: false,
+  saveUninitialized: false
 }));
 
 app.use(passport.initialize());
@@ -133,59 +139,65 @@ app.use(passport.session());
 
 //Login
 app.get('/account/signin/:email/:password', (req, res) => {
-    let currEmail = req.params.email;
-    let currPassword = req.params.password;
+  let currEmail = req.params.email;
+  let currPassword = req.params.password;
 
-    User.find({email : currEmail}, function(err, users) {
-        if(err) {
-            console.log("Error ", err);
-            res.send(err);
-        }
+  User.find({
+    email: currEmail
+  }, function (err, users) {
+    if (err) {
+      console.log("Error ", err);
+      res.send(err);
+    }
 
-        if (users.length != 1) {
-            return res.send({
-                success: false,
-                message: 'Error: Invalid'
-            });
-        }
+    if (users.length != 1) {
+      return res.send({
+        success: false,
+        message: 'Error: Invalid'
+      });
+    }
 
-        const user = users[0];
-        console.log(currPassword);
-        console.log(user);
-        if (user.validPassword(currPassword)) {
-            passport.authenticate('local');
-            res.send(users);
-            console.log(users);
-        } else {
-            return res.send({
-                success: false,
-                message: 'Error: Invalid'
-            });
-        }
-    });
+    const user = users[0];
+    console.log(currPassword);
+    console.log(user);
+    if (user.validPassword(currPassword)) {
+      passport.authenticate('local');
+      res.send(users);
+      console.log(users);
+    } else {
+      return res.send({
+        success: false,
+        message: 'Error: Invalid'
+      });
+    }
+  });
 });
 
 app.post('/account/logout/', (req, res) => {
-    if (req.user) {
-        req.logout()
-        res.send({ msg: 'logging out' })
-    } else {
-        res.send({ msg: 'no user to log out' })
-    }
+  if (req.user) {
+    req.logout()
+    res.send({
+      msg: 'logging out'
+    })
+  } else {
+    res.send({
+      msg: 'no user to log out'
+    })
+  }
 });
 
 //auth user on every page
-app.use(function(req, res, next) {
-    res.locals.currentUser = req.user;
-    res.locals.error = req.flash("error");
-    res.locals.success = req.flash("success");
-    next();
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  next();
 });
 
 //Add new product
 app.post(
   "/product/new/:title/:url/:image/:developer/:language/:ageRange/:summary/:date",
-  function(req, res) {
+  function (req, res) {
     var product = new Product();
     product.title = req.params.title;
     product.developer = req.params.developer;
@@ -195,7 +207,7 @@ app.post(
     product.summary = req.params.summary;
     product.ageRange = req.params.ageRange;
     product.date = req.params.date;
-    product.save(function(err) {
+    product.save(function (err) {
       if (err) {
         res.send(err);
       }
@@ -204,8 +216,8 @@ app.post(
 );
 
 //Get reviews by product
-app.get("/review/:id", function(req, res) {
-  Product.findById(req.params.id, function(err, product) {
+app.get("/review/:id", function (req, res) {
+  Product.findById(req.params.id, function (err, product) {
     if (err) {
       console.log("Error ", err);
       res.send(err);
@@ -215,8 +227,8 @@ app.get("/review/:id", function(req, res) {
 });
 
 //ToDo: Add middleware check between the url & the function in this first line
-app.post("/review/:id", function(req, res) {
-  Product.findById(req.params.id, function(err, product) {
+app.post("/review/:id", function (req, res) {
+  Product.findById(req.params.id, function (err, product) {
     if (err) {
       console.log(err);
       res.redirect("/search");
@@ -227,9 +239,9 @@ app.post("/review/:id", function(req, res) {
       review.review = req.body.review;
       review.rating = req.body.rating;
       var n = product.reviews.length;
-      product.rating = ((product.rating * n) + review.rating) / (n + 1); 
+      product.rating = ((product.rating * n) + review.rating) / (n + 1);
 
-      User.findById(req.body.uid, function(err, user) {
+      User.findById(req.body.uid, function (err, user) {
         review.author = user;
         review.save();
 
@@ -242,18 +254,18 @@ app.post("/review/:id", function(req, res) {
   });
 });
 
-app.get("/reviews/:id", function(req, res) {
-  Review.findById(req.params.id, function(err, review) {
-    if(err) {
+app.get("/reviews/:id", function (req, res) {
+  Review.findById(req.params.id, function (err, review) {
+    if (err) {
       console.log("Error ", err);
       res.send(err);
-    } 
+    }
     res.send(review);
   });
 });
 
-app.delete("/product/delete/:id", function(req, res) {
-  Product.findByIdAndRemove(req.params.id, function(err) {
+app.delete("/product/delete/:id", function (req, res) {
+  Product.findByIdAndRemove(req.params.id, function (err) {
     res.redirect("/search");
   });
 });
@@ -279,7 +291,10 @@ app.delete("/product/delete/:id", function(req, res) {
 //     next();
 // });
 
-app.listen(port, function() {
+app.listen(port, function (err) {
+  if(err) {
+    console.log(err);
+  }
   console.log(`Server Started Successfully on ${port}`);
 });
 

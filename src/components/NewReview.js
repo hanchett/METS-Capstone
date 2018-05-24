@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import './css/NewReview.css'
 
+const surveyQs = [];
 
 class NewReview extends Component {
     constructor(props) {
