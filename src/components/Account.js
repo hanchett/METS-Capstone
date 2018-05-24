@@ -77,8 +77,7 @@ class Account extends Component {
                         isLoading: false,
                         signInEmail: '',
                         signInPassword: '',
-                        token: response.data._id,
-                        redirectTo : "/survey"
+                        token: response.data._id
                     });
                 } else {
                     this.setState({

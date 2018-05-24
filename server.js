@@ -108,6 +108,10 @@ app.post(
     user.save(function(err) {
       if (err) {
         res.send(err);
+      } else {
+        console.log(res);
+        passport.authenticate('local');
+        res.send(user);
       }
     });
 
