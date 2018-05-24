@@ -68,9 +68,9 @@ class Account extends Component {
 
         //post request to backend
         axios.post(`http://localhost:3101/account/signup/${signUpEmail}/${signUpPassword}/${signUpDisplayName}/${signUpNameFirst}/${signUpNameLast}/${signUpTeachTitle}`)
-            //.then(response => res.json())
             .then(response => {
                 console.log('here', response);
+                alert("test");
                 if (response.data) {
                     this.setState({
                         signInError: response.data.message,
