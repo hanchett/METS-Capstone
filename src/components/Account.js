@@ -125,6 +125,7 @@ class Account extends Component {
                         signInTeachTitle: res.data[0].teach_title,
                     });
                     console.log(this.state.token);
+                    console.log(res.user);
                 } else {
                     this.setState({
                         signInError: res.message,
@@ -173,7 +174,9 @@ class Account extends Component {
         if (!token) {
           return (
             <div>
-              <NavBar />
+              <div class="navBarPlace">
+                <NavBar />
+              </div>
               <div className = "signin">
                 {
                   (signInError) ? (
@@ -256,14 +259,18 @@ class Account extends Component {
         }
         
         return (
-          <div className = "accountSummary">
-            <NavBar />
-            <p>Account</p>
-            <p>Username: {this.state.signInDisplayName}</p>
-            <p>First Name: {this.state.signInNameFirst}</p>
-            <p>Last Name: {this.state.signInNameLast}</p>
-            <p>Teaching Position: {this.state.signInTeachTitle}</p>
-            <button onClick={this.logout}>Logout</button>
+          <div>
+            <div class="navBarPlace">
+                <NavBar />
+            </div>
+            <div className = "accountSummary">
+                <p>Account</p>
+                <p>Username: {this.state.signInDisplayName}</p>
+                <p>First Name: {this.state.signInNameFirst}</p>
+                <p>Last Name: {this.state.signInNameLast}</p>
+                <p>Teaching Position: {this.state.signInTeachTitle}</p>
+                <button onClick={this.logout}>Logout</button>
+            </div>
           </div>
         );
       }

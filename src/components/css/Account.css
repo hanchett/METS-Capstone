@@ -17,14 +17,42 @@
     transform: translateY(4px);
 }
 
+.navBarPlace {
+    padding-bottom: 75px;
+}
+
 .signin {
-    padding-top: 130px;
-    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 130px;
+    margin:0 auto;
     width: 50%;
+    background-color: lightgray;
+    border-radius: 25px;
 }
 
 .signup {
     padding-top: 20px;
-    margin: auto;
+    padding-bottom: 20px;
+    padding-left: 130px;
+    margin:0 auto;
+    margin-top: 25px !important;
     width: 50%;
+    background-color: lightgray;
+    border-radius: 25px;
+}
+
+.accountSummary {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 130px;
+    margin:0 auto;
+    width: 50%;
+}
+
+input {
+    border-radius: 3px;
+    border-color: lightgray;
+    margin: 5px;
+    box-shadow: none;
 }
