@@ -16,3 +16,13 @@
     padding: 10px;
     color: white;
 }
+
+.radioBtn {
+    float: left;
+    margin: 10px;
+
+}
+
+.radios {
+    margin-top: 20px;
+}

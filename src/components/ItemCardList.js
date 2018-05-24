@@ -42,7 +42,6 @@ class ItemCardList extends Component {
 
 
     render() {
-        console.log(this.state.cards)
         return (
             <div>
                 {this.state.cards.map(card => {

@@ -191,8 +191,6 @@ app.post('/account/logout/', (req, res) => {
 //auth user on every page
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
-  res.locals.error = req.flash("error");
-  res.locals.success = req.flash("success");
   next();
 });
 
@@ -217,7 +215,7 @@ app.post(
   }
 );
 
-//Get reviews by product
+//Get product info
 app.get("/review/:id", function (req, res) {
   Product.findById(req.params.id, function (err, product) {
     if (err) {

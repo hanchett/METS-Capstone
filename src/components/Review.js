@@ -36,6 +36,7 @@ class Review extends Component {
                 });
             });
         }).catch(function (err) {
+            console.log(this.state.id);
             console.log("Error " + err);
         });
     }
