@@ -24,6 +24,8 @@ class Account extends Component {
             signUpNameLast: '',
             signInNameLast: '',
             signUpTeachTitle: '',
+            redirectTo : '',
+            signedUp : 0,
 
         }
         
@@ -69,19 +71,27 @@ class Account extends Component {
         //post request to backend
         axios.post(`http://localhost:3101/account/signup/${signUpEmail}/${signUpPassword}/${signUpDisplayName}/${signUpNameFirst}/${signUpNameLast}/${signUpTeachTitle}`)
             //.then(response => res.json())
-            .then(response => {
-                console.log('here', response);
-                if (response.data) {
+            .then(res => {
+                //console.log('here', response);
+                if (res.data) {
                     this.setState({
-                        signInError: response.data.message,
+                        signInError: res.data.message,
                         isLoading: false,
                         signInEmail: '',
                         signInPassword: '',
-                        token: response.data._id
+                        signInDisplayName: res.data.display_name,
+                        signInNameFirst: res.data.name_first,
+                        signInNameLast: res.data.name_last,
+                        signInTeachTitle: res.data.teach_title,
+                        token: res.data._id,
+                        signedUp : 1,
                     });
+                    console.log(this.state.token)
+                    this.props.history.push(`/survey/${this.state.token}`);
+                    //console.log(this.state.token)
                 } else {
                     this.setState({
-                        signUpError: response.data.message,
+                        signUpError: res.data.message,
                         isLoading: false,
                     });
                 }
@@ -244,7 +254,7 @@ class Account extends Component {
             </div>
           );
         }
-    
+        
         return (
           <div className = "accountSummary">
             <NavBar />

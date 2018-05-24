@@ -109,9 +109,10 @@ app.post(
       if (err) {
         res.send(err);
       } else {
-        console.log(res);
         passport.authenticate('local');
         res.send(user);
+        //res.redirect("/survey/" + res.data._id);
+        //res.redirect("/Survey");
       }
     });
 
@@ -167,10 +168,10 @@ app.get('/account/signin/:email/:password', (req, res) => {
 
 app.post('/account/logout/', (req, res) => {
     if (req.user) {
-        req.logout()
-        res.send({ msg: 'logging out' })
+        req.logout();
+        res.send({ msg: 'logging out' });
     } else {
-        res.send({ msg: 'no user to log out' })
+        res.send({ msg: 'no user to log out' });
     }
 });
 
