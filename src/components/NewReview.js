@@ -110,6 +110,36 @@ class NewReview extends Component {
               <input type="radio" name="age3" value="high" />High School<br />
             </div>
           </label>
+          <label htmlFor="">
+            <h3>
+              Do you work with students with disabilities? Please select all
+              that apply
+            </h3>
+            <div className="radioBtn">
+              <input type="radio" name="disability1" value="1" />Auditory
+              perception & processing<br />
+            </div>
+            <div className="radioBtn">
+              <input type="radio" name="disability2" value="2" />Visual
+              perception & processing <br />
+            </div>
+            <div className="radioBtn">
+              <input type="radio" name="disability2" value="3" />Information processing speed <br />
+            </div>
+            <div className="radioBtn">
+              <input type="radio" name="disability2" value="4" />Abstract reasoning <br />
+            </div>
+            <div className="radioBtn">
+              <input type="radio" name="disability2" value="5" />Retention<br />
+            </div>
+            <div className="radioBtn">
+              <input type="radio" name="disability2" value="6" />Spoken & written language <br />
+            </div>
+            <div className="radioBtn">
+              <input type="radio" name="disability2" value="7" />Mathematical Calculation <br />
+            </div>
+          </label>
+
           <label className="formLabel">
             <input type="submit" value="Submit" className="submitBtn" />
           </label>
