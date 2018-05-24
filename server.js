@@ -115,9 +115,10 @@ app.post(
       if (err) {
         res.send(err);
       } else {
-        console.log(res);
         passport.authenticate('local');
         res.send(user);
+        //res.redirect("/survey/" + res.data._id);
+        //res.redirect("/Survey");
       }
     });
 
@@ -173,16 +174,17 @@ app.get('/account/signin/:email/:password', (req, res) => {
   });
 });
 
+
 app.post('/account/logout/', (req, res) => {
   if (req.user) {
-    req.logout()
+    req.logout();
     res.send({
       msg: 'logging out'
-    })
+    });
   } else {
     res.send({
       msg: 'no user to log out'
-    })
+    });
   }
 });
 
@@ -292,7 +294,7 @@ app.delete("/product/delete/:id", function (req, res) {
 // });
 
 app.listen(port, function (err) {
-  if(err) {
+  if (err) {
     console.log(err);
   }
   console.log(`Server Started Successfully on ${port}`);

@@ -19,7 +19,7 @@ ReactDOM.render(
       <Route exact path='/' component={App} />
       <Route exact path="/search/:subjects?/:disabilities?/:circumstances?" component={Search} />
       <Route exact path='/review/:id?' component={Review}/>
-      <Route exact path='/survey' component={Survey}/>
+      <Route exact path='/survey/:id?' component={Survey}/>
       <Route exact path='/account' component={Account}/>
       <Route exact path='/surveyresults/:filters?' component={Search} />
       <Route exact path='/product/new' component={NewProduct}/>
