@@ -11,7 +11,8 @@ class Survey extends Component {
             question: 0,
             answers: []
         }
-        console.log(this)
+        console.log(this);
+        console.log(this.state.token);
         document.body.style.overflow = 'hidden';
     }
 
