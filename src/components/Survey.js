@@ -63,7 +63,7 @@ class Survey extends Component {
             <div className='survey'>
                 <div className="hello">
                     <h1>Welcome to DiscoverED</h1>
-                    <h2>Please take a minute to work through this brief survey.</h2>
+                    <h2 className='blurb'>Please take a minute to work through this brief survey so we can get to know your teaching circumstances better. After filling this out, we'll present you with curated technologies that fit your specific situation.</h2>
                     <button className='surveyBtn' id="0" onClick={this.answeredQuestion.bind(this)}>Continue</button>
                 </div>
                 <div className="question questionOne" ref='q1'>

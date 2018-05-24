@@ -36,6 +36,7 @@ class Review extends Component {
                 });
             });
         }).catch(function (err) {
+            console.log(this);
             console.log("Error " + err);
         });
     }
@@ -49,7 +50,8 @@ class Review extends Component {
 
     render() {
         let rating = [];
-        for (let i = 0; i < this.state.info.rating - 1; i++) {
+        console.log(this.state);
+        for (let i = 0; i < this.state.info.rating; i++) {
             rating.push(<FontAwesome key={i} name='fas fa-star' />);
         }
         if (Math.round(this.state.info.rating) > this.state.info.rating) {
