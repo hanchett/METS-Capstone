@@ -19,8 +19,6 @@ class Survey extends Component {
 
     // Updates State 
     answeredQuestion(e) {
-        console.log(this)
-        console.log(e.target.id)
         let question = this.state.question;
         this.setState({
             question: e.target.id
