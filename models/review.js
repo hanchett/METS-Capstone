@@ -13,7 +13,9 @@ var reviewSchema = mongoose.Schema({
     }, 
     author: String, 
     date: Date, 
-    surveyQ: [],
+    age: [],
+    disabilities: [],
+    platform: [],
     rating: { type: Number, min: 0, max: 5, default: 3.5 } 
 });
     

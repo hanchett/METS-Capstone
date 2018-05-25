@@ -238,6 +238,9 @@ app.post("/review/:id", function (req, res) {
       review.title = req.body.headline;
       review.review = req.body.review;
       review.rating = req.body.rating;
+      review.age = req.body.age;
+      review.disabilities = req.body.disabilities;
+      review.platforms = req.body.platforms;
       var n = product.reviews.length;
       product.rating = ((product.rating * n) + review.rating) / (n + 1);
 

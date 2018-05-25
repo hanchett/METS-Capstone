@@ -29,16 +29,20 @@ class NewReview extends Component {
 
   submitReview(e) {
     e.preventDefault();
-    const { headline, review, rating, id } = this.state;
+    const { headline, review, rating, id, age, disabilities, platforms } = this.state;
     const uid = '5af606f13aa90513d1c97164'; //TODO: Lookup user based on Mason's work
     const username = 'shig';
+
     axios
       .post(`http://localhost:3101/review/${id}`, {
         headline: headline,
         review: review,
         rating: rating,
         uid: uid,
-        username: username
+        username: username,
+        age: age,
+        disabilities: disabilities, 
+        platforms: platforms
       })
       .then(res => {
         console.log('Review Successfully Added');
@@ -51,7 +55,6 @@ class NewReview extends Component {
   }
 
   handleChange(e) {
-    console.log((this.state[e.target.id]))
     if (typeof e === 'number') {
       this.setState({
         rating: e
@@ -69,7 +72,6 @@ class NewReview extends Component {
         [e.target.id]: newState
       });
     }
-    console.log(this.state);
   }
 
   render() {
