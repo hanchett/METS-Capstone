@@ -23,7 +23,7 @@ ReactDOM.render(
       <Route exact path='/account' component={Account}/>
       <Route exact path='/surveyresults/:filters?' component={Search} />
       <Route exact path='/product/new' component={NewProduct}/>
-      <Route exact path='/review/:id/new' component={NewReview}/>
+      <Route exact path='/review/:title/:id/new' component={NewReview}/>
     </div>
   </Router>,
   document.getElementById('root')

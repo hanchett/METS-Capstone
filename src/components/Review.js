@@ -36,7 +36,6 @@ class Review extends Component {
                 });
             });
         }).catch(function (err) {
-            console.log(this);
             console.log("Error " + err);
         });
     }
@@ -85,7 +84,7 @@ class Review extends Component {
                     </div>
                     <div className="reviews">
                         <h2 className="reviewTitle">Product Reviews</h2>
-                        <Link to={`/review/${this.state.info._id}/new`}><button className='newReview'>Review This Product</button></Link>
+                        <Link to={`/review/${this.state.info.title}/${this.state.info._id}/new`}><button className='newReview'>Review This Product</button></Link>
 
                         <div className='review'>
                         {reviews}
