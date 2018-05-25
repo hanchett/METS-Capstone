@@ -1,0 +1,21 @@
+.card {
+	border: 1px solid black;
+	border-radius: 0;
+	margin: 20px;
+	display: inline-block;
+	width: 250px;
+	height: 295px;
+	overflow: hidden;
+}
+
+.match {
+    color: green;
+    position: absolute;
+    bottom: 5px;
+    float: right;
+    right: 10px;
+}
+
+.card {
+    height: 320px;
+}
