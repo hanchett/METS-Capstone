@@ -60,11 +60,11 @@ class SideNav extends Component {
             filters.push(button.value);
             button.style.backgroundColor = '#7280D7';
         }
-        console.log(this.state)
         this.setState({ filters: filters });
     }
 
     render() {
+        console.log(this.state.filters);
         let hamburger = <FontAwesome
             name='fas fa-bars'
             size='2x'

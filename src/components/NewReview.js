@@ -123,13 +123,13 @@ class NewReview extends Component {
           <label className='disab' >
             <h3>What education level do you teach?</h3>
             <div className='radioBtn dis'>
-              <input type='checkbox' name='age' id='age' value='k-5' onChange={this.handleChange}/>K-5<br />
+              <input type='checkbox' name='age' id='age' value='k-5' onChange={this.handleChange}/>K-5
             </div>
             <div className='radioBtn dis'>
-              <input type='checkbox' name='age' id='age' value='middle'  onChange={this.handleChange} />Middle School<br />
+              <input type='checkbox' name='age' id='age' value='middle'  onChange={this.handleChange} />Middle School
             </div>
             <div className='radioBtn dis'>
-              <input type='checkbox' name='age' id='age' value='high'  onChange={this.handleChange}/>High School<br />
+              <input type='checkbox' name='age' id='age' value='high'  onChange={this.handleChange}/>High School
             </div>
           </label>
           <label className='disab'>

@@ -45,7 +45,8 @@ class App extends Component {
     this.state = {
       subjects: [],
       disabilities: [],
-      circumstances: []
+      circumstances: [],
+      title: ''
     }
     document.body.style.overflow = 'auto';
 
@@ -70,6 +71,9 @@ class App extends Component {
     });
   }
 
+  handleChange(e) {
+    this.setState({title: e.target.value});
+  }
 
 
 
@@ -110,12 +114,14 @@ class App extends Component {
             </div>
 
             <div className='search'>
-              <h2>Review technologies that you have used</h2>
+             <h2>Review technologies that you have used</h2>
               <form>
                 <div className="form-group">
-                  <input type="text" className="form-control" id="product" aria-describedby="product" placeholder="Product Name" />
+                  <input type="text" className="form-control" id="product" aria-describedby="product" placeholder="Product Name" onChange={this.handleChange.bind(this)}/>
                 </div>
-                <button type="submit" className="btn btn-primary">Review</button>
+                <Link to={`review/${this.state.title}/5add25014ece7e85a3808680/new`}>
+                  <button type="submit" className="btn btn-primary">Review</button>
+                </Link>
               </form>
             </div>
 

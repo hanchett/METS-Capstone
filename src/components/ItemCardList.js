@@ -81,8 +81,8 @@ class ItemCardList extends Component {
                 {this.state.currCards.map(card => {
                     return <ItemCard key={card._id} id={card._id} title={card.title} image={card.image} summary={card.summary} rating={card.rating} />;
                 })}
-                <div class="pageTracker">
-                    <ul class="pagination">
+                <div className="pageTracker">
+                    <ul className="pagination">
                         {this.state.pageLis.map(page =>
                             <li key={page+1} onClick={() => this.setPage(page)}>
                                 <a href={"#"}>
