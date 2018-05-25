@@ -14,6 +14,7 @@ class SideNav extends Component {
             openSubject: false,
             openDisability: false,
             openChallenge: false,
+            openGradeLevel : false,
             filters: []
         }
     }
@@ -45,6 +46,10 @@ class SideNav extends Component {
         this.setState({openChallenge : !this.state.openChallenge});
     }
 
+    openGradeLevel(e) {
+        this.setState({openGradeLevel : !this.state.openGradeLevel});
+    }
+
     selectFilter(e) {
         let button = e.target;
         let filters = this.state.filters;
@@ -74,6 +79,7 @@ class SideNav extends Component {
         const subjectDisp = this.state.openSubject ? 'block' : 'none';
         const disabilityDisp = this.state.openDisability ? 'block' : 'none';
         const challengeDisp = this.state.openChallenge ? 'block' : 'none';
+        const gradeLevelDisp = this.state.openGradeLevel ? 'block' : 'none';
         return (
             <div>
                 <div className="sidenav" style={{ display: sideDisp }}>
@@ -127,6 +133,18 @@ class SideNav extends Component {
                                 <button className="subjectListItem" value="esl" onClick={this.selectFilter.bind(this)}>ESL</button>
                                 <button className="subjectListItem" value="attendance" onClick={this.selectFilter.bind(this)}>Attendance</button>
                                 <button className="subjectListItem" value="supplemental" onClick={this.selectFilter.bind(this)}>Supplemental Education</button>
+
+                            </ul>
+
+                        </div>
+                        <div className='gradeLevel'>
+                            <h3 onClick={this.openGradeLevel.bind(this)}>
+                                Grade Levels+
+                            </h3>
+                            <ul className='subjectList gradeLevel' style={{ display: gradeLevelDisp }}> 
+                                <button className="subjectListItem" value="K-5" onClick={this.selectFilter.bind(this)}>K-5</button>
+                                <button className="subjectListItem" value="Middle School" onClick={this.selectFilter.bind(this)}>Middle School</button>
+                                <button className="subjectListItem" value="High School" onClick={this.selectFilter.bind(this)}>High School</button>
 
                             </ul>
 

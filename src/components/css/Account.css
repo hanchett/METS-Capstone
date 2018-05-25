@@ -1,6 +1,6 @@
 .acct {
     padding: 15px 25px;
-    font-size: 18px;
+    font-size: 14px;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -50,9 +50,33 @@
     width: 50%;
 }
 
+.accountSummary h3 {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
 input {
     border-radius: 3px;
     border-color: lightgray;
     margin: 5px;
     box-shadow: none;
+}
+
+.logoutBtn {
+    padding: 15px 25px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #555555;
+    border: none;
+    border-radius: 10px;
+}
+
+.logoutBtn:hover {background-color: #555555}
+
+.logoutBtn:active {
+    background-color: #555555;
+    transform: translateY(4px);
 }
