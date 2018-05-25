@@ -10,8 +10,9 @@ import "./css/NewReview.css";
 class NewReview extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
-      title: "placeholder",
+      title: props.match.params.title,
       headline: "No Headline Given",
       review: "No Summary Given",
       rating: 3.5,
@@ -51,6 +52,9 @@ class NewReview extends Component {
   }
 
   handleChange(e) {
+    console.log(e);
+    console.log(e.target.id);
+    console.log(e.target.value);
     if (typeof e === "number") {
       this.setState({
         rating: e
@@ -105,15 +109,15 @@ class NewReview extends Component {
               initialRating={this.state.rating}
             />
           </label>
-          <label className="radios" >
+          <label className="disab" >
             <h3>What education level do you teach?</h3>
-            <div className="radioBtn">
+            <div className="radioBtn dis">
               <input type="radio" name="age1" id="age" value="k-5" onChange={this.handleChange}/>K-5<br />
             </div>
-            <div className="radioBtn">
+            <div className="radioBtn dis">
               <input type="radio" name="age2" id="age" value="middle" />Middle School<br />
             </div>
-            <div className="radioBtn">
+            <div className="radioBtn dis">
               <input type="radio" name="age3" id="age" value="high" />High School<br />
             </div>
           </label>
