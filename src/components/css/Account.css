@@ -5,15 +5,15 @@
     cursor: pointer;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #7280D7;
     border: none;
     border-radius: 10px;
 }
 
-.acct:hover {background-color: #3e8e41}
+.acct:hover {background-color: rgb(89, 103, 199)}
 
 .acct:active {
-    background-color: #3e8e41;
+    background-color: #7280D7;
     transform: translateY(4px);
 }
 
@@ -27,6 +27,7 @@
     width: 50%;
     background-color: lightgray;
     border-radius: 25px;
+    
 }
 
 
@@ -51,3 +52,8 @@ input {
 .form {
     text-align: center;
 }
+
+#signUpNameLast, #signUpNameFirst {
+    width: 120px;
+}
+

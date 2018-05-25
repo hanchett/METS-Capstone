@@ -236,7 +236,7 @@ class Account extends Component {
                   id='signUpNameFirst'
                   value={signUpNameFirst}
                   onChange={this.handleChange}
-                /><br />
+                />
                 <input
                   type="name_last"
                   placeholder="Last Name"
