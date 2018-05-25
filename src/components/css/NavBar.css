@@ -6,3 +6,8 @@
   background-color: #7280D7;
 }
 
+.navigation a {
+  text-decoration: none;
+  color: white;
+}
+

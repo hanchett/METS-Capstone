@@ -18,8 +18,7 @@ class NavBar extends Component {
                         <ul className="nav navbar-nav navbar-right">
                             <li>About</li>
                             <li>Services</li>
-                            <li>Login</li>
-                            <li><i className="fa fa-user"></i></li>
+                            <li><a href="/Account">Account</a></li>
                         </ul>
                     </div>
                 </nav>
