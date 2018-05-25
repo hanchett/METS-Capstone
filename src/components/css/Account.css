@@ -1,6 +1,6 @@
 .acct {
     padding: 15px 25px;
-    font-size: 18px;
+    font-size: 14px;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -39,6 +39,11 @@
     width: 50%;
 }
 
+.accountSummary h3 {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
 input {
     margin: 5px;
     box-shadow: none;
@@ -51,9 +56,18 @@ input {
 
 .form {
     text-align: center;
+    opacity: .9;
 }
 
 #signUpNameLast, #signUpNameFirst {
     width: 120px;
 }
 
+
+.accountPage {
+    background: url("../../img/signup.jpeg");
+    background-size: cover;
+    opacity: 0.7;
+    z-index: -1; 
+    min-height: 1200px;
+}

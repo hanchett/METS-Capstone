@@ -173,7 +173,7 @@ class Account extends Component {
     
         if (!token) {
           return (
-            <div>
+            <div className='accountPage'>
               <div class="navBarPlace">
                 <NavBar />
               </div>
@@ -264,12 +264,12 @@ class Account extends Component {
                 <NavBar />
             </div>
             <div className = "accountSummary">
-                <p>Account</p>
+                <h3>Welcome {this.state.signInNameFirst}</h3>
                 <p>Username: {this.state.signInDisplayName}</p>
                 <p>First Name: {this.state.signInNameFirst}</p>
                 <p>Last Name: {this.state.signInNameLast}</p>
                 <p>Teaching Position: {this.state.signInTeachTitle}</p>
-                <button onClick={this.logout}>Logout</button>
+                <button className = "logoutBtn" onClick={this.logout}>Logout</button>
             </div>
           </div>
         );

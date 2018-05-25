@@ -9,8 +9,11 @@ class Survey extends Component {
         super(props);
         this.state = {
             question: 0,
-            answers: []
+            answers: [],
+            token : this.props.location.pathname.split("/")[2] //temp way of getting token
         }
+        console.log(this);
+        console.log("user token: " + this.state.token);
         document.body.style.overflow = 'hidden';
     }
 
@@ -183,7 +186,7 @@ class Survey extends Component {
 
                 </div>
                 <button className="skip">
-                <Link to='/'>Skip</Link>
+                <Link to='/Search'>Skip</Link>
                 </button>
             </div>
         );

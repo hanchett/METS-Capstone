@@ -86,7 +86,7 @@ app.get("/search", function (req, res) {
 app.post("/survey", function (req, res) {
   var survey = new Survey();
   survey.responses = req.body.responses;
-  survey.user = req.body.id;
+  survey.user = req.body.token;
   survey.save(function (err) {
     if (err) {
       res.send(err);

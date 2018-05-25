@@ -3,7 +3,7 @@
     opacity: 1;
 }
 
-.subject, .disability, .challenge {
+.subject, .disability, .challenge, .gradeLevel {
     padding: 20px 0 0 20px;
 }
 
@@ -42,7 +42,7 @@
     cursor: pointer;
 }
 
-.disability > button, .challenge > button {
+.disability > button, .challenge > button, .gradeLevel > button {
     font-size: .8em;
     text-align: left;
     background-color: rgba(255, 255, 255, .1);
@@ -50,6 +50,6 @@
     margin-bottom: 5px;
 }
 
-.disability > button:hover, .subjectList > button:hover {
+.disability > button:hover, .subjectList > button:hover, .gradeLevel > button:hover {
     cursor: pointer;
 }

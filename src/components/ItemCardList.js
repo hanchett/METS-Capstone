@@ -85,7 +85,7 @@ class ItemCardList extends Component {
                     <ul class="pagination">
                         {this.state.pageLis.map(page =>
                             <li key={page+1} onClick={() => this.setPage(page)}>
-                                <a href="#">
+                                <a href={"#"}>
                                     {page+1}
                                 </a>
                             </li>
