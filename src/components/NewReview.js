@@ -12,8 +12,8 @@ class NewReview extends Component {
     super(props);
     this.state = {
       title: "placeholder",
-      headline: "",
-      review: "",
+      headline: "No Headline Given",
+      review: "No Summary Given",
       rating: 3.5,
       id: props.match.params.id,
       age: [],
@@ -21,6 +21,10 @@ class NewReview extends Component {
       platforms: []
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  checkSubmit(e) {
+    console.log(e.target);
   }
 
   submitReview(e) {
@@ -127,38 +131,38 @@ class NewReview extends Component {
               perception & processing <br />
             </div>
             <div className="radioBtn dis">
-              <input type="radio" name="disability2" id="disabilities" value="3" />Information processing speed <br />
+              <input type="radio" name="disability3" id="disabilities" value="3" />Information processing speed <br />
             </div>
             <div className="radioBtn dis">
-              <input type="radio" name="disability2" id="disabilities" value="4" />Abstract reasoning <br />
+              <input type="radio" name="disability4" id="disabilities" value="4" />Abstract reasoning <br />
             </div>
             <div className="radioBtn dis">
-              <input type="radio" name="disability2" id="disabilities" value="5" />Retention<br />
+              <input type="radio" name="disability5" id="disabilities" value="5" />Retention<br />
             </div>
             <div className="radioBtn dis">
-              <input type="radio" name="disability2" id="disabilities" value="6" />Spoken & written language <br />
+              <input type="radio" name="disability6" id="disabilities" value="6" />Spoken & written language <br />
             </div>
             <div className="radioBtn dis">
-              <input type="radio" name="disability2" id="disabilities" value="7" />Mathematical Calculation <br />
+              <input type="radio" name="disability7" id="disabilities" value="7" />Mathematical Calculation <br />
             </div>
             </label>
             <label className='disab'>
               <h3>What technology platforms do you have access to?</h3>
-              <div className="radioBtn dis">
+              <div className="radioBtn dis" name='ipad'>
                 <input type="radio"/>Ipads<br/>
               </div>
-              <div className="radioBtn dis">
+              <div className="radioBtn dis" name='android'>
                 <input type="radio"/>Android Tablets<br/> 
               </div>
-              <div className="radioBtn dis">
+              <div className="radioBtn dis" name='laptop'>
                 <input type="radio"/>Laptops<br/>
               </div>
-              <div className="radioBtn dis">
+              <div className="radioBtn dis" name='desktop'>
                 <input type="radio"/>Desktop Computers (Mac or Windows)<br/>
               </div>
             </label>
           <label className="formLabel">
-            <input type="submit" value="Submit" className="submitBtn" />
+            <input type="submit" value="Submit" className="submitBtn" onClick={this.checkSubmit.bind(this)} />
           </label>
         </form>
       </div>
