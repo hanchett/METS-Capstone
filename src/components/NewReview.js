@@ -32,6 +32,7 @@ class NewReview extends Component {
     const { headline, review, rating, id, age, disabilities, platforms } = this.state;
     const uid = '5af606f13aa90513d1c97164'; //TODO: Lookup user based on Mason's work
     const username = 'shig';
+    console.log(this.state.headline);
 
     axios
       .post(`http://localhost:3101/review/${id}`, {
@@ -61,13 +62,15 @@ class NewReview extends Component {
       });
     } else {
       let newState = this.state[e.target.id];
-      if(this.state[e.target.id].includes(e.target.value)) {
+      if(this.state[e.target.id].includes(e.target.value) && e.target.type == "checkbox") {
         const index = this.state[e.target.id].indexOf(e.target.value);
         newState.splice(index, 1);
       } else if(e.target.type == 'checkbox'){
         let newState = this.state[e.target.id];
         newState.push(e.target.value);
-      } 
+      } else {
+        newState = e.target.value;
+      }
       this.setState({
         [e.target.id]: newState
       });
@@ -159,7 +162,7 @@ class NewReview extends Component {
             </div>
             </label>
             <label className='disab'>
-              <h3>What technology platforms do you have access to?</h3>
+              <h3>What technology platforms did you use this on?</h3>
               <div className='radioBtn dis' name='ipad'>
                 <input type='checkbox' id='disabilities' value='ipad' onChange={this.handleChange}/>Ipads<br/>
               </div>
