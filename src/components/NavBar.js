@@ -16,9 +16,8 @@ class NavBar extends Component {
                             <Link to={"/"} style={style} className="navbar-brand">DiscoverED</Link>
                         </div>
                         <ul className="nav navbar-nav navbar-right">
-                            <a href='https://shigenaka.github.io/DiscoverEd-Description/' target="_blank"><li>About</li></a>
-                            <li>Services</li>
-                            <li><a href="/Account">Account</a></li>
+                            <a href='https://shigenaka.github.io/DiscoverEd-Description/' target="_blank" className='aboutLink navLink'>About</a>
+                            <Link to="/Account" className='navLink'>Account</Link>
                         </ul>
                     </div>
                 </nav>

@@ -20,18 +20,13 @@ class ItemCardList extends Component {
 
     loadProducts() {
         axios.get(`http://localhost:3101/search`).then(res => {
-            //console.log(res);
             var prodData = res.data;
-            //console.log(prodData.slice(this.state.currItems[0],this.state.currItems[1]));
-            //console.log(Math.ceil(res.data.length/9));
             this.setState({
                 cards: res.data,
                 numPages : Math.ceil(res.data.length/9),
                 currCards : res.data.slice(0,9)
             });
             var nums = Array.apply(null, {length: this.state.numPages}).map(Number.call, Number)
-            //console.log(nums);
-            console.log(this.state.currCards);
             /*var lis = [];
             for (var i=0; i<this.state.numPages; i++) {
                 lis.push(<li id = {i} className = "pageNum" key={i} onClick={() => this.setPage(this.props.id)}><a href = "#">{i + 1}</a></li>);

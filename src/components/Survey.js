@@ -11,15 +11,11 @@ class Survey extends Component {
             question: 0,
             answers: []
         }
-        console.log(this);
-        console.log(this.state.token);
         document.body.style.overflow = 'hidden';
     }
 
     // Updates State 
     answeredQuestion(e) {
-        console.log(this)
-        console.log(e.target.id)
         let question = this.state.question;
         this.setState({
             question: e.target.id

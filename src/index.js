@@ -11,6 +11,7 @@ import NewProduct from './components/NewProduct';
 import registerServiceWorker from './registerServiceWorker';
 import Account from './components/Account';
 import NewReview from './components/NewReview';
+import SurveyResults from './components/SurveyResults';
 
 
 ReactDOM.render(
@@ -21,7 +22,7 @@ ReactDOM.render(
       <Route exact path='/review/:id?' component={Review}/>
       <Route exact path='/survey/:id?' component={Survey}/>
       <Route exact path='/account' component={Account}/>
-      <Route exact path='/surveyresults/:q1/:q2/:q3/:q4/:q5/:q6/:q7' component={Search} />
+      <Route exact path='/surveyresults/:responses' component={SurveyResults} />
       <Route exact path='/product/new' component={NewProduct}/>
       <Route exact path='/review/:title/:id/new' component={NewReview}/>
     </div>
