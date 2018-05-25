@@ -177,7 +177,7 @@ class Account extends Component {
               <div class="navBarPlace">
                 <NavBar />
               </div>
-              <div className = "signin">
+              <div className = "signin form">
                 {
                   (signInError) ? (
                     <p>{signInError}</p>
@@ -202,7 +202,7 @@ class Account extends Component {
                 <br />
                 <button className='acct' onClick={this.onSignIn}>Sign In</button>
               </div>
-              <div className = "signup">
+              <div className = "signup form">
                 {
                   (signUpError) ? (
                     <p>{signUpError}</p>
