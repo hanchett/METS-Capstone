@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ForumCard from './ForumCard';
+import axios from 'axios';
 
 class ForumCardList extends Component {
     constructor(props) {
@@ -11,7 +12,12 @@ class ForumCardList extends Component {
     }
 
     loadForumCards() {
-
+        axios.get("http://localhost:3101/forum").then(res => {
+            this.setState({
+                cards: res.data
+            });
+            console.log(res.data);
+        });
     }
 
     componentDidMount() {

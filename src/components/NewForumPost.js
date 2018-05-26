@@ -39,7 +39,8 @@ class NewForumPost extends Component {
         date: date
     }).then(res => {
         console.log('Forum Post Successfully Added');
-        this.props.history.push(`/forum`);
+        this.props.history.push(`/Forum`);
+        
       })
       .catch(function(err) {
         console.log(err);

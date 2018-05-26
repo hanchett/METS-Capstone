@@ -7,7 +7,7 @@ var forumSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        username: String
+        display_name: String
     }, 
     subject: String, 
     category: String, 

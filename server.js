@@ -295,20 +295,26 @@ app.post("/forum/new/:id", function (req, res) {
       if (err) {
         res.send(err);
       }
+      res.end();
     });
-
-
   });
-
-
 });
+
+app.get("/forum", function(req, res) {
+  ForumPost.find(function (err, posts) {
+    if (err) {
+      console.log("Error ", err);
+      res.send(err);
+    }
+    res.send(posts);
+  });
+})
 
 // Adds a high level comment to a forum post 
 app.post("/forum/:id", function (req, res) {
-  Forum.findById(req.params.id, function (err, post) {
+  ForumPost.findById(req.params.id, function (err, post) {
     if (err) {
       console.log(err);
-      res.redirect("/forum");
     }
     var forumComment = new ForumComment();
     forumComment.author = req.body.author;
@@ -330,8 +336,7 @@ app.post("/forum/:id/:commentID", function (req, res) {
     commentReply.date = req.body.date;
     comment.replies.push(commentReply);
     comment.save();
-    res.redirect('/forum/' + req.param.id);
-    res.end();
+
   });
 });
 
