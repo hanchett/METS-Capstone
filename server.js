@@ -343,29 +343,6 @@ app.post("/forum/:id/:commentID", function (req, res) {
 });
 
 
-
-
-//Passport configuration
-// app.use(require("express-session")({
-//     secret: "METS ARMA",
-//     resave: false,
-//     saveUninitialized: false
-// }));
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-// //Authenticate user on each page
-// app.use(function(req, res, next) {
-//     res.locals.currentUser = req.user;
-//     res.locals.error = req.flash("error");
-//     res.locals.success = req.flash("success");
-//     next();
-// });
-
 app.listen(port, function (err) {
   if (err) {
     console.log(err);

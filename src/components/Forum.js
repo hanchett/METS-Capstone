@@ -16,7 +16,7 @@ class Forum extends Component {
             <div>
                 <NavBar/>
                 <div className="content">
-                    <h1>DiscoverEd Forum</h1>
+                    <h1>DiscoverEd Collaboration Forum</h1>
                 </div>
                 <ForumCardList/>
             </div>  
