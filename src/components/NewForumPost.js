@@ -36,7 +36,7 @@ class NewForumPost extends Component {
         subject: subject, 
         category: category, 
         summary: summary, 
-        date: date
+        date: new Date()
     }).then(res => {
         console.log('Forum Post Successfully Added');
         this.props.history.push(`/Forum`);

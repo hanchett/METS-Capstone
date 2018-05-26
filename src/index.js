@@ -14,6 +14,7 @@ import NewReview from './components/NewReview';
 import SurveyResults from './components/SurveyResults';
 import Forum from './components/Forum';
 import NewForumPost from './components/NewForumPost';
+import ForumPost from './components/ForumPost';
 
 ReactDOM.render(
   <Router>
@@ -28,6 +29,7 @@ ReactDOM.render(
       <Route exact path='/review/:title/:id/new' component={NewReview}/>
       <Route exact path='/forum' component={Forum}/>
       <Route exact path='/forum/new' component={NewForumPost}/>
+      <Route exact path='/forum/:id' component={ForumPost}/>
     </div>
   </Router>,
   document.getElementById('root')

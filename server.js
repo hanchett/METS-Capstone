@@ -146,6 +146,15 @@ app.use(passport.session());
 //passport.serializeUser(User.serializeUser());
 //passport.deserializeUser(User.deserializeUser());
 
+app.get('/user/:id', (req, res) => {
+  User.findById(req.params.id, function(err, user) {
+    if(err) {
+      console.log(err);
+      res.send(err);
+    }
+    res.send(user);
+  })
+});
 
 //Login
 app.get('/account/signin/:email/:password', (req, res) => {
