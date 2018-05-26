@@ -12,22 +12,22 @@ Although the technologies exist, teachers struggle to find technologies that add
 
 ## Features
 
-###Personalization:
+### Personalization:
 Upon account creation, DiscoverEd redirects users to a survey to gain a better understanding of their classroom environments and provides a recommended set of technologies for the users to investigate further.
 
-###Product Search:
+### Product Search:
 DiscoverEd allows users to explore a centralized repository of inclusive educational applications and software, updated by our team and by users.
 
-###Product Reviews:
+### Product Reviews:
 Each product has a review page that allows users to help other users on their selection decisions, and how they can be used to helps your students thrive. We also integrated questions from our survey within the review process to strengthen our recommendations.
 
-###Collaborative Forums:
+### Collaborative Forums:
 During our research, we found that many teachers struggle collaborating with their peers within their own schools due to office politics and drama. WE created a forum for these teachers to collaborate semi-anonymously (only their usernames are shown) so that they can receive advice and input from other educations working in special education.
 
 
 ## Technology
 
-## How to Run:
+### How to Run:
 
 To run our application, please clone the repository on your local machine and open the bash command line application on your machine. Once in bash, change into the application directory and run this line of code: `npm run start-dev` and the application should be up and running on localhost:3001.
 
