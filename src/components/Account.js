@@ -113,6 +113,7 @@ class Account extends Component {
         axios.get(`http://localhost:3101/account/signin/${signInEmail}/${signInPassword}`)
             .then(res => {
                 console.log('json', res.data[0]);
+                console.log(res.session);
                 if (res.data[0]) {
                     this.setState({
                         signInError: res.data[0].message,
@@ -126,7 +127,6 @@ class Account extends Component {
                         signInTeachTitle: res.data[0].teach_title,
                     });
                     console.log(this.state.token);
-                    console.log(res.user);
                 } else {
                     this.setState({
                         signInError: res.message,

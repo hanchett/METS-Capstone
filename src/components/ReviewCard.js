@@ -14,6 +14,7 @@ class ReviewCard extends Component {
             summary: props.summary, 
             title: props.title
         }
+        console.log(props.author.split(',')[3].trim().split("'")[1])
         
     }
 

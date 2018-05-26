@@ -5,6 +5,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('./middleware');
+var session = require("express-session");
 var bodyParser = require('body-parser');
 var Review = require('./models/review');
 var Product = require('./models/product');
@@ -28,6 +29,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+
+app.use(session({
+    secret: 'DiscoverEd',
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Preventing Issues with CORS
 app.use(function (req, res, next) {
@@ -165,8 +172,8 @@ app.get('/account/signin/:email/:password', (req, res) => {
     console.log(user);
     if (user.validPassword(currPassword)) {
       passport.authenticate('local');
+      req.session.user = users[0];
       res.send(users);
-      console.log(users);
     } else {
       return res.send({
         success: false,
