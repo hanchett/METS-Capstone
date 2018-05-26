@@ -42,4 +42,4 @@ We chose to use MongoDB due to our team's familiarity with the free tier availab
 
 ## Project Deployment:
 
-Our project is not currently deployed on a live platform, so here is a link to a Google Slides presentation with gifs of the application in action.
+Our project is not currently deployed on a live platform, so here is a link to a Google Slides presentation with gifs of the application in action:
