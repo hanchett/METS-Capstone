@@ -26,7 +26,8 @@ class Account extends Component {
             signUpTeachTitle: '',
             redirectTo : '',
             signedUp : 0,
-
+            signupDisp: 'none',
+            signinDisp: 'block'
         }
         
         this.handleChange = this.handleChange.bind(this);
@@ -152,7 +153,15 @@ class Account extends Component {
         }).catch(error => {
             console.log('Logout error')
         })
-      }
+    }
+
+    swapSign() {
+        let {signupDisp, signinDisp} = this.state;
+        this.setState({
+            signupDisp: signinDisp,
+            signinDisp: signupDisp
+        });
+    }
 
     render() {
         //console.log("Here render")
@@ -170,14 +179,15 @@ class Account extends Component {
           signUpTeachTitle,
           signUpError,
         } = this.state;
-    
+        
+
         if (!token) {
           return (
             <div className='accountPage'>
               <div class="navBarPlace">
                 <NavBar />
               </div>
-              <div className = "signin form">
+              <div className = "signin form" style={{display: this.state.signinDisp}}> 
                 {
                   (signInError) ? (
                     <p>{signInError}</p>
@@ -201,8 +211,10 @@ class Account extends Component {
                 />
                 <br />
                 <button className='acct' onClick={this.onSignIn}>Sign In</button>
+                <br/>
+                <button className='signupLink'>Don't have an account yet? <span onClick={this.swapSign.bind(this)}>Sign up here</span></button>
               </div>
-              <div className = "signup form">
+              <div className = "signup form" style={{display: this.state.signupDisp}}>
                 {
                   (signUpError) ? (
                     <p>{signUpError}</p>
@@ -252,6 +264,8 @@ class Account extends Component {
                   onChange={this.handleChange}
                 /><br />
                 <button className='acct' onClick={this.onSignUp}>Sign Up</button>
+                <br/>
+                <button className='signupLink'>Already have an account? <span onClick={this.swapSign.bind(this)}>Sign in here</span></button>
               </div>
     
             </div>

@@ -12,7 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 import Account from './components/Account';
 import NewReview from './components/NewReview';
 import SurveyResults from './components/SurveyResults';
-
+import Forum from './components/Forum';
+import NewForumPost from './components/NewForumPost';
 
 ReactDOM.render(
   <Router>
@@ -25,6 +26,8 @@ ReactDOM.render(
       <Route exact path='/surveyresults/:responses' component={SurveyResults} />
       <Route exact path='/product/new' component={NewProduct}/>
       <Route exact path='/review/:title/:id/new' component={NewReview}/>
+      <Route exact path='/forum' component={Forum}/>
+      <Route exact path='/forum/new' component={NewForumPost}/>
     </div>
   </Router>,
   document.getElementById('root')

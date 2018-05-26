@@ -1,0 +1,46 @@
+.block {
+    background: url('../../img/forum-post.jpeg');
+    background-size: cover;
+    z-index: -1;
+    min-height: 1000px;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .7;
+}
+
+
+.forumPostCard {
+    border: 8px solid #7280D7;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    min-height: 500px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.forumPostCard > h2 {
+    font-size: 1.6em;
+}
+
+.container {
+    padding-top: 100px;
+}
+
+.forumForm > input {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.sum {
+    height: 200px;
+    overflow: scroll;
+    padding: 10px;
+}
+
+.submitBtn {
+    cursor:  pointer;
+}

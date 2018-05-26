@@ -12,6 +12,8 @@ var Product = require('./models/product');
 var Survey = require('./models/Survey');
 var User = require('./models/user');
 var bcrypt = require('bcrypt');
+var ForumPost = require('./models/forumPost');
+var ForumComment = require('./models/forumComment');
 
 // Setting up instances and port
 var app = express();
@@ -279,6 +281,69 @@ app.delete("/product/delete/:id", function (req, res) {
     res.redirect("/search");
   });
 });
+
+// Makes a new forum post 
+app.post("/forum/new/:id", function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    }
+
+    var forumPost = new ForumPost();
+    forumPost.title = req.body.title;
+    forumPost.author = user;
+    forumPost.subject = req.body.subject;
+    forumPost.category = req.body.category;
+    forumPost.summary = req.body.summary;
+    forumPost.date = req.body.date;
+
+    forumPost.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
+    });
+
+
+  });
+
+
+});
+
+// Adds a high level comment to a forum post 
+app.post("/forum/:id", function (req, res) {
+  Forum.findById(req.params.id, function (err, post) {
+    if (err) {
+      console.log(err);
+      res.redirect("/forum");
+    }
+    var forumComment = new ForumComment();
+    forumComment.author = req.body.author;
+    forumComment.content = req.body.content;
+    forumComment.date = req.body.date;
+    post.comments.push(forumComment)
+    post.save();
+    res.redirect('/forum/' + req.param.id);
+    res.end();
+  });
+});
+
+// Adds a reply to a comment 
+app.post("/forum/:id/:commentID", function (req, res) {
+  ForumComment.findById(req.params.commentID, function (err, comment) {
+    var commentReply = new ForumComment();
+    commentReply.author = req.body.author;
+    commentReply.content = req.body.content;
+    commentReply.date = req.body.date;
+    comment.replies.push(commentReply);
+    comment.save();
+    res.redirect('/forum/' + req.param.id);
+    res.end();
+  });
+});
+
+
+
 
 //Passport configuration
 // app.use(require("express-session")({
