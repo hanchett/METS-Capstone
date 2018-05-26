@@ -18,3 +18,7 @@
 .navLink:hover {
   opacity: .5;
 }
+
+.searchLink {
+  margin-right: 20px;
+}

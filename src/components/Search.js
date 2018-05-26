@@ -33,6 +33,8 @@ class Search extends Component {
         } else {
             // this.mapSearch = this.mapSearch.bind(this);
         }
+        console.log(this.props.style);
+        document.body.style.overflow = 'auto';
     }
 
     // mapSearch() {

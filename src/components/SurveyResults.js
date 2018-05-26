@@ -4,6 +4,9 @@ import SideNav from './SideNav';
 import SurveyResultCards from './SurveyResultCards';
 import axios from 'axios';
 
+//css
+import './css/SurveyResults.css';
+
 
 class SurveyResults extends Component {
     constructor(props) {
@@ -14,12 +17,13 @@ class SurveyResults extends Component {
             prods: []
         };
         this.loadCards = this.loadCards.bind(this);
+        document.body.style.overflow = 'auto';
     }
 
     loadCards() {
         axios.get(`http://localhost:3101/search`).then(res => {
             let prodData = res.data;
-            prodData = prodData.slice(15, 21);
+            prodData = prodData.slice(22, 28); //for display, people can see same things and we can aggregate reviews for capstone night
             this.setState({
                 prods: prodData
             });    
@@ -45,7 +49,7 @@ class SurveyResults extends Component {
         let paddingTop = this.state.displaySideNav === true ? '130px' : '0px';
 
         return (
-            <div>
+            <div className = "surveyResults">
                 <NavBar />
                 <SideNav callback={this.addMargin.bind(this)} />
                 <div className="results" style={{ paddingTop: paddingTop }}>

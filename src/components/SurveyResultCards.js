@@ -34,7 +34,7 @@ class SurveyResultsCards extends Component {
         let match = Math.round(75 + Math.random() * 25);
         return(
             <div>
-                <Link to={`/review/${this.state.id}`}>
+                <Link to={`/review/${this.state.id}#`}>
                     <div className="card">
                         <div className="imgContainer">
                             <img src={`${this.state.image}`} alt="card placeholder" />

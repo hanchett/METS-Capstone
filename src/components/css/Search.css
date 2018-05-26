@@ -17,6 +17,10 @@
   padding: 0px 10px;
 }
 
+body {
+  overflow: auto;
+}
+
 .results {
   margin-left: 160px;
   padding: 10px 40px;

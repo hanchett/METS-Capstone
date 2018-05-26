@@ -61,7 +61,7 @@ class Survey extends Component {
         return (
             <div className='survey'>
                 <div className="hello">
-                    <h1>Welcome to DiscoverED</h1>
+                    <h1>Welcome to DiscoverEd</h1>
                     <h2 className='blurb'>Please take a minute to work through this brief survey so we can get to know your teaching circumstances better. After filling this out, we'll present you with curated technologies that fit your specific situation.</h2>
                     <button className='surveyBtn' id="0" onClick={this.answeredQuestion.bind(this)}>Continue</button>
                 </div>
@@ -172,12 +172,12 @@ class Survey extends Component {
                     <h1>
                         Do you work with students who miss class more than 25 percent of the time?
                     </h1>
-                    <Link to={'/surveyresults/' + this.state.answers + "," + 1} >
+                    <Link to={'/surveyresults/' + this.state.answers + "," + 1} style={{ overflow : 'auto' }}>
                         <button className='lBtn'>
                             Yes
                         </button>
                     </Link>
-                    <Link to={'/surveyresults/' + this.state.answers + "," + 2} >
+                    <Link to={'/surveyresults/' + this.state.answers + "," + 2} style={{ overflow : 'auto' }}>
                         <button className='lBtn'>
                             No
                         </button>
@@ -186,7 +186,7 @@ class Survey extends Component {
 
                 </div>
                 <button className="skip">
-                <Link to='/Search'>Skip</Link>
+                <Link to='/Search' style={{ overflow : 'auto' }}>Skip</Link>
                 </button>
             </div>
         );
