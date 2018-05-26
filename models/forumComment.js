@@ -10,7 +10,7 @@ var forumCommentSchema = mongoose.Schema({
     }, 
     content: String,
     date: Date,
-    likes: {type: number, default: 0}, 
+    likes: {type: Number, default: 0}, 
     replies: []
 });
 

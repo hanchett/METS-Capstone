@@ -2,16 +2,16 @@
 "use strict";
 
 // Dependencies
-var express      = require('express');
-var mongoose     = require('mongoose');
-var passport     = require('./middleware');
-var bodyParser   = require('body-parser');
-var Review       = require('./models/review');
-var Product      = require('./models/product');
-var Survey       = require('./models/Survey');
-var User         = require('./models/user');
-var bcrypt       = require('bcrypt');
-var ForumPost    = require('./models/forumPost');
+var express = require('express');
+var mongoose = require('mongoose');
+var passport = require('./middleware');
+var bodyParser = require('body-parser');
+var Review = require('./models/review');
+var Product = require('./models/product');
+var Survey = require('./models/Survey');
+var User = require('./models/user');
+var bcrypt = require('bcrypt');
+var ForumPost = require('./models/forumPost');
 var ForumComment = require('./models/forumComment');
 
 // Setting up instances and port
@@ -276,25 +276,36 @@ app.delete("/product/delete/:id", function (req, res) {
 });
 
 // Makes a new forum post 
-app.post("/forum/new", function(req, res) {
-  var forumPost = new ForumPost();
-  forumPost.title    = req.body.title;
-  forumPost.author   = req.body.author;
-  forumPost.subject  = req.body.subject;
-  forumPost.category = req.body.category;
-  forumPost.summary  = req.body.summary;
-  forumPost.date     = req.body.date;
-
-  forumPost.save(function (err) {
+app.post("/forum/new/:id", function (req, res) {
+  User.findById(req.params.id, function (err, user) {
     if (err) {
+      console.log(err);
       res.send(err);
     }
+
+    var forumPost = new ForumPost();
+    forumPost.title = req.body.title;
+    forumPost.author = user;
+    forumPost.subject = req.body.subject;
+    forumPost.category = req.body.category;
+    forumPost.summary = req.body.summary;
+    forumPost.date = req.body.date;
+
+    forumPost.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
+    });
+
+
   });
+
+
 });
 
 // Adds a high level comment to a forum post 
-app.post("/forum/:id", function(req, res) {
-  Forum.findById(req.params.id, function(err, post) {
+app.post("/forum/:id", function (req, res) {
+  Forum.findById(req.params.id, function (err, post) {
     if (err) {
       console.log(err);
       res.redirect("/forum");
@@ -311,8 +322,8 @@ app.post("/forum/:id", function(req, res) {
 });
 
 // Adds a reply to a comment 
-app.post("/forum/:id/:commentID", function(req, res) {
-  ForumComment.findById(req.params.commentID, function(err, comment) {
+app.post("/forum/:id/:commentID", function (req, res) {
+  ForumComment.findById(req.params.commentID, function (err, comment) {
     var commentReply = new ForumComment();
     commentReply.author = req.body.author;
     commentReply.content = req.body.content;
