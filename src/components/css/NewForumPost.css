@@ -1,0 +1,28 @@
+.block {
+    background: url('../../img/forum-post.jpeg');
+    background-size: cover;
+    z-index: -1;
+    min-height: 1000px;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .7;
+}
+
+
+.forumPostCard {
+    background-color: #7280D7;
+    width: 50%;
+    margin: 0 auto;
+    opacity: 1;
+    height: 500px;
+    top: 60px;
+    color: white;
+    border-radius: 10px;
+
+}
+
+.container {
+    padding-top: 100px;
+}

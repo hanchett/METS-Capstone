@@ -11,6 +11,7 @@ var forumSchema = mongoose.Schema({
     }, 
     subject: String, 
     category: String, 
+    summary: String,
     views: {type: Number, default: 0}, 
     comments: [
         {
