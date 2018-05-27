@@ -331,6 +331,7 @@ app.get('/forum/:id', function (req, res) {
   ForumPost.findById(req.params.id, function (err, post) {
     if (err) {
       console.log(err);
+      res.send(err);
     }
     res.send(post);
   });

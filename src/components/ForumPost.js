@@ -15,17 +15,20 @@ class ForumPost extends Component {
             this.setState({
                 post: res
             }); 
-            console.log(res);
         }).catch(err => {
             console.log(err);
-        })
+        });
+    }
+
+    componentDidMount() {
+        this.getComments();
     }
 
     render() {
         console.log(this.state);
         return (
             <div>
-                
+                test
 
             </div>
         )
