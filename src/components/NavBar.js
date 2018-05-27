@@ -13,7 +13,7 @@ class NavBar extends Component {
                 <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <Link to={"/"} style={style} className="navbar-brand">DiscoverED</Link>
+                            <Link to={"/"} style={style} className="navbar-brand">DiscoverEd</Link>
                         </div>
                         <ul className="nav navbar-nav navbar-right">
                             <a href='https://shigenaka.github.io/DiscoverEd-Description/' target="_blank" className='aboutLink navLink'>About</a>

@@ -64,11 +64,12 @@
 }
 
 .accountPage {
-    background: url("../../img/signup.jpeg");
-    background-size: cover;
-    opacity: 0.7;
+    background: url("../../img/signup.png");
+    background-size: auto;
     z-index: -1;
     min-height: 1200px;
+    max-height: 1800px;
+    overflow: hidden !important;
 }
 
 .signupLink {

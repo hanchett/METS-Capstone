@@ -131,8 +131,12 @@ class App extends Component {
                 <div className="form-group">
                   <input type="text" className="form-control" id="topic" aria-describedby="topic" placeholder="Topic" />
                 </div>
-                <div className='advSearch'>Don't have a topic in mind? Go straight to the forum.</div>
-                <button type="submit" className="btn btn-primary">Search</button>
+                <Link to = {`forum`}>
+                  <div className='advSearch forumSearch'>Don't have a topic in mind? Go straight to the forum.</div>
+                </Link>
+                <Link to={`forum`}>
+                  <button type="submit" className="btn btn-primary">Search</button>
+                </Link>
               </form>
             </div>
           </Slider>
