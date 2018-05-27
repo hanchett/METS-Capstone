@@ -15,6 +15,7 @@ import SurveyResults from './components/SurveyResults';
 import Forum from './components/Forum';
 import NewForumPost from './components/NewForumPost';
 import ForumPost from './components/ForumPost';
+import NewComment from './components/NewComment';
 
 ReactDOM.render(
   <Router>
@@ -30,6 +31,7 @@ ReactDOM.render(
       <Route exact path='/forum' component={Forum}/>
       <Route exact path='/forum/new' component={NewForumPost}/>
       <Route exact path='/forum/:id' component={ForumPost}/>
+      <Route exact path='/forum/new/:id' component={NewComment}/>
     </div>
   </Router>,
   document.getElementById('root')

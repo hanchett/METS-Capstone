@@ -18,7 +18,7 @@ class ForumCard extends Component {
       category: props.category,
       image: require("../img/user_placeholder.png"),
       time: dateDiff,
-      views: Math.round(20 * Math.random()),
+      views: props.views,
       comments: props.comments,
       id: props.id
     };
@@ -27,7 +27,7 @@ class ForumCard extends Component {
   render() {
     return (
       <div>
-        <Link to={`/Forum/${this.state.id}`}>
+        <Link to={`/Forum/${this.state.id}`} params={{test: "test"}}>
           <div className="forumCard">
             <img src={this.state.image} alt="User profile image" />
             <div className="titleInfo">

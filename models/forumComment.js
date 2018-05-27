@@ -8,7 +8,7 @@ var forumCommentSchema = mongoose.Schema({
         },
         username: String
     }, 
-    content: String,
+    summary: String,
     date: Date,
     likes: {type: Number, default: 0}, 
     replies: []

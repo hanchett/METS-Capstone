@@ -38,6 +38,7 @@ class ForumCardList extends Component {
               date={post.date}
               title={post.title}
               comments={post.comments}
+              views={post.views}
             />
           );
         })
