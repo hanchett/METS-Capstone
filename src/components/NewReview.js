@@ -78,6 +78,7 @@ class NewReview extends Component {
   }
 
   render() {
+    window.scrollTo(0, 0); //resets to top of page
     var Rating = require('react-rating');
     return (
       <div>

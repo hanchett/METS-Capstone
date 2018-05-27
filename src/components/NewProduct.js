@@ -54,6 +54,7 @@ class NewProduct extends Component {
     }
 
     render() {
+        window.scrollTo(0, 0); //resets to top of page
         return (
             <div className='Product'>
                 <NavBar />

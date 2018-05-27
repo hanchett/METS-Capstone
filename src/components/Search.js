@@ -85,6 +85,9 @@ class Search extends Component {
 
 
     render() {
+        console.log("current subjects: " + this.state.subjects);
+        console.log("current disabilities: " + this.state.disabilities);
+        console.log("current circumstances: " + this.state.circumstances);
         let paddingTop = this.state.displaySideNav === true ? '130px' : '0px';
         return (
             <div>

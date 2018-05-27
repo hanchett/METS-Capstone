@@ -64,7 +64,7 @@ class SideNav extends Component {
     }
 
     render() {
-        console.log(this.state.filters);
+        //console.log(this.state.filters);
         let hamburger = <FontAwesome
             name='fas fa-bars'
             size='2x'
@@ -87,7 +87,7 @@ class SideNav extends Component {
                     <div className="filters">
                         <div className='subject'>
                             <h3 onClick={this.openSubject.bind(this)}>
-                                Subject+
+                                Subject
                             </h3>
                             <ul className='subjectList' style={{ display: subjectDisp }}>
                                 <button className="subjectListItem" value="english" onClick={this.selectFilter.bind(this)} value="english">English</button>
@@ -99,7 +99,7 @@ class SideNav extends Component {
                         </div>
                         <div className='disability'>
                             <h3 onClick={this.openDisability.bind(this)}>
-                                Learning Disabilities+
+                                Learning Disabilities
                             </h3>
                             <ul className='subjectList disability' style={{ display: disabilityDisp }}>
                                 <button className="subjectListItem" value="auditory" onClick={this.selectFilter.bind(this)} >
@@ -127,7 +127,7 @@ class SideNav extends Component {
                         </div>
                         <div className='challenge'>
                             <h3 onClick={this.openChallenge.bind(this)}>
-                                Student Challenges+
+                                Student Challenges
                             </h3>
                             <ul className='subjectList challenge' style={{ display: challengeDisp }}> 
                                 <button className="subjectListItem" value="esl" onClick={this.selectFilter.bind(this)}>ESL</button>
@@ -139,7 +139,7 @@ class SideNav extends Component {
                         </div>
                         <div className='gradeLevel'>
                             <h3 onClick={this.openGradeLevel.bind(this)}>
-                                Grade Levels+
+                                Grade Levels
                             </h3>
                             <ul className='subjectList gradeLevel' style={{ display: gradeLevelDisp }}> 
                                 <button className="subjectListItem" value="K-5" onClick={this.selectFilter.bind(this)}>K-5</button>

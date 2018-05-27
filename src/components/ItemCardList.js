@@ -92,6 +92,11 @@ class ItemCardList extends Component {
                         )}
                     </ul>
                 </div>
+                <div className = 'newProd'>
+                    <Link to="/product/new">
+                        <button>New Product</button>
+                    </Link>
+                </div>
             </div>
         );
     }

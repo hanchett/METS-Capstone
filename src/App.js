@@ -106,7 +106,9 @@ class App extends Component {
                 <div className="form-group">
                   <MultiSelect name={"circumstance"} placeholder={"Student Circumstance"} addFilter={this.addCircumstance.bind(this)} />
                 </div>
+                {/*
                 <div className='advSearch'>Advanced Search</div>
+                */}
                 <Link to={'/search/' + `${this.state.subjects.length > 0 ? this.state.subjects  + "/": "all/"}` + `${this.state.disabilities.length > 0 ? this.state.disabilities  + "/": "all/"}` + `${this.state.circumstances.length > 0 ? this.state.circumstances  + "/": "all/"}`}>
                   <button type="submit" className="btn btn-primary">Search</button>
                 </Link>

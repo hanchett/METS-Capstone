@@ -50,6 +50,7 @@ class Review extends Component {
     render() {
         let rating = [];
         console.log(this.state);
+        window.scrollTo(0, 0); //resets to top of page
         for (let i = 0; i < this.state.info.rating; i++) {
             rating.push(<FontAwesome key={i} name='fas fa-star' />);
         }

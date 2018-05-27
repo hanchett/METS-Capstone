@@ -86,3 +86,20 @@ button {
   background-color: #4CAF50;
   color: white;
 }
+
+.newProd {
+  float: right;
+}
+
+.newProd button {
+  padding-top: 8px;
+  background-color: #7280D7;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  padding: 10px 5px;
+  font-size: 14px;
+}
