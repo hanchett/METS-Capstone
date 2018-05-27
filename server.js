@@ -31,9 +31,9 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use(session({
-    secret: 'DiscoverEd',
-    resave: false,
-    saveUninitialized: true
+  secret: 'DiscoverEd',
+  resave: false,
+  saveUninitialized: true
 }));
 
 // Preventing Issues with CORS
@@ -147,8 +147,8 @@ app.use(passport.session());
 //passport.deserializeUser(User.deserializeUser());
 
 app.get('/user/:id', (req, res) => {
-  User.findById(req.params.id, function(err, user) {
-    if(err) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) {
       console.log(err);
       res.send(err);
     }
@@ -316,7 +316,7 @@ app.post("/forum/new/:id", function (req, res) {
   });
 });
 
-app.get("/forum", function(req, res) {
+app.get("/forum", function (req, res) {
   ForumPost.find(function (err, posts) {
     if (err) {
       console.log("Error ", err);
@@ -324,7 +324,17 @@ app.get("/forum", function(req, res) {
     }
     res.send(posts);
   });
-})
+});
+
+// Gets a specific forum post
+app.get('/forum/:id', function (req, res) {
+  ForumPost.findById(req.params.id, function (err, post) {
+    if (err) {
+      console.log(err);
+    }
+    res.send(post);
+  });
+});
 
 // Adds a high level comment to a forum post 
 app.post("/forum/:id", function (req, res) {
@@ -352,7 +362,6 @@ app.post("/forum/:id/:commentID", function (req, res) {
     commentReply.date = req.body.date;
     comment.replies.push(commentReply);
     comment.save();
-
   });
 });
 
