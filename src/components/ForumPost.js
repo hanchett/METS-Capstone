@@ -119,7 +119,7 @@ class ForumPost extends Component {
               <FontAwesome className="like" name="fas fa-thumbs-up" />
             </div>
             <div className="stats">
-                {(new Date() - new Date(comment.date)) % 24}
+              {(new Date() - new Date(comment.date)) % 24} Hours Ago
             </div>
           </div>
         );
