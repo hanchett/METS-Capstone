@@ -4,11 +4,11 @@ var forumSchema = mongoose.Schema({
     title: String,
     author: {
         id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User"
         },
         display_name: String
-    }, 
+    },  
     subject: String, 
     category: String, 
     summary: String,
@@ -22,4 +22,4 @@ var forumSchema = mongoose.Schema({
     date: Date
 });
 
-module.exports = mongoose.model("Forum", forumSchema);
+module.exports = mongoose.model("ForumPost", forumSchema);

@@ -339,22 +339,28 @@ app.get('/forum/:id', function (req, res) {
 
 // Adds a high level comment to a forum post 
 app.post("/forum/:id", function (req, res) {
-  User.findById(req.body.uID, function (err, user) {
-    ForumPost.findById(req.params.id, function (err, post) {
-      if (err) {
+  ForumPost.findById(req.params.id, function (err, post) {
+    if (err) {
+      console.log(err);
+    }
+    var forumComment = new ForumComment();
+    forumComment.summary = req.body.summary;
+    forumComment.date = req.body.date;
+    User.findById(req.body.uid, function (err, user) {
+      if(err) {
         console.log(err);
+        res.send(err);
       }
-      var forumComment = new ForumComment();
       forumComment.author = user;
-      forumComment.summary = req.body.summary;
-      forumComment.date = req.body.date;
       forumComment.save();
       post.comments.push(forumComment)
       post.save();
       res.redirect('/forum/' + req.param.id);
       res.end();
     });
-  })
+  
+  });
+
 
 });
 

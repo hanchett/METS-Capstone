@@ -3,10 +3,10 @@ var mongoose = require("mongoose");
 var forumCommentSchema = mongoose.Schema({
     author: {
         id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User"
         },
-        username: String
+        display_name: String
     }, 
     summary: String,
     date: Date,

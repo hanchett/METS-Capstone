@@ -30,8 +30,8 @@ ReactDOM.render(
       <Route exact path='/review/:title/:id/new' component={NewReview}/>
       <Route exact path='/forum' component={Forum}/>
       <Route exact path='/forum/new' component={NewForumPost}/>
-      <Route exact path='/forum/:id' component={ForumPost}/>
-      <Route exact path='/forum/new/:id' component={NewComment}/>
+      <Route exact path='/forum/post/:id' component={ForumPost}/>
+      <Route exact path='/forum/new/comment/:id' component={NewComment}/>
     </div>
   </Router>,
   document.getElementById('root')

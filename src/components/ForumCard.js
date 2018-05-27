@@ -27,7 +27,7 @@ class ForumCard extends Component {
   render() {
     return (
       <div>
-        <Link to={`/Forum/${this.state.id}`} params={{test: "test"}}>
+        <Link to={`/Forum/post/${this.state.id}`} params={{test: "test"}}>
           <div className="forumCard">
             <img src={this.state.image} alt="User profile image" />
             <div className="titleInfo">

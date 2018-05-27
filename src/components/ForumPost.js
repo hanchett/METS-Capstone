@@ -12,8 +12,7 @@ class ForumPost extends Component {
     this.state = {
       id: props.match.params.id,
       new_summary: "",
-      replyDisp: false,
-      comments: []
+      replyDisp: false
     };
     this.getComments = this.getComments.bind(this);
   }
@@ -27,6 +26,17 @@ class ForumPost extends Component {
       .get(`http://localhost:3101/forum/${this.state.id}`)
       .then(res => {
         let data = res.data;
+        let state_comments = [];
+        for (let i = 0; i < data.comments.length; i++) {
+          axios
+            .get(`http://localhost:3101/forum/comment/${data.comments[i]}`)
+            .then(res => {
+              state_comments.push(res.data);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
         this.setState({
           author: data.author.display_name,
           summary: data.summary,
@@ -35,17 +45,8 @@ class ForumPost extends Component {
           category: data.category,
           image: require("../img/user_placeholder.png"),
           views: data.views,
+          comments: state_comments
         });
-        let state_comments = [];
-        for(let i = 0; i < data.comments.length; i++) {
-            axios.get(`http://localhost:3101/forum/comment/${data.comments[i]}`).then(res => {
-                console.log(res);
-                state_comments.push(res.data);
-            }).catch(err => {
-                console.log(err);
-            })
-        }
-        this.setState({comments: state_comments});
       })
       .catch(err => {
         console.log(err);
@@ -66,9 +67,9 @@ class ForumPost extends Component {
     if (!this.state.comment_id) {
       axios
         .post(`http://localhost:3101/forum/${this.state.id}`, {
-          uID: "5af606f13aa90513d1c97164",
+          uid: "5af606f13aa90513d1c97164",
           summary: this.state.new_summary,
-          date: this.state.date
+          date: new Date()
         })
         .then(res => {
           console.log("Comment Successfully Added");
@@ -81,10 +82,9 @@ class ForumPost extends Component {
   }
 
   render() {
-    console.log(this.state);
     let showReply = this.state.replyDisp ? "block" : "none";
     let content = this.state.author ? (
-      <div className="forumCard">
+      <div className="forumCard" style={{ border: "none" }}>
         <img src={this.state.image} alt="User profile image" />
         <div className="titleInfo">
           <h2>{this.state.title}</h2>
@@ -95,7 +95,7 @@ class ForumPost extends Component {
         <br />
         <div className="stats">
           <p>{this.state.views} Views</p>
-          <p>{this.state.comments.length} Comments</p>
+          <p>{this.state.comments ? this.state.comments.length : 0} Comments</p>
           <p>{this.state.time} Hours Ago</p>
           <button onClick={this.showReplyBox.bind(this)}>
             <FontAwesome name="fas fa-reply" /> Reply
@@ -105,19 +105,22 @@ class ForumPost extends Component {
     ) : (
       <div>Nothing to see here</div>
     );
-
-    console.log(this.state.comments.length)
-    let comments = this.state.comments.length > 0 ? (
+    console.log(this.state);
+    let currentDate = new Date();
+    let comments = this.state.comments ? (
       this.state.comments.map(comment => {
         return (
-          <div>
+          <div key={comment.id} className="forumCard">
             <img src={this.state.image} alt="User profile image" />
-            <p>{comment.author.display_name}</p>
-            <FontAwesome name="fas fa-thumbs-up" />
-            <p>{comment.content}</p>
-            <p>
-              {(new Date() - new Date(comment.date)) % 24} Hours Since Posted
-            </p>
+            <div className="titleInfo">
+              <h2>{comment.author.display_name}</h2>
+              <br />
+              <div>{comment.summary}</div>
+              <FontAwesome className="like" name="fas fa-thumbs-up" />
+            </div>
+            <div className="stats">
+                {(new Date() - new Date(comment.date)) % 24}
+            </div>
           </div>
         );
       })
@@ -129,6 +132,7 @@ class ForumPost extends Component {
       <div>
         <NavBar />
         <div className="content">{content}</div>
+        <div className="comments">{comments}</div>
         <form
           onSubmit={this.submitComment.bind(this)}
           className="forumForm"
