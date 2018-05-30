@@ -1,0 +1,35 @@
+.titleInfo {
+    width: 60%;
+}
+
+.content {
+    text-align: left;
+}
+
+.comments>div {
+    display: inline-block;
+}
+
+.comments {
+    width: 300px;
+    margin: 20px 12% 40px 12%;
+}
+
+.forumCard>p,
+.forumCard>h2 {
+    display: inline-block;
+}
+
+.like {
+    position: absolute;
+    right: 25%;
+    top: 63%;
+}
+
+.comments>.forumCard {
+    width: 800px;
+}
+
+.forumCard>h2 {
+    font-size: 2em;
+}

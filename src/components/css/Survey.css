@@ -1,0 +1,75 @@
+.survey {
+    /* background: linear-gradient(#5B8DA3, #76cccc); */
+    background: linear-gradient(#7280d7, #ebe9f9);
+    display: flex;
+    flex-flow: column;
+    height: 1000px;
+    text-align: center;
+    overflow: hidden !important;
+}
+
+.hello {
+    margin-top: 15%;
+    color: white;
+    transition: 1s ease-in;
+    
+}
+
+.hello h2 {
+    margin: 40px 0 20px 0;
+    font-size: 1.2em;
+}
+
+.question {
+    visibility: hidden;
+    display: none;
+    text-align: center;
+    color: white;
+    left: 100%;
+    width: 80%;
+    transition: all 1s ease-in-out;
+    float: right;
+    margin: 10% 10% 10px 10%;
+    padding: 20px;
+
+}
+
+.qBtn, .surveyBtn, .lBtn{
+    padding: 10px;
+    background-color: #7280d7;
+    border-radius: 10px;
+    transition: .7s;
+    color: white;
+    min-width: 33%;
+    margin: 20px 60px;
+}
+
+.question button:hover, .surveyBtn:hover {
+    opacity: .5;
+}
+
+
+.question>h1 {
+    padding: 0 100px;
+    margin-bottom: 40px;
+}
+
+.skip {
+    position: absolute;
+    left: 90%;
+    top: 85%;
+    z-index: 100;
+    width: 80px;
+    background-color: #7280d7;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.skip > a {
+    text-decoration: none;
+    color: white;
+}
+
+.blurb {
+    padding: 2% 15%;
+}

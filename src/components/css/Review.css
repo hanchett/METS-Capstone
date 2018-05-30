@@ -1,0 +1,67 @@
+.productTitle {
+    margin: 0 25%;
+    text-align: center;
+    overflow: auto;
+}
+
+.info {
+    position: relative;
+    float: left;
+    text-align: left;
+}
+
+.info h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.info h2 {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: 100;
+    color: grey;
+}
+
+.productTitle img {
+    float: left;
+    height: 150px;
+    margin-right: 60px;
+}
+
+.rating {
+    right: 10px;
+}
+
+.summary, .reviews {
+    margin: 60px 17.5%;
+}
+
+.summaryTitle, .reviewTitle {
+    color: black;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+
+.newReview {
+    background-color: #7383D5;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.newReview:hover {
+    cursor: pointer;
+}
+@media screen and (max-width: 900px) {
+    .productTitle img {
+        margin-right: 5%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .info {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,29 @@
+.rating {
+    float: right;
+    display: inline-block;
+
+
+}
+
+.display_name {
+    display: inline-block;
+    font-size: 2em;
+}
+
+.profileImg {
+    height: 100px;
+    float: left;
+    margin-right: 20px;
+}
+
+.reviewsTitle {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 750px) {
+    .profileImg {
+        display: none;
+    }
+}

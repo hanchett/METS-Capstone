@@ -1,63 +1,46 @@
-# METS 
+# DiscoverEd
 
-This repository contains the code for our Informatics Capstone project. This website is designed for STEM teachers to use to help build their curriculums around educational technologies with a student-first focus. We allow teachers to search by the needs of their students, such as visual learners, non-native English speakers and more. Additonally, we're creating a community to enable collaboration between teachers, especially as they wrok through bringing their curriculums up to Next Generation Science Standards. 
+This repository contains the code for DiscoverEd, a capstone project for the Informatics program at the University of Washington. 
 
-## Working with MERN
 
-REACT is the main driver in how we interact with this application, as it is finnicky and demands a certain coding style. Each JS document represents a component, either a page or an element within that page. 
+## Introduction:
 
-The primary document is Index.js, which has all the "controllers" for the other documents. These are basically just governing what shows up when you type something into the URL, ex. http://localhost:3000/search. 
+Special education programs in the US are on the rise, with 30% growth over the last decade, and becoming an umbrella program, encompassing both disabilities related programs and supplementary education programs. Educators who work with high needs student populations have turned to technology like mobile and desktop application that allow them to enhance their student’s experience, helping their students learn and achieve at the highest possible level.
 
-The Home page is coded into App.js (Which should probably be renamed to Home.js, but for the time being we'll just use App). 
+Although the technologies exist, teachers struggle to find technologies that address the needs of their students investing time scouring the Internet. DiscoverEd is a web application that connects you directly to inclusive technology that fits the needs of your student populations.
 
-### Each Component ###
 
-When creating a new component, you need three things. Firstly, you need to import a few things: 
-```javascript
-import  { React, Component } from 'react';
-import NavBar from './NavBar';
-import './css/ComponentName.css';
-```
+## Features
 
-Each page in our site shares the common NavBar component, and each component requires the importing of the react Component object. 
+### Personalization:
+Upon account creation, DiscoverEd redirects users to a survey to gain a better understanding of their classroom environments and provides a recommended set of technologies for the users to investigate further.
 
-Secondly, each component requires the same general setup of code below the imports: 
-```javascript
-class ComponentName extends Component {
-    render() {
-      [JavaScript Functions go here]
-        return (
-          <div> - React components need to return everything in a single wrapper tag, usually given a custom class for formatting. 
-              <NavBar/> - Since each component requires this, it should almost always go at the top
-              [HTML GOES HERE]
-           </div>
-        )
-    }
-export default ComponentName
-```
+### Product Search:
+DiscoverEd allows users to explore a centralized repository of inclusive educational applications and software, updated by our team and by users.
 
-### Styling ###
-All CSS documents must be within the same directory as the JavaScript files they are styling. I don't know why, but this is the way that React likes it. Because of this, I've created a subfolder in our component directory with the sole purpose of holding onto our CSS files. 
+### Product Reviews:
+Each product has a review page that allows users to help other users on their selection decisions, and how they can be used to helps your students thrive. We also integrated questions from our survey within the review process to strengthen our recommendations.
 
-### Hierarchy ###
-Our current file hierarchy is something like this 
+### Collaborative Forums:
+During our research, we found that many teachers struggle collaborating with their peers within their own schools due to office politics and drama. WE created a forum for these teachers to collaborate semi-anonymously (only their usernames are shown) so that they can receive advice and input from other educations working in special education.
 
-METS-Capstone   
 
----App.js   
----Index.js   
----Img   
----Components    
-------All Component JS Files   
-------CSS   
+## Technology
 
-I want it eventually to look like this 
-METS-Capstone   
----App.js    
----Index.js   
----Img   
----Components    
-------Pages (with the main page components)    
---------- Page CSS   
-------ComponentItems (things like the NavBar which are used within the pages)    
---------- ComponentItems CSS   
+### How to Run:
+
+To run our application, please clone the repository on your local machine and open the bash command line application on your machine. Once in bash, change into the application directory and run this line of code: `npm run start-dev` and the application should be up and running on localhost:3001.
+
+If you encounter any issues running the application, please create an issue on this repository and we can attempt to resolve it.
+
+### Stack:
+Our team chose to use the MERN stack (MongoDB and Node.js backend, Express middleware, and React frontend). We chose this stack because our developers had worked with it in previous projects.
+
+### Database Management:
+We chose to use MongoDB due to our team's familiarity with the free tier availability through mLab.
+
+
+## Project Deployment:
+
+Our project is not currently deployed on a live platform, so here is a link to a Google Slides presentation with gifs of the application in action:
+https://l.messenger.com/l.php?u=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1yfv1hMqYuIzG7dc6Ki-FcZ3nOIyf10rL%2Fview%3Fusp%3Dsharing&h=ATMcWjCP0EwvPT95DtuQF-5WgTHuZ9HsQz1fK-a3rzjr1owtLERJBQRXgr4lDdFoPgWQIOpbfvoFrDy_I95GUmMdLSXxbUpG-2Vix6TOKcMjRbfhrhk

@@ -1,0 +1,72 @@
+.productForm {
+    padding: 20px 0;
+    text-align: center;
+    border: 2px solid #8793DD;
+    border-radius: 8px;
+    margin-bottom: 40px;
+
+}
+
+.formInput, .summaryInput, .selectAge {
+
+    width: 90%;
+    padding: 7px;
+    border: 1px solid #C8CDEF;
+    border-radius: 4px;
+}
+
+.title {
+    padding: 100px 20% 20px 20%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+.formLabel {
+    width: 38%;
+    min-width: 150px;
+}
+
+.titleLabel {
+    width: 80%;
+    min-width: 150px;
+}
+.summaryLabel {
+    width: 80%;
+}
+.summaryInput {
+    height: 100px;
+    overflow: scroll;
+}
+
+.selectAge {
+    color: grey;
+}
+
+h3 {
+    font-size: 1em;
+    margin: 4px;
+    padding: 0;
+}
+
+.submitBtn {
+    width: 100px;
+}
+
+@media screen and (max-width: 800px) {
+    .titleLabel {
+        width: 38%; 
+        min-width: 150px;
+    }
+
+    .summaryLabel {
+        width: 38%; 
+        min-width: 150px;
+    } 
+    
+    .title {
+        padding: 100px 10% 20px; 
+    }
+}

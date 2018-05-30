@@ -1,0 +1,105 @@
+/* The sidebar menu */
+.sidenav {
+  display: none;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 180px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #5a5a5a; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+body {
+  overflow: auto;
+}
+
+.results {
+  margin-left: 160px;
+  padding: 10px 40px;
+}
+
+
+
+.hamburger, .close{
+  width: 50px;
+  height: 50px;
+  margin: 80px 0px 0px 10px;
+  z-index: 10;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.close {
+  float: right;
+  color: white;
+  margin-top: 65px;
+  z-index: -1;
+}
+
+.close:hover {
+  color: #7280D7;
+}
+
+.filters {
+  padding-top: 125px;
+  color: white;
+}
+
+
+
+.filters>div:hover {
+  color: #7280D7;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.pagination {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.newProd {
+  float: right;
+}
+
+.newProd button {
+  padding-top: 8px;
+  background-color: #7280D7;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  padding: 10px 5px;
+  font-size: 14px;
+}

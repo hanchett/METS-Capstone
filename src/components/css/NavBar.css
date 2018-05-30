@@ -1,0 +1,20 @@
+.navigation {
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  opacity: .85;
+  background-color: #7280D7;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: white;
+}
+
+.navLink:hover {
+  opacity: .5;
+}
+
+.navLink {
+  margin-left: 20px;
+}

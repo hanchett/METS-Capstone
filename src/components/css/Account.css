@@ -1,0 +1,88 @@
+.acct {
+    padding: 15px 25px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #7280D7;
+    border: none;
+    border-radius: 10px;
+}
+
+.acct:hover {
+    background-color: rgb(89, 103, 199)
+}
+
+.acct:active {
+    background-color: #7280D7;
+    transform: translateY(4px);
+}
+
+.navBarPlace {
+    padding-bottom: 75px;
+}
+
+.signin, .signup {
+    padding: 20px;
+    margin: 0 auto 40px auto;
+    width: 50%;
+    background-color: lightgray;
+    border-radius: 25px;
+}
+
+.accountSummary {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 130px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.accountSummary h3 {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.form>input {
+    margin: 5px;
+    box-shadow: none;
+    border-radius: 4px;
+    border: 1px solid #7280D7;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+.form {
+    text-align: center;
+    opacity: .9;
+}
+
+#signUpNameLast, #signUpNameFirst {
+    width: 24%;
+}
+
+.accountPage {
+    background: url("../../img/signup.png");
+    background-size: auto;
+    z-index: -1;
+    min-height: 1200px;
+    max-height: 1800px;
+    overflow: hidden !important;
+}
+
+.signupLink {
+    font-size: .8em;
+    margin-top: 20px;
+}
+
+.signupLink>span {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+.signupLink>span:hover {
+    text-decoration: none;
+}
